@@ -1,0 +1,20 @@
+
+buttons.png
+size: 128,64
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bad
+  rotate: false
+  xy: 44, 3
+  size: 40, 48
+  orig: 40, 48
+  offset: 0, 0
+  index: -1
+good
+  rotate: false
+  xy: 2, 2
+  size: 40, 49
+  orig: 40, 49
+  offset: 0, 0
+  index: -1

@@ -1,40 +1,33 @@
 package com.leo.game.states;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.leo.game.Security;
 
 /**
  * Created by leonidtiskevic on 07.02.17.
  */
 
-public class MenuState extends State {
+public class PlayState extends State {
 
+    private Texture mBad;
     private Texture mBg;
-    private Texture mPlayBtn;
 
-    public MenuState(GameStateManager gsm) {
+    public PlayState(GameStateManager gsm) {
         super(gsm);
 
         mBg = new Texture("bg.png");
-        mPlayBtn = new Texture("good.png");
+        mBad = new Texture("bad.png");
 
     }
 
     @Override
     protected void handleinput() {
 
-        if (Gdx.input.justTouched()){
-            gsm.set(new PlayState(gsm));
-        }
-
     }
 
     @Override
     public void update(float dt) {
-        handleinput();
 
     }
 
@@ -43,16 +36,12 @@ public class MenuState extends State {
 
         sb.begin();
         sb.draw(mBg, 0, 0, Security.WIDTH, Security.HEIGHT);
-        sb.draw(mPlayBtn, (Security.WIDTH / 2) - (mPlayBtn.getWidth() / 2), Security.HEIGHT / 2);
+        sb.draw(mBad, Security.WIDTH / 2, Security.HEIGHT / 2);
         sb.end();
-
     }
 
     @Override
     public void dispose() {
-
-        mBg.dispose();
-        mPlayBtn.dispose();
 
     }
 }
