@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.actions.MoveToAction;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
@@ -59,11 +60,13 @@ public class MainMenu implements Screen {
 
             public void touchUp(InputEvent event, float x, float y, int pointer, int button){
 
-                game.setScreen(new MainMenu(game));
+                game.setScreen(new GameOverScreen(game));
+                dispose();
 
             }
 
         });
+
 
         stage.addActor(playBt);
         Gdx.input.setInputProcessor(stage);
@@ -109,7 +112,6 @@ public class MainMenu implements Screen {
     @Override
     public void dispose() {
         stage.dispose();
-        game.dispose();
 
     }
 }

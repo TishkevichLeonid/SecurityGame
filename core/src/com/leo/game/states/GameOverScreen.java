@@ -5,28 +5,25 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.leo.game.Security;
 
 /**
  * Created by leonidtiskevic on 07.02.17.
  */
 
-public class GameScreen implements Screen {
+public class GameOverScreen implements Screen {
+
     final Security game;
+    private Texture gameOver;
+    OrthographicCamera camera;
+    private Texture backgorund;
 
-    private Texture bg;
-    private OrthographicCamera camera;
-
-
-    public GameScreen(Security gam) {
+    public GameOverScreen(Security gam) {
         this.game = gam;
 
         camera = new OrthographicCamera();
         camera.setToOrtho(false, Security.WIDTH, Security.HEIGHT);
-
-        bg = new Texture("bg.png");
-
+        backgorund = new Texture("bg.png");
     }
 
     @Override
@@ -36,15 +33,16 @@ public class GameScreen implements Screen {
 
     @Override
     public void render(float delta) {
-        Gdx.gl.glClearColor(0, 0, 0, 1);
+
+        Gdx.gl.glClearColor(0, 0, 0.2f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         camera.update();
+
         game.batch.setProjectionMatrix(camera.combined);
         game.batch.begin();
-        game.batch.draw(bg, 0, 0, Security.WIDTH, Security.HEIGHT);
+        game.batch.draw(backgorund, 0, 0);
         game.batch.end();
-
 
     }
 
@@ -70,7 +68,6 @@ public class GameScreen implements Screen {
 
     @Override
     public void dispose() {
-        bg.dispose();
 
     }
 }

@@ -9,7 +9,7 @@ public class Security extends Game {
 	public static final int HEIGHT = 800;
 	public static final String TITLE = "Security";
 
-	private SpriteBatch batch;
+	public SpriteBatch batch;
 	
 	@Override
 	public void create () {
