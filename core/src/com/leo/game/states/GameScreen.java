@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.leo.game.Security;
+import com.leo.game.objects.GoodTablet;
 
 /**
  * Created by leonidtiskevic on 07.02.17.
@@ -16,9 +17,9 @@ import com.leo.game.Security;
 public class GameScreen implements Screen {
     final Security game;
 
-    private Texture bg;
     private OrthographicCamera camera;
     private Stage stage;
+    private GoodTablet mGoodTablet;
 
 
     public GameScreen(Security gam) {
@@ -28,9 +29,14 @@ public class GameScreen implements Screen {
         camera = new OrthographicCamera();
         camera.setToOrtho(false, Security.WIDTH, Security.HEIGHT);
 
-        bg = new Texture("bg.png");
 
         stage.addActor(game.background);
+
+    }
+
+    public void update(float dt){
+
+        mGoodTablet.update(dt);
 
     }
 
@@ -72,7 +78,6 @@ public class GameScreen implements Screen {
 
     @Override
     public void dispose() {
-        bg.dispose();
 
     }
 }
