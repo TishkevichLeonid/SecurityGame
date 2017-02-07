@@ -5,6 +5,8 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.leo.game.Security;
 
 /**
@@ -16,15 +18,19 @@ public class GameScreen implements Screen {
 
     private Texture bg;
     private OrthographicCamera camera;
+    private Stage stage;
 
 
     public GameScreen(Security gam) {
         this.game = gam;
 
+        stage = new Stage(new ScreenViewport());
         camera = new OrthographicCamera();
         camera.setToOrtho(false, Security.WIDTH, Security.HEIGHT);
 
         bg = new Texture("bg.png");
+
+        stage.addActor(game.background);
 
     }
 
@@ -38,11 +44,8 @@ public class GameScreen implements Screen {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        camera.update();
-        game.batch.setProjectionMatrix(camera.combined);
-        game.batch.begin();
-        game.batch.draw(bg, 0, 0);
-        game.batch.end();
+        stage.act(delta);
+        stage.draw();
 
 
     }
