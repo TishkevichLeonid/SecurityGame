@@ -5,7 +5,6 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.leo.game.Security;
 
 /**
@@ -42,7 +41,7 @@ public class GameScreen implements Screen {
         camera.update();
         game.batch.setProjectionMatrix(camera.combined);
         game.batch.begin();
-        game.batch.draw(bg, 0, 0, Security.WIDTH, Security.HEIGHT);
+        game.batch.draw(bg, 0, 0);
         game.batch.end();
 
 

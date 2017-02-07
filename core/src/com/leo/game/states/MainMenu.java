@@ -46,7 +46,7 @@ public class MainMenu implements Screen {
 
         playBt = new ImageButton(stylePlayBt);
         playBt.setSize(mPlayBtn.getWidth(), mPlayBtn.getHeight());
-        playBt.setPosition(150, 150);
+        playBt.setPosition(Security.WIDTH / 2 - mPlayBtn.getWidth() / 2, Security.HEIGHT / 2);
 
 
         playBt.addListener(new ClickListener(){
@@ -60,14 +60,14 @@ public class MainMenu implements Screen {
 
             public void touchUp(InputEvent event, float x, float y, int pointer, int button){
 
-                game.setScreen(new GameOverScreen(game));
+                game.setScreen(new GameScreen(game));
                 dispose();
 
             }
 
         });
 
-
+        stage.addActor(game.background);
         stage.addActor(playBt);
         Gdx.input.setInputProcessor(stage);
 
