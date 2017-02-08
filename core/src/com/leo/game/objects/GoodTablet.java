@@ -7,7 +7,7 @@ import com.leo.game.Security;
  * Created by leonidtiskevic on 07.02.17.
  */
 
-public class GoodTablet {
+public class GoodTablet{
 
     private Vector2 position;
     private Vector2 velocity;
@@ -20,7 +20,8 @@ public class GoodTablet {
         this.width = width;
         this.height = height;
         position = new Vector2(Security.WIDTH / 2, 0);
-        velocity = new Vector2(0, 0);
+        velocity = new Vector2(0, 10);
+        acceleration = new Vector2(0, 50);
     }
 
     public void update(float dt){

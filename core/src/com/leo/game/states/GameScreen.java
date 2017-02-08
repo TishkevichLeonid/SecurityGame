@@ -28,7 +28,7 @@ public class GameScreen implements Screen {
         stage = new Stage(new ScreenViewport());
         camera = new OrthographicCamera();
         camera.setToOrtho(false, Security.WIDTH, Security.HEIGHT);
-        mGoodTablet = new GoodTablet(Security.WIDTH / 2, 0, 150, 183);
+        mGoodTablet = new GoodTablet(Security.WIDTH / 2, 600, 150, 183);
 
 
         stage.addActor(game.background);
