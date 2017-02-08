@@ -20,16 +20,16 @@ public class GoodTablet{
     public GoodTablet(float x, float y, int width, int height){
         this.width = width;
         this.height = height;
-        position = new Vector2(Gdx.graphics.getWidth() / 2, 0);
+        position = new Vector2(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight());
         velocity = new Vector2(0, 0);
-        acceleration = new Vector2(0, 50);
+        acceleration = new Vector2(0, -50);
     }
 
     public void update(float dt){
         velocity.add(acceleration.cpy().scl(dt));
 
-        if (velocity.y > 200) {
-            velocity.y = 200;
+        if (velocity.y < -200) {
+            velocity.y = -200;
         }
 
         position.add(velocity.cpy().scl(dt));
