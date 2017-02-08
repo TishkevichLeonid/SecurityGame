@@ -35,6 +35,7 @@ public class GameRender {
     }
 
     public void render(){
+        Gdx.app.log("GameRander", "render");
 
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
