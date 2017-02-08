@@ -36,7 +36,6 @@ public class GameRender {
     }
 
     public void render(float runTime){
-        Gdx.app.log("GameRander", "render");
 
         GoodTablet goodTablet = myWorld.getGoodTablet();
 

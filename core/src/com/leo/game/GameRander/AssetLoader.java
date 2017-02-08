@@ -3,6 +3,7 @@ package com.leo.game.GameRander;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.leo.game.Security;
 
 /**
  * Created by leonidtiskevic on 08.02.17.
@@ -19,7 +20,7 @@ public class AssetLoader {
         bg = new Texture("bg.png");
 
         goodTablet = new Texture("goodTablet.png");
-        spriteGoodTablet = new Sprite(goodTablet, Gdx.graphics.getWidth() / 2 - bg.getWidth() / 2, Gdx.graphics.getHeight() / 2, bg.getWidth(), bg.getHeight());
+        spriteGoodTablet = new Sprite(goodTablet, Security.WIDTH / 2 - bg.getWidth() / 2, Gdx.graphics.getHeight() / 2, bg.getWidth(), bg.getHeight());
 
         bg.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest);
         goodTablet.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest);
