@@ -14,15 +14,15 @@ import com.leo.game.states.GameScreen;
 
 public class GameRender {
 
-    private GameScreen mGameScreen;
+    private GameWorld myWorld;
     private OrthographicCamera camera;
     private ShapeRenderer mShapeRenderer;
 
     private SpriteBatch mSpriteBatch;
 
-    public GameRender(GameScreen gameScreen){
+    public GameRender(GameWorld world){
 
-        mGameScreen = gameScreen;
+        myWorld = world;
         camera = new OrthographicCamera();
         camera.setToOrtho(true, Security.WIDTH, Security.HEIGHT);
 
@@ -34,7 +34,7 @@ public class GameRender {
 
     }
 
-    public void render(float runTime){
+    public void render(){
 
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);

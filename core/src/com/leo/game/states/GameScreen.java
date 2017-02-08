@@ -31,7 +31,7 @@ public class GameScreen implements Screen {
         this.game = gam;
 
         world = new GameWorld();
-        render = new GameRender();
+        render = new GameRender(world);
 
         stage = new Stage(new ScreenViewport());
         camera = new OrthographicCamera();
@@ -63,7 +63,7 @@ public class GameScreen implements Screen {
     @Override
     public void render(float delta) {
         world.update(delta);
-        render.render(delta); // ????
+        render.render(); // ????
 
 
     }

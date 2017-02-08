@@ -5,4 +5,13 @@ package com.leo.game.GameRander;
  */
 
 public class GameWorld {
+
+
+
+    public void update(float delta){
+
+
+
+    }
+
 }
