@@ -21,7 +21,6 @@ public class GameScreen implements Screen {
 
     private OrthographicCamera camera;
     private Stage stage;
-    private GoodTablet mGoodTablet;
 
     private GameWorld world;
     private GameRender render;
@@ -36,29 +35,19 @@ public class GameScreen implements Screen {
         stage = new Stage(new ScreenViewport());
         camera = new OrthographicCamera();
         camera.setToOrtho(false, Security.WIDTH, Security.HEIGHT);
-        mGoodTablet = new GoodTablet(Security.WIDTH / 2, 600, 150, 183);
 
 
         stage.addActor(game.background);
 
     }
 
-    public void update(float dt){
-
-        mGoodTablet.update(dt);
-
-    }
 
     @Override
     public void show() {
 
     }
 
-    public GoodTablet getGoodTablet(){
 
-        return mGoodTablet;
-
-    }
 
     @Override
     public void render(float delta) {
