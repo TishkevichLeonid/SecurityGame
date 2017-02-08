@@ -25,6 +25,8 @@ public class GameScreen implements Screen {
     private GameWorld world;
     private GameRender render;
 
+    private float runTime = 0;
+
 
     public GameScreen(Security gam) {
         this.game = gam;
@@ -51,8 +53,9 @@ public class GameScreen implements Screen {
 
     @Override
     public void render(float delta) {
+        runTime += delta;
         world.update(delta);
-        render.render(); // ????
+        render.render(runTime); // ????
 
 
     }

@@ -19,7 +19,10 @@ public class AssetLoader {
         bg = new Texture("bg.png");
 
         goodTablet = new Texture("goodTablet.png");
-        spriteGoodTablet = new Sprite(goodTablet, Gdx.graphics.getWidth() / 2, 600, 150, 183);
+        spriteGoodTablet = new Sprite(goodTablet, Gdx.graphics.getWidth() / 2 - bg.getWidth() / 2, Gdx.graphics.getHeight() / 2, bg.getWidth(), bg.getHeight());
+
+        bg.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest);
+        goodTablet.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest);
 
     }
 

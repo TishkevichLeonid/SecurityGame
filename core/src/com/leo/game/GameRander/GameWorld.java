@@ -22,7 +22,7 @@ public class GameWorld {
 
     public void update(float delta){
         Gdx.app.log("GameWorld", "update");
-
+        mGoodTablet.update(delta);
 
     }
 

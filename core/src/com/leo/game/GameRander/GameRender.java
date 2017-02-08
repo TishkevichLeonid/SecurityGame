@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.leo.game.Security;
+import com.leo.game.objects.GoodTablet;
 import com.leo.game.states.GameScreen;
 
 /**
@@ -24,7 +25,7 @@ public class GameRender {
 
         myWorld = world;
         camera = new OrthographicCamera();
-        camera.setToOrtho(true, Security.WIDTH, Security.HEIGHT);
+        camera.setToOrtho(false, Security.WIDTH, Security.HEIGHT);
 
         mSpriteBatch = new SpriteBatch();
         mSpriteBatch.setProjectionMatrix(camera.combined);
@@ -34,41 +35,33 @@ public class GameRender {
 
     }
 
-    public void render(){
+    public void render(float runTime){
         Gdx.app.log("GameRander", "render");
+
+        GoodTablet goodTablet = myWorld.getGoodTablet();
 
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        /*
-         * 2. Мы отрисовываем однотонный квадрат
-         */
-
-        // Говорим shapeRenderer начинать отрисовывать формы
         mShapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
 
-        // Выбираем RGB Color 87, 109, 120, не прозрачный
-        mShapeRenderer.setColor(87 / 255.0f, 109 / 255.0f, 120 / 255.0f, 1);
-
-        // Отрисовываем квадрат из myWorld (Используем ShapeType.Filled)
-        mShapeRenderer.rect(myWorld.getRect().x, myWorld.getRect().y, myWorld.getRect().width, myWorld.getRect().height);
-
-        // говорим shapeRenderer прекратить отрисовку
-        // Мы ДОЛЖНЫ каждый раз это делать
-        mShapeRenderer.end();
-
-
-        // Говорим shapeRenderer нарисовать рамку следующей формы
-        mShapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-
-        // Выбираем цвет RGB Color 255, 109, 120, не прозрачный
-        mShapeRenderer.setColor(255 / 255.0f, 109 / 255.0f, 120 / 255.0f, 1);
-
-        // Отрисовываем квадрат из myWorld (Using ShapeType.Line)
-        mShapeRenderer.rect(myWorld.getRect().x, myWorld.getRect().y,
-                myWorld.getRect().width, myWorld.getRect().height);
+        // Отрисуем Background цвет
+        mShapeRenderer.setColor(55 / 255.0f, 80 / 255.0f, 100 / 255.0f, 1);
+        mShapeRenderer.rect(0, 0, 136, 66);
 
         mShapeRenderer.end();
+
+        mSpriteBatch.begin();
+
+        mSpriteBatch.disableBlending();
+        mSpriteBatch.draw(AssetLoader.bg, 0, 0, Security.WIDTH, Security.HEIGHT);
+
+        mSpriteBatch.disableBlending();
+
+        mSpriteBatch.draw(AssetLoader.spriteGoodTablet, goodTablet.getX(), goodTablet.getY(), goodTablet.getWidth(), goodTablet.getHeight());
+
+        mSpriteBatch.end();
+
 
 
     }

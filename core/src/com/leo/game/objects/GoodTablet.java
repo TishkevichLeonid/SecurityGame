@@ -1,5 +1,6 @@
 package com.leo.game.objects;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.leo.game.Security;
 
@@ -19,8 +20,8 @@ public class GoodTablet{
     public GoodTablet(float x, float y, int width, int height){
         this.width = width;
         this.height = height;
-        position = new Vector2(Security.WIDTH / 2, 0);
-        velocity = new Vector2(0, 10);
+        position = new Vector2(Gdx.graphics.getWidth() / 2, 0);
+        velocity = new Vector2(0, 0);
         acceleration = new Vector2(0, 50);
     }
 
