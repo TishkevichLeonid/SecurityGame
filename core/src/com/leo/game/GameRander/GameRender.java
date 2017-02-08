@@ -18,6 +18,7 @@ public class GameRender {
     private GameWorld myWorld;
     private OrthographicCamera camera;
     private ShapeRenderer mShapeRenderer;
+    private GoodTablet goodTablet;
 
     private SpriteBatch mSpriteBatch;
 
@@ -33,22 +34,24 @@ public class GameRender {
         mShapeRenderer = new ShapeRenderer();
         mShapeRenderer.setProjectionMatrix(camera.combined);
 
+        goodTablet = myWorld.getGoodTablet();
+
     }
 
-    public void render(float runTime){
-
-        GoodTablet goodTablet = myWorld.getGoodTablet();
+    public void render(float delta){
 
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        mShapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+        camera.update();
+
+       // mShapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
 
         // Отрисуем Background цвет
-        mShapeRenderer.setColor(55 / 255.0f, 80 / 255.0f, 100 / 255.0f, 1);
-        mShapeRenderer.rect(0, 0, 136, 66);
+        //mShapeRenderer.setColor(55 / 255.0f, 80 / 255.0f, 100 / 255.0f, 1);
+        //mShapeRenderer.rect(0, 0, 136, 66);
 
-        mShapeRenderer.end();
+        //mShapeRenderer.end();
 
         mSpriteBatch.begin();
 
@@ -57,7 +60,7 @@ public class GameRender {
 
         mSpriteBatch.disableBlending();
 
-        mSpriteBatch.draw(AssetLoader.spriteGoodTablet, goodTablet.getX(), goodTablet.getY(), goodTablet.getWidth(), goodTablet.getHeight());
+        mSpriteBatch.draw(AssetLoader.goodTablet, goodTablet.getX(), goodTablet.getY(), goodTablet.getWidth(), goodTablet.getHeight());
 
         mSpriteBatch.end();
 

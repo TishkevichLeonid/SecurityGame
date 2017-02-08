@@ -53,7 +53,6 @@ public class MainMenu implements Screen {
 
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button){
 
-                Gdx.input.vibrate(10);
                 return true;
 
             }

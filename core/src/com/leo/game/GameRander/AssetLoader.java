@@ -3,6 +3,8 @@ package com.leo.game.GameRander;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.g3d.model.Animation;
 import com.leo.game.Security;
 
 /**
@@ -14,13 +16,14 @@ public class AssetLoader {
     public static Texture bg;
     public static Texture goodTablet;
     public static Sprite spriteGoodTablet;
+    public static Animation goodTabletAnimation;
 
     public static void load(){
 
         bg = new Texture("bg.png");
 
         goodTablet = new Texture("goodTablet.png");
-        spriteGoodTablet = new Sprite(goodTablet, Security.WIDTH / 2 - bg.getWidth() / 2, Gdx.graphics.getHeight() / 2, bg.getWidth(), bg.getHeight());
+       // spriteGoodTablet = new Sprite(goodTablet, Security.WIDTH / 2 - bg.getWidth() / 2, Gdx.graphics.getHeight() / 2, bg.getWidth(), bg.getHeight());
 
         bg.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest);
         goodTablet.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest);
@@ -29,7 +32,7 @@ public class AssetLoader {
 
     public static void dispose(){
 
-        bg.getWidth();
+        bg.dispose();
         goodTablet.dispose();
 
     }

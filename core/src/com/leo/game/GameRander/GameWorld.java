@@ -15,13 +15,14 @@ public class GameWorld {
 
     public GameWorld(){
 
-        mGoodTablet = new GoodTablet(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight(), 150, 183);
+        mGoodTablet = new GoodTablet(Gdx.graphics.getWidth() / 2 - AssetLoader.goodTablet.getWidth() / 2,
+                Gdx.graphics.getHeight() + AssetLoader.goodTablet.getHeight() / 2, AssetLoader.goodTablet.getWidth(),
+                AssetLoader.goodTablet.getHeight());
 
     }
 
 
     public void update(float delta){
-        Gdx.app.log("GameWorld", "update");
         mGoodTablet.update(delta);
 
     }
