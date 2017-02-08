@@ -7,6 +7,8 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.leo.game.GameRander.GameRender;
+import com.leo.game.GameRander.GameWorld;
 import com.leo.game.Security;
 import com.leo.game.objects.GoodTablet;
 
@@ -21,9 +23,15 @@ public class GameScreen implements Screen {
     private Stage stage;
     private GoodTablet mGoodTablet;
 
+    private GameWorld world;
+    private GameRender render;
+
 
     public GameScreen(Security gam) {
         this.game = gam;
+
+        world = new GameWorld();
+        render = new GameRender();
 
         stage = new Stage(new ScreenViewport());
         camera = new OrthographicCamera();
@@ -54,11 +62,8 @@ public class GameScreen implements Screen {
 
     @Override
     public void render(float delta) {
-        Gdx.gl.glClearColor(0, 0, 0, 1);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
-        stage.act(delta);
-        stage.draw();
+        world.update(delta);
+        render.render(delta); // ????
 
 
     }
