@@ -24,7 +24,7 @@ public class GoodTablet{
         position = new Vector2(Gdx.graphics.getWidth() / 2 - AssetLoader.goodTablet.getWidth() / 2,
                 Gdx.graphics.getHeight() + AssetLoader.goodTablet.getHeight() / 2);
         velocity = new Vector2(0, 0);
-        acceleration = new Vector2(0, -50);
+        acceleration = new Vector2(0, -15);
     }
 
     public void update(float dt){

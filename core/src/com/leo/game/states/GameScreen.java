@@ -4,11 +4,9 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.utils.viewport.ScreenViewport;
-import com.leo.game.GameRander.GameRender;
-import com.leo.game.GameRander.GameWorld;
+import com.leo.game.GameRander.AssetLoader;
 import com.leo.game.Security;
 import com.leo.game.objects.GoodTablet;
 
@@ -21,25 +19,27 @@ public class GameScreen implements Screen {
 
     private OrthographicCamera camera;
     private Stage stage;
+    private GoodTablet goodTablet;
 
-    private GameWorld world;
-    private GameRender render;
 
-    private float runTime = 0;
+    private SpriteBatch mSpriteBatch;
 
 
     public GameScreen(Security gam) {
         this.game = gam;
 
-        world = new GameWorld();
-        render = new GameRender(world);
+        mSpriteBatch = new SpriteBatch();
 
-        stage = new Stage(new ScreenViewport());
+       // stage = new Stage(new ScreenViewport());
         camera = new OrthographicCamera();
         camera.setToOrtho(false, Security.WIDTH, Security.HEIGHT);
 
+        goodTablet = new GoodTablet(Gdx.graphics.getWidth() / 2 - AssetLoader.goodTablet.getWidth() / 2,
+                Gdx.graphics.getHeight() + AssetLoader.goodTablet.getHeight() / 2, AssetLoader.goodTablet.getWidth(),
+                AssetLoader.goodTablet.getHeight());
 
-        stage.addActor(game.background);
+
+       // stage.addActor(game.background);
 
     }
 
@@ -53,9 +53,23 @@ public class GameScreen implements Screen {
 
     @Override
     public void render(float delta) {
-        runTime += delta;
-        world.update(delta);
-        render.render(runTime); // ????
+        Gdx.gl.glClearColor(0, 0, 0, 1);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+        Gdx.app.log("GameScreen FPS", (1/delta) + "");
+
+
+        mSpriteBatch.begin();
+
+        goodTablet.update(delta);
+
+        mSpriteBatch.disableBlending();
+        mSpriteBatch.draw(AssetLoader.bg, 0, 0, Security.WIDTH, Security.HEIGHT);
+
+        mSpriteBatch.disableBlending();
+        mSpriteBatch.draw(AssetLoader.goodTablet, goodTablet.getX(), goodTablet.getY(), goodTablet.getWidth(), goodTablet.getHeight());
+
+        mSpriteBatch.end();
 
 
     }
