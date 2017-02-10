@@ -1,4 +1,4 @@
-package com.leo.game.Actors;
+package com.leo.game.actors;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;

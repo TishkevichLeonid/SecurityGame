@@ -2,7 +2,7 @@ package com.leo.game.objects;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
-import com.leo.game.Textures.AssetLoader;
+import com.leo.game.textures.AssetLoader;
 
 /**
  * Created by leonidtiskevic on 07.02.17.

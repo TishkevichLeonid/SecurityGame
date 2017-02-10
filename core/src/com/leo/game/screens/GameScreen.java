@@ -1,13 +1,13 @@
-package com.leo.game.Screens;
+package com.leo.game.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.leo.game.Textures.AssetLoader;
 import com.leo.game.Security;
 import com.leo.game.objects.GoodTablet;
+import com.leo.game.textures.AssetLoader;
 
 /**
  * Created by leonidtiskevic on 07.02.17.
