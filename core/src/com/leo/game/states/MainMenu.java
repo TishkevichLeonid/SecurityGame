@@ -24,11 +24,7 @@ import com.leo.game.objects.GoodTablet;
 public class MainMenu implements Screen {
     final Security game;
 
-    private float runTime = 0;
-
     private Stage stage;
-
-    private GoodTablet goodTablet;
 
     private TextureAtlas buttonAtlas;
     private Skin skin;
@@ -47,11 +43,6 @@ public class MainMenu implements Screen {
         mCamera = new OrthographicCamera();
         mCamera.setToOrtho(false, Security.WIDTH, Security.HEIGHT);
         mBatch = new SpriteBatch();
-
-        goodTablet = new GoodTablet(Gdx.graphics.getWidth() / 2 - AssetLoader.goodTablet.getWidth() / 2,
-                Gdx.graphics.getHeight() + AssetLoader.goodTablet.getHeight() / 2, AssetLoader.goodTablet.getWidth(),
-                AssetLoader.goodTablet.getHeight());
-
 
         buttonAtlas = new TextureAtlas(Gdx.files.internal("buttons/buttons.atlas"));
         skin = new Skin();
@@ -85,6 +76,7 @@ public class MainMenu implements Screen {
 
         stage.addActor(game.background);
         stage.addActor(playBt);
+        stage.addActor(game.animActor);
         Gdx.input.setInputProcessor(stage);
 
 
@@ -101,16 +93,7 @@ public class MainMenu implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         Gdx.app.log("GameScreen FPS", (1/delta) + "");
-      //  goodTablet.update(delta);
-        /*
-        mBatch.begin();
-        mBatch.disableBlending();
-        mBatch.draw(AssetLoader.bg, 0, 0, Security.WIDTH, Security.HEIGHT);
-        mBatch.disableBlending();
-        playBt.draw(mBatch, delta);
-        mBatch.disableBlending();
-        mBatch.draw(AssetLoader.goodTablet,150, 150, goodTablet.getWidth(), goodTablet.getHeight());
-        mBatch.end(); */
+
 
         stage.act(delta);
         stage.draw();

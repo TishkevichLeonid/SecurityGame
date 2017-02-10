@@ -25,18 +25,12 @@ public class BackgroundActor extends Actor {
         bgSprite = new Sprite(bg);
         bgSprite.setSize(Security.WIDTH, Security.HEIGHT);
 
-        goodTablet = new GoodTablet(Gdx.graphics.getWidth() / 2 - AssetLoader.goodTablet.getWidth() / 2,
-                Gdx.graphics.getHeight() + AssetLoader.goodTablet.getHeight() / 2, AssetLoader.goodTablet.getWidth(),
-                AssetLoader.goodTablet.getHeight());
-
     }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
         bgSprite.draw(batch);
-        batch.draw(AssetLoader.goodTablet, goodTablet.getX(), goodTablet.getY(), goodTablet.getWidth(), goodTablet.getHeight());
-        goodTablet.update(Gdx.graphics.getDeltaTime());
 
 
     }
