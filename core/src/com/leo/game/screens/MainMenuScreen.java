@@ -1,4 +1,4 @@
-package com.leo.game.screens;
+package com.leo.game.Screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -13,7 +13,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.leo.game.Security;
-import com.leo.game.screens.GameScreen;
 
 /**
  * Created by leonidtiskevic on 07.02.17.
@@ -48,24 +47,20 @@ public class MainMenuScreen implements Screen {
 
         playBt = new ImageButton(stylePlayBt);
         playBt.setSize(mPlayBtn.getWidth(), mPlayBtn.getHeight());
-        playBt.setPosition(Security.WIDTH / 2 - mPlayBtn.getWidth() / 2, Security.HEIGHT / 2);
+        playBt.setPosition(Gdx.graphics.getWidth() / 2 - mPlayBtn.getWidth() / 2, Gdx.graphics.getHeight() / 2);
 
 
         playBt.addListener(new ClickListener(){
 
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button){
-
                 return true;
-
             }
 
             public void touchUp(InputEvent event, float x, float y, int pointer, int button){
-
                 game.setScreen(new GameScreen(game));
                 dispose();
 
             }
-
         });
 
 
@@ -86,7 +81,7 @@ public class MainMenuScreen implements Screen {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        Gdx.app.log("GameScreen FPS", (1/delta) + "");
+        Gdx.app.log("MainMenuScreen FPS", (1/delta) + "");
 
 
         stage.act(delta);

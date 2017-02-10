@@ -1,10 +1,10 @@
 package com.leo.game;
 
 import com.badlogic.gdx.Game;
-import com.leo.game.textures.AssetLoader;
-import com.leo.game.actors.BackgroundActor;
-import com.leo.game.actors.AnimationMenuActor;
-import com.leo.game.screens.MainMenuScreen;
+import com.leo.game.Textures.AssetLoader;
+import com.leo.game.Actors.BackgroundActor;
+import com.leo.game.Actors.AnimationMenuActor;
+import com.leo.game.Screens.MainMenuScreen;
 
 public class Security extends Game {
 	public static final int WIDTH = 480;

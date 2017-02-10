@@ -2,7 +2,7 @@ package com.leo.game.objects;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
-import com.leo.game.textures.AssetLoader;
+import com.leo.game.Textures.AssetLoader;
 
 /**
  * Created by leonidtiskevic on 07.02.17.
@@ -10,7 +10,7 @@ import com.leo.game.textures.AssetLoader;
 
 public class GoodTablet{
 
-    private Vector2 position;
+    public Vector2 position;
     private Vector2 velocity;
     private Vector2 acceleration;
 
@@ -55,4 +55,8 @@ public class GoodTablet{
     }
 
 
+    public void position(int i, int i1) {
+        position = new Vector2(Gdx.graphics.getWidth() / 2 - AssetLoader.goodTablet.getWidth() / 2,
+                Gdx.graphics.getHeight() + AssetLoader.goodTablet.getHeight() / 2);
+    }
 }

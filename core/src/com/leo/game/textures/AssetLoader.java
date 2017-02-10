@@ -1,11 +1,7 @@
-package com.leo.game.textures;
+package com.leo.game.Textures;
 
-import com.badlogic.gdx.Gdx;
+
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-import com.badlogic.gdx.graphics.g3d.model.Animation;
-import com.leo.game.Security;
 
 /**
  * Created by leonidtiskevic on 08.02.17.
@@ -22,8 +18,8 @@ public class AssetLoader {
 
         goodTablet = new Texture("goodTablet.png");
 
-       // bg.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest);
-       // goodTablet.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest);
+        bg.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest);
+        goodTablet.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest);
 
     }
 
