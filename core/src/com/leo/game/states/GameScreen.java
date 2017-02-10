@@ -18,7 +18,7 @@ public class GameScreen implements Screen {
     final Security game;
 
     private OrthographicCamera camera;
-    private Stage stage;
+   // private Stage stage;
     private GoodTablet goodTablet;
 
 

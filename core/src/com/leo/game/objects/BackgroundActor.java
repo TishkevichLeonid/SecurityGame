@@ -36,6 +36,7 @@ public class BackgroundActor extends Actor {
         super.draw(batch, parentAlpha);
         bgSprite.draw(batch);
         batch.draw(AssetLoader.goodTablet, goodTablet.getX(), goodTablet.getY(), goodTablet.getWidth(), goodTablet.getHeight());
+        goodTablet.update(Gdx.graphics.getDeltaTime());
 
 
     }
