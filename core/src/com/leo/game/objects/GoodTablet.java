@@ -2,8 +2,7 @@ package com.leo.game.objects;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
-import com.leo.game.GameRander.AssetLoader;
-import com.leo.game.Security;
+import com.leo.game.Textures.AssetLoader;
 
 /**
  * Created by leonidtiskevic on 07.02.17.

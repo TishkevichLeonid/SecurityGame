@@ -1,12 +1,11 @@
-package com.leo.game.states;
+package com.leo.game.Screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.leo.game.GameRander.AssetLoader;
+import com.leo.game.Textures.AssetLoader;
 import com.leo.game.Security;
 import com.leo.game.objects.GoodTablet;
 
@@ -64,7 +63,7 @@ public class GameScreen implements Screen {
         goodTablet.update(delta);
 
         mSpriteBatch.disableBlending();
-        mSpriteBatch.draw(AssetLoader.bg, 0, 0, Security.WIDTH, Security.HEIGHT);
+        mSpriteBatch.draw(AssetLoader.bg, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
         mSpriteBatch.disableBlending();
         mSpriteBatch.draw(AssetLoader.goodTablet, goodTablet.getX(), goodTablet.getY(), goodTablet.getWidth(), goodTablet.getHeight());

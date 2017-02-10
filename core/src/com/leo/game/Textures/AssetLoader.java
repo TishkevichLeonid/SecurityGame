@@ -1,4 +1,4 @@
-package com.leo.game.GameRander;
+package com.leo.game.Textures;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -15,18 +15,15 @@ public class AssetLoader {
 
     public static Texture bg;
     public static Texture goodTablet;
-    public static Sprite spriteGoodTablet;
-    public static Animation goodTabletAnimation;
 
     public static void load(){
 
         bg = new Texture("bg.png");
 
         goodTablet = new Texture("goodTablet.png");
-       // spriteGoodTablet = new Sprite(goodTablet, Security.WIDTH / 2 - bg.getWidth() / 2, Gdx.graphics.getHeight() / 2, bg.getWidth(), bg.getHeight());
 
-        bg.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest);
-        goodTablet.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest);
+       // bg.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest);
+       // goodTablet.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest);
 
     }
 

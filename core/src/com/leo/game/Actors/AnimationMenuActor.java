@@ -1,11 +1,10 @@
-package com.leo.game.objects;
+package com.leo.game.Actors;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.leo.game.GameRander.AssetLoader;
-import com.leo.game.Security;
+import com.leo.game.Textures.AssetLoader;
+import com.leo.game.objects.GoodTablet;
 
 /**
  * Created by leonidtiskevic on 10.02.17.
@@ -13,7 +12,6 @@ import com.leo.game.Security;
 
 public class AnimationMenuActor extends Actor {
 
-    private Sprite bgSprite;
     private GoodTablet goodTablet;
 
     public AnimationMenuActor(){
