@@ -5,6 +5,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.leo.game.Security;
@@ -23,6 +24,7 @@ public class GameScreen implements Screen {
     private SpriteBatch mSpriteBatch;
     private OrthographicCamera camera;
     private GoodTablet goodTablet;
+    private Vector2 position;
 
     long lastdrtime;
 
@@ -35,22 +37,22 @@ public class GameScreen implements Screen {
         mSpriteBatch = new SpriteBatch();
         camera = new OrthographicCamera();
         camera.setToOrtho(false, Security.WIDTH, Security.HEIGHT);
+        position = new Vector2(Gdx.graphics.getWidth() / 2 - AssetLoader.goodTablet.getWidth() / 2,
+                Gdx.graphics.getHeight() + AssetLoader.goodTablet.getHeight() / 2);
 
         mGoodTabletArray = new Array<GoodTablet>();
 
-        goodTablet = new GoodTablet(Gdx.graphics.getWidth() / 2 - AssetLoader.goodTablet.getWidth() / 2,
-                Gdx.graphics.getHeight() + AssetLoader.goodTablet.getHeight() / 2, AssetLoader.goodTablet.getWidth(),
-                AssetLoader.goodTablet.getHeight());
-
-        spawnTablets();
+        //spawnTablets();
 
     }
 
     public void spawnTablets(){
-        lastdrtime = TimeUtils.nanoTime();
-        goodTablet.position(Gdx.graphics.getWidth() / 2 - AssetLoader.goodTablet.getWidth() / 2,
-                Gdx.graphics.getHeight() + AssetLoader.goodTablet.getHeight() / 2);
+        goodTablet = new GoodTablet(Gdx.graphics.getWidth() / 2 - AssetLoader.goodTablet.getWidth() / 2,
+                Gdx.graphics.getHeight(), AssetLoader.goodTablet.getWidth(),
+                AssetLoader.goodTablet.getHeight());
+        goodTablet.setPosition(position);
         mGoodTabletArray.add(goodTablet);
+        lastdrtime = TimeUtils.nanoTime();
     }
 
 
@@ -75,7 +77,7 @@ public class GameScreen implements Screen {
         mSpriteBatch.draw(AssetLoader.bg, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
         for (GoodTablet goodTablet: mGoodTabletArray){
-            mSpriteBatch.draw(AssetLoader.goodTablet, goodTablet.getX(), goodTablet.getY(), goodTablet.getWidth(), goodTablet.getHeight());
+            mSpriteBatch.draw(AssetLoader.goodTablet, goodTablet.getX(), goodTablet.getY());
         }
 
        // mSpriteBatch.disableBlending();
@@ -83,7 +85,7 @@ public class GameScreen implements Screen {
 
         mSpriteBatch.end();
 
-        if (TimeUtils.nanoTime() - lastdrtime > 2000000000) {spawnTablets();}
+        if (TimeUtils.nanoTime() - lastdrtime > 1000000000) {spawnTablets(); }
 
         Iterator<GoodTablet> iter = mGoodTabletArray.iterator();
 
@@ -92,7 +94,7 @@ public class GameScreen implements Screen {
             GoodTablet goodTablet = iter.next();
             goodTablet.update(delta);
 
-            if (goodTablet.getY() < 100) iter.remove();
+            if (goodTablet.getY() < -50) iter.remove();
         }
 
 

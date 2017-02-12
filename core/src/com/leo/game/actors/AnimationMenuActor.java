@@ -17,7 +17,7 @@ public class AnimationMenuActor extends Actor {
     public AnimationMenuActor(){
 
 
-        goodTablet = new GoodTablet(Gdx.graphics.getWidth() / 2 - AssetLoader.goodTablet.getWidth() / 2,
+       /* goodTablet = new GoodTablet(Gdx.graphics.getWidth() / 2 - AssetLoader.goodTablet.getWidth() / 2,
                 Gdx.graphics.getHeight() + AssetLoader.goodTablet.getHeight() / 2, AssetLoader.goodTablet.getWidth(),
                 AssetLoader.goodTablet.getHeight());
 
@@ -28,7 +28,7 @@ public class AnimationMenuActor extends Actor {
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
         batch.draw(AssetLoader.goodTablet, goodTablet.getX(), goodTablet.getY(), goodTablet.getWidth(), goodTablet.getHeight());
-        goodTablet.update(Gdx.graphics.getDeltaTime());
+        goodTablet.update(Gdx.graphics.getDeltaTime()); */
 
 
     }

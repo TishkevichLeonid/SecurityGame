@@ -10,7 +10,7 @@ import com.leo.game.Textures.AssetLoader;
 
 public class GoodTablet{
 
-    public Vector2 position;
+    private Vector2 position;
     private Vector2 velocity;
     private Vector2 acceleration;
 
@@ -20,10 +20,15 @@ public class GoodTablet{
     public GoodTablet(float x, float y, int width, int height){
         this.width = width;
         this.height = height;
-        position = new Vector2(Gdx.graphics.getWidth() / 2 - AssetLoader.goodTablet.getWidth() / 2,
-                Gdx.graphics.getHeight() + AssetLoader.goodTablet.getHeight() / 2);
+        x = Gdx.graphics.getWidth() / 2 - AssetLoader.goodTablet.getWidth() / 2;
+        y = Gdx.graphics.getHeight() + AssetLoader.goodTablet.getHeight() / 2;
+        position = new Vector2(x, y);
         velocity = new Vector2(0, 0);
         acceleration = new Vector2(0, -15);
+    }
+
+    public void setPosition(Vector2 position) {
+        this.position = position;
     }
 
     public void update(float dt){
@@ -55,8 +60,4 @@ public class GoodTablet{
     }
 
 
-    public void position(int i, int i1) {
-        position = new Vector2(Gdx.graphics.getWidth() / 2 - AssetLoader.goodTablet.getWidth() / 2,
-                Gdx.graphics.getHeight() + AssetLoader.goodTablet.getHeight() / 2);
-    }
 }
