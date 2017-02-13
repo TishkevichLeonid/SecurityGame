@@ -33,12 +33,6 @@ public class GameScreenWithActors implements Screen {
         Gdx.input.setInputProcessor(stage);
     }
 
-    public void spawnGoodTablets(){
-
-        mGoodTabletActorArray.add(game.mGoodTabletActor);
-        lastdroptime = TimeUtils.nanoTime();
-
-    }
 
     @Override
     public void show() {
@@ -56,7 +50,6 @@ public class GameScreenWithActors implements Screen {
         stage.act(delta);
         stage.draw();
         stage.act();
-        if (TimeUtils.nanoTime() - lastdroptime > 700000000) spawnGoodTablets();
 
 
     }

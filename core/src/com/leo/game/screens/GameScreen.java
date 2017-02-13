@@ -9,6 +9,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.leo.game.Security;
+import com.leo.game.objects.GameGoodTablet;
 import com.leo.game.objects.GoodTablet;
 import com.leo.game.Textures.AssetLoader;
 
@@ -23,12 +24,12 @@ public class GameScreen implements Screen {
 
     private SpriteBatch mSpriteBatch;
     private OrthographicCamera camera;
-    private GoodTablet goodTablet;
+    private GameGoodTablet goodTablet;
     private Vector2 position;
 
     long lastdrtime;
 
-    public Array<GoodTablet> mGoodTabletArray;
+    public Array<GameGoodTablet> mGoodTabletArray;
 
 
     public GameScreen(Security gam) {
@@ -40,14 +41,14 @@ public class GameScreen implements Screen {
         position = new Vector2(Gdx.graphics.getWidth() / 2 - AssetLoader.goodTablet.getWidth() / 2,
                 Gdx.graphics.getHeight() + AssetLoader.goodTablet.getHeight() / 2);
 
-        mGoodTabletArray = new Array<GoodTablet>();
+        mGoodTabletArray = new Array<GameGoodTablet>();
 
         //spawnTablets();
 
     }
 
     public void spawnTablets(){
-        goodTablet = new GoodTablet(Gdx.graphics.getWidth() / 2 - AssetLoader.goodTablet.getWidth() / 2,
+        goodTablet = new GameGoodTablet(Gdx.graphics.getWidth() / 2 - AssetLoader.goodTablet.getWidth() / 2,
                 Gdx.graphics.getHeight(), AssetLoader.goodTablet.getWidth(),
                 AssetLoader.goodTablet.getHeight());
         mGoodTabletArray.add(goodTablet);
@@ -75,7 +76,7 @@ public class GameScreen implements Screen {
         mSpriteBatch.disableBlending();
         mSpriteBatch.draw(AssetLoader.bg, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 
-        for (GoodTablet goodTablet: mGoodTabletArray){
+        for (GameGoodTablet goodTablet: mGoodTabletArray){
             mSpriteBatch.draw(AssetLoader.goodTablet, goodTablet.getX(), goodTablet.getY());
         }
 
@@ -86,11 +87,11 @@ public class GameScreen implements Screen {
 
         if (TimeUtils.nanoTime() - lastdrtime > 1000000000) {spawnTablets(); }
 
-        Iterator<GoodTablet> iter = mGoodTabletArray.iterator();
+        Iterator<GameGoodTablet> iter = mGoodTabletArray.iterator();
 
         while (iter.hasNext()){
 
-            GoodTablet goodTablet = iter.next();
+            GameGoodTablet goodTablet = iter.next();
             goodTablet.update(delta);
 
             if (goodTablet.getY() < -50) iter.remove();

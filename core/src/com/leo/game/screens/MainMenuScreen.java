@@ -58,7 +58,7 @@ public class MainMenuScreen implements Screen {
             }
 
             public void touchUp(InputEvent event, float x, float y, int pointer, int button){
-                game.setScreen(new GameScreenWithActors(game));
+                game.setScreen(new GameScreen(game));
                 dispose();
 
             }
