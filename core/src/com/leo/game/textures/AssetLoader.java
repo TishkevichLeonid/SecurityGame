@@ -1,4 +1,4 @@
-package com.leo.game.textures;
+package com.leo.game.Textures;
 
 
 import com.badlogic.gdx.graphics.Texture;

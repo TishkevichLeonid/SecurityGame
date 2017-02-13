@@ -1,7 +1,7 @@
 package com.leo.game.objects;
 
 import com.badlogic.gdx.math.Vector2;
-import com.leo.game.screens.GameScreen;
+import com.leo.game.Screens.GameScreen;
 
 /**
  * Created by leonidtiskevic on 13.02.17.

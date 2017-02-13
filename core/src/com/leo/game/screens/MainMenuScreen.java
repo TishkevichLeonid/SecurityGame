@@ -1,4 +1,4 @@
-package com.leo.game.screens;
+package com.leo.game.Screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -13,7 +13,6 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.leo.game.Security;
-import com.leo.game.screens.Screen1;
 
 /**
  * Created by leonidtiskevic on 07.02.17.

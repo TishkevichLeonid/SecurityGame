@@ -1,8 +1,7 @@
-package com.leo.game.screens;
+package com.leo.game.Screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.Cursor;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -13,11 +12,9 @@ import com.badlogic.gdx.utils.TimeUtils;
 import com.leo.game.Security;
 import com.leo.game.objects.BadTablet;
 import com.leo.game.objects.GameGoodTablet;
-import com.leo.game.objects.GoodTablet;
-import com.leo.game.textures.AssetLoader;
+import com.leo.game.Textures.AssetLoader;
 
 import java.util.Iterator;
-import java.util.ListIterator;
 
 
 /**
@@ -131,6 +128,7 @@ public class GameScreen implements Screen {
 
            }
 
+
            Iterator<GameGoodTablet> iter = mGoodTabletArray.iterator();
            Iterator<BadTablet> iter1 = mBadTabletArray.iterator();
 
@@ -141,15 +139,13 @@ public class GameScreen implements Screen {
                if (goodTablet.getY() < -75) {
                    iter.remove();
                }
+
                if (goodTablet.getY() < 600) {
                    velosity2 = goodTablet.getVelocity();
                }
 
-              /* if (goodTablet.getY() - 20 == badTablet.getY()) {
-                   velosity3 = velosity2;
-               }*/
-
            }
+
         while (iter1.hasNext()){
             BadTablet badTablet = iter1.next();
             badTablet.update(delta);
@@ -160,10 +156,6 @@ public class GameScreen implements Screen {
             if (badTablet.getY() < 600) {
                 velosity3 = badTablet.getVelocity();
             }
-
-           /* if (badTablet.getY() - 20 == goodTablet.getY()) {
-                velosity3 = velosity2;
-            }*/
 
         }
 
