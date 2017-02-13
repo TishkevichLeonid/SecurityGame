@@ -1,6 +1,5 @@
 package com.leo.game.objects;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.leo.game.screens.GameScreen;
 
@@ -8,8 +7,7 @@ import com.leo.game.screens.GameScreen;
  * Created by leonidtiskevic on 13.02.17.
  */
 
-public class GameGoodTablet {
-
+public class BadTablet {
     private Vector2 position;
     private Vector2 velocity;
     private Vector2 acceleration;
@@ -18,7 +16,7 @@ public class GameGoodTablet {
     private int width;
     private int height;
 
-    public GameGoodTablet(float x, float y, int width, int height){
+    public BadTablet(float x, float y, int width, int height){
         this.width = width;
         this.height = height;
         position = new Vector2(x, y);
@@ -59,8 +57,4 @@ public class GameGoodTablet {
     public float getHeight() {
         return height;
     }
-
-
 }
-
-
