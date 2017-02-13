@@ -14,6 +14,7 @@ import com.leo.game.objects.GoodTablet;
 import com.leo.game.Textures.AssetLoader;
 
 import java.util.Iterator;
+import java.util.ListIterator;
 
 /**
  * Created by leonidtiskevic on 07.02.17.
@@ -26,6 +27,7 @@ public class GameScreen implements Screen {
     private OrthographicCamera camera;
     private GameGoodTablet goodTablet;
     private Vector2 position;
+    public static Vector2 velosity2;
 
     long lastdrtime;
 
@@ -35,6 +37,8 @@ public class GameScreen implements Screen {
     public GameScreen(Security gam) {
         this.game = gam;
 
+        velosity2 = new Vector2(0, -50);
+
         mSpriteBatch = new SpriteBatch();
         camera = new OrthographicCamera();
         camera.setToOrtho(false, Security.WIDTH, Security.HEIGHT);
@@ -42,8 +46,6 @@ public class GameScreen implements Screen {
                 Gdx.graphics.getHeight() + AssetLoader.goodTablet.getHeight() / 2);
 
         mGoodTabletArray = new Array<GameGoodTablet>();
-
-        //spawnTablets();
 
     }
 
@@ -67,9 +69,7 @@ public class GameScreen implements Screen {
     public void render(float delta) {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
         Gdx.app.log("GameScreen FPS", (1/delta) + "");
-       // goodTablet.update(delta);
 
         mSpriteBatch.begin();
 
@@ -80,8 +80,6 @@ public class GameScreen implements Screen {
             mSpriteBatch.draw(AssetLoader.goodTablet, goodTablet.getX(), goodTablet.getY());
         }
 
-       // mSpriteBatch.disableBlending();
-       // mSpriteBatch.draw(AssetLoader.goodTablet, goodTablet.getX(), goodTablet.getY(), goodTablet.getWidth(), goodTablet.getHeight());
 
         mSpriteBatch.end();
 
@@ -90,11 +88,17 @@ public class GameScreen implements Screen {
         Iterator<GameGoodTablet> iter = mGoodTabletArray.iterator();
 
         while (iter.hasNext()){
-
             GameGoodTablet goodTablet = iter.next();
             goodTablet.update(delta);
 
-            if (goodTablet.getY() < -50) iter.remove();
+
+            if (goodTablet.getY() < -75) {
+                iter.remove();
+            }
+            if (goodTablet.getY() < 600) {
+                velosity2 =  goodTablet.getVelocity();
+            }
+
         }
 
 
