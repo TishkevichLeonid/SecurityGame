@@ -13,7 +13,6 @@ public class GameGoodTablet {
     private Vector2 position;
     private Vector2 velocity;
     private Vector2 acceleration;
-    // private Array<GoodTablet> mGoodTabletArray;
 
     private int width;
     private int height;

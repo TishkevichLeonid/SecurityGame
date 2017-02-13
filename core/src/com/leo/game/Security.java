@@ -1,7 +1,7 @@
 package com.leo.game;
 
 import com.badlogic.gdx.Game;
-import com.leo.game.Textures.AssetLoader;
+import com.leo.game.textures.AssetLoader;
 import com.leo.game.Actors.BackgroundActor;
 import com.leo.game.actors.AnimationMenuActor;
 import com.leo.game.screens.MainMenuScreen;

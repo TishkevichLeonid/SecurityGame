@@ -11,7 +11,6 @@ public class BadTablet {
     private Vector2 position;
     private Vector2 velocity;
     private Vector2 acceleration;
-    // private Array<GoodTablet> mGoodTabletArray;
 
     private int width;
     private int height;
@@ -20,7 +19,7 @@ public class BadTablet {
         this.width = width;
         this.height = height;
         position = new Vector2(x, y);
-        velocity = new Vector2(GameScreen.velosity2);
+        velocity = new Vector2(GameScreen.velosity3);
         acceleration = new Vector2(0, -20);
         x = position.x;
         y = position.y;

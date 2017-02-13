@@ -11,9 +11,10 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.leo.game.Security;
+import com.leo.game.objects.BadTablet;
 import com.leo.game.objects.GameGoodTablet;
 import com.leo.game.objects.GoodTablet;
-import com.leo.game.Textures.AssetLoader;
+import com.leo.game.textures.AssetLoader;
 
 import java.util.Iterator;
 import java.util.ListIterator;
@@ -29,19 +30,24 @@ public class GameScreen implements Screen {
     private SpriteBatch mSpriteBatch;
     private OrthographicCamera camera;
     private GameGoodTablet goodTablet;
+    private BadTablet badTablet;
     private Vector2 position;
     public static Vector2 velosity2;
+    public static Vector2 velosity3;
 
     long currrentTime;
     long lastTime;
+    long lastTimeBad;
 
     public Array<GameGoodTablet> mGoodTabletArray;
+    private Array<BadTablet> mBadTabletArray;
 
 
     public GameScreen(Security gam) {
         this.game = gam;
 
         velosity2 = new Vector2(0, -20);
+        velosity3 = new Vector2(0, -10);
 
         mSpriteBatch = new SpriteBatch();
         camera = new OrthographicCamera();
@@ -51,6 +57,7 @@ public class GameScreen implements Screen {
         currrentTime = TimeUtils.millis();
 
         mGoodTabletArray = new Array<GameGoodTablet>();
+        mBadTabletArray = new Array<BadTablet>();
         spawnTablets();
 
     }
@@ -61,6 +68,14 @@ public class GameScreen implements Screen {
                 AssetLoader.goodTablet.getHeight());
         mGoodTabletArray.add(goodTablet);
         lastTime = TimeUtils.millis();
+    }
+
+    public void spawnBadTablets(){
+        badTablet = new BadTablet(Gdx.graphics.getWidth() / 2 - AssetLoader.badTablet.getWidth() / 2,
+                Gdx.graphics.getHeight() + AssetLoader.badTablet.getHeight(), AssetLoader.badTablet.getWidth(),
+                AssetLoader.badTablet.getHeight());
+        mBadTabletArray.add(badTablet);
+        lastTimeBad = TimeUtils.millis();
     }
 
 
@@ -86,42 +101,69 @@ public class GameScreen implements Screen {
         for (GameGoodTablet goodTablet: mGoodTabletArray){
             mSpriteBatch.draw(AssetLoader.goodTablet, goodTablet.getX(), goodTablet.getY());
         }
-
+        for (BadTablet badTablet: mBadTabletArray){
+            mSpriteBatch.draw(AssetLoader.badTablet, badTablet.getX(), badTablet.getY());
+        }
 
         mSpriteBatch.end();
 
-       if ((TimeUtils.millis() - currrentTime) < 10000) {
-            if (System.currentTimeMillis() - lastTime > MathUtils.random(1800, 2000)) {
-                spawnTablets();
-            }
+        if ((TimeUtils.millis() - currrentTime) < 10000) {
+           if (System.currentTimeMillis() - lastTime > MathUtils.random(1800, 2000)) {
+               spawnTablets();
+           }
         }
-        if ((TimeUtils.millis() - currrentTime) >= 10000 && (TimeUtils.millis() - currrentTime) < 20000){
+
+        if ((TimeUtils.millis() - currrentTime) > 5000) {
+            if (System.currentTimeMillis() - lastTimeBad > MathUtils.random(1800, 2000)) {
+                   spawnBadTablets();
+               }
+           }
+        if ((TimeUtils.millis() - currrentTime) >= 10000 && (TimeUtils.millis() - currrentTime) < 20000) {
             if (TimeUtils.millis() - lastTime > MathUtils.random(1000, 1400)) {
-                spawnTablets();
-            }
+                   spawnTablets();
+               }
 
-        }
-        if ((TimeUtils.millis() - currrentTime) >= 20000){
+           }
+        if ((TimeUtils.millis() - currrentTime) >= 20000) {
             if (TimeUtils.millis() - lastTime > MathUtils.random(400, 800)) {
-                spawnTablets();
+                   spawnTablets();
+               }
+
+           }
+
+           Iterator<GameGoodTablet> iter = mGoodTabletArray.iterator();
+           Iterator<BadTablet> iter1 = mBadTabletArray.iterator();
+
+           while (iter.hasNext()) {
+               GameGoodTablet goodTablet = iter.next();
+               goodTablet.update(delta);
+
+               if (goodTablet.getY() < -75) {
+                   iter.remove();
+               }
+               if (goodTablet.getY() < 600) {
+                   velosity2 = goodTablet.getVelocity();
+               }
+
+              /* if (goodTablet.getY() - 20 == badTablet.getY()) {
+                   velosity3 = velosity2;
+               }*/
+
+           }
+        while (iter1.hasNext()){
+            BadTablet badTablet = iter1.next();
+            badTablet.update(delta);
+
+            if (badTablet.getY() < -75) {
+                iter1.remove();
+            }
+            if (badTablet.getY() < 600) {
+                velosity3 = badTablet.getVelocity();
             }
 
-        }
-
-        Iterator<GameGoodTablet> iter = mGoodTabletArray.iterator();
-
-        while (iter.hasNext()){
-            GameGoodTablet goodTablet = iter.next();
-            goodTablet.update(delta);
-
-
-            if (goodTablet.getY() < -75) {
-                iter.remove();
-            }
-            if (goodTablet.getY() < 600) {
-                velosity2 =  goodTablet.getVelocity();
-            }
-
+           /* if (badTablet.getY() - 20 == goodTablet.getY()) {
+                velosity3 = velosity2;
+            }*/
 
         }
 

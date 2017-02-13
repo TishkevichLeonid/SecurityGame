@@ -6,7 +6,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.TimeUtils;
-import com.leo.game.Textures.AssetLoader;
+import com.leo.game.textures.AssetLoader;
 import com.leo.game.objects.GoodTablet;
 
 import java.awt.Rectangle;

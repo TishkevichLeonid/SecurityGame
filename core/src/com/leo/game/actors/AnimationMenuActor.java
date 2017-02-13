@@ -3,7 +3,7 @@ package com.leo.game.actors;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.leo.game.Textures.AssetLoader;
+import com.leo.game.textures.AssetLoader;
 import com.leo.game.objects.GoodTablet;
 
 /**

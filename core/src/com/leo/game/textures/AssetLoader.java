@@ -18,7 +18,7 @@ public class AssetLoader {
         bg = new Texture("bg.png");
 
         goodTablet = new Texture("goodTablet.png");
-        badTablet = new Texture("badTablet");
+        badTablet = new Texture("badTablet.png");
         bg.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest);
         goodTablet.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest);
         badTablet.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest);
