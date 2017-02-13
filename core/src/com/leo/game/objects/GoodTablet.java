@@ -21,24 +21,30 @@ public class GoodTablet{
         this.width = width;
         this.height = height;
         x = Gdx.graphics.getWidth() / 2 - AssetLoader.goodTablet.getWidth() / 2;
-        y = Gdx.graphics.getHeight() + AssetLoader.goodTablet.getHeight() / 2;
+        y = Gdx.graphics.getHeight(); //+ AssetLoader.goodTablet.getHeight() / 2;
         position = new Vector2(x, y);
-        velocity = new Vector2(0, 0);
-        acceleration = new Vector2(0, -15);
+        velocity = new Vector2(0, -100);
+       // acceleration = new Vector2(0, -15);
     }
 
-    public void setPosition(Vector2 position) {
-        this.position = position;
-    }
 
     public void update(float dt){
-        velocity.add(acceleration.cpy().scl(dt));
+      //  velocity.add(acceleration.cpy().scl(dt));
 
-        if (velocity.y < -200) {
+       /* if (velocity.y < -200) {
             velocity.y = -200;
-        }
+        } */
+
 
         position.add(velocity.cpy().scl(dt));
+
+        if (position.y < 600){
+            velocity.y = 100;
+
+        }
+        if (position.y > Gdx.graphics.getHeight()){
+            velocity.y = -100;
+        }
 
 
     }

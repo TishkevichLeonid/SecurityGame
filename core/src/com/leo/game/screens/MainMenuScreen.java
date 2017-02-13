@@ -1,4 +1,4 @@
-package com.leo.game.Screens;
+package com.leo.game.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
@@ -58,7 +58,7 @@ public class MainMenuScreen implements Screen {
             }
 
             public void touchUp(InputEvent event, float x, float y, int pointer, int button){
-                game.setScreen(new Screen1(game));
+                game.setScreen(new GameScreenWithActors(game));
                 dispose();
 
             }
@@ -67,7 +67,7 @@ public class MainMenuScreen implements Screen {
 
         stage.addActor(game.background);
         stage.addActor(playBt);
-       // stage.addActor(game.animActor);
+        stage.addActor(game.animActor);
         Gdx.input.setInputProcessor(stage);
 
     }

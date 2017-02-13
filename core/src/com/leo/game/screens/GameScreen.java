@@ -50,7 +50,6 @@ public class GameScreen implements Screen {
         goodTablet = new GoodTablet(Gdx.graphics.getWidth() / 2 - AssetLoader.goodTablet.getWidth() / 2,
                 Gdx.graphics.getHeight(), AssetLoader.goodTablet.getWidth(),
                 AssetLoader.goodTablet.getHeight());
-        goodTablet.setPosition(position);
         mGoodTabletArray.add(goodTablet);
         lastdrtime = TimeUtils.nanoTime();
     }
