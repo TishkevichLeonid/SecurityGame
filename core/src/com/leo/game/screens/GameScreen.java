@@ -44,7 +44,7 @@ public class GameScreen implements Screen {
         this.game = gam;
 
         velosity2 = new Vector2(0, -20);
-        velosity3 = new Vector2(0, -10);
+        velosity3 = new Vector2(0, -50);
 
         mSpriteBatch = new SpriteBatch();
         camera = new OrthographicCamera();
@@ -88,7 +88,7 @@ public class GameScreen implements Screen {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
        // Gdx.app.log("GameScreen FPS", (1/delta) + "");
-        Gdx.app.log("Time: ", ((TimeUtils.millis() - currrentTime)) + "");
+        Gdx.app.log("Time: ", ((TimeUtils.millis() - lastTime)) + "");
 
         mSpriteBatch.begin();
 
@@ -105,18 +105,25 @@ public class GameScreen implements Screen {
         mSpriteBatch.end();
 
         if ((TimeUtils.millis() - currrentTime) < 10000) {
-           if (System.currentTimeMillis() - lastTime > MathUtils.random(1800, 2000)) {
+           if (System.currentTimeMillis() - lastTime > MathUtils.random(4000, 5000)) {
                spawnTablets();
            }
         }
 
-        if ((TimeUtils.millis() - currrentTime) > 5000) {
-            if (System.currentTimeMillis() - lastTimeBad > MathUtils.random(1800, 2000)) {
+        if ((TimeUtils.millis() - currrentTime) > 5000 && (TimeUtils.millis() - currrentTime) < 10000) {
+            if (System.currentTimeMillis() - lastTimeBad > MathUtils.random(4000, 5000)) {
                    spawnBadTablets();
                }
            }
-        if ((TimeUtils.millis() - currrentTime) >= 10000 && (TimeUtils.millis() - currrentTime) < 20000) {
-            if (TimeUtils.millis() - lastTime > MathUtils.random(1000, 1400)) {
+
+        if ((TimeUtils.millis() - currrentTime) >= 15000 && (TimeUtils.millis() - currrentTime) < 20000) {
+            if (System.currentTimeMillis() - lastTimeBad > MathUtils.random(2000, 2400)) {
+                spawnBadTablets();
+            }
+        }
+
+        if ((TimeUtils.millis() - currrentTime) >= 15000 && (TimeUtils.millis() - currrentTime) < 20000) {
+            if (TimeUtils.millis() - lastTime > MathUtils.random(2000, 2400)) {
                    spawnTablets();
                }
 
@@ -140,7 +147,7 @@ public class GameScreen implements Screen {
                    iter.remove();
                }
 
-               if (goodTablet.getY() < 600) {
+               if (goodTablet.getY() < 500) {
                    velosity2 = goodTablet.getVelocity();
                }
 
