@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.TimeUtils;
@@ -76,6 +77,16 @@ public class GameScreen implements Screen {
     }
 
 
+    public boolean collide(Rectangle tablet){
+        return tablet.overlaps(badTablet.getBadRec());
+
+    }
+
+    public boolean collidebad(Rectangle tablet){
+        return tablet.overlaps(goodTablet.getGoodRec());
+
+    }
+
     @Override
     public void show() {
 
@@ -110,7 +121,7 @@ public class GameScreen implements Screen {
            }
         }
 
-        if ((TimeUtils.millis() - currrentTime) > 5000 && (TimeUtils.millis() - currrentTime) < 10000) {
+        if ((TimeUtils.millis() - currrentTime)  < 10000) {
             if (System.currentTimeMillis() - lastTimeBad > MathUtils.random(4000, 5000)) {
                    spawnBadTablets();
                }
@@ -135,6 +146,16 @@ public class GameScreen implements Screen {
 
            }
 
+        if (collide(goodTablet.getGoodRec())){
+
+            goodTablet.setVelocity(badTablet.getVelocity());
+
+        }
+
+        if (collidebad(badTablet.getBadRec())){
+            badTablet.setVelocity(goodTablet.getVelocity());
+
+        }
 
            Iterator<GameGoodTablet> iter = mGoodTabletArray.iterator();
            Iterator<BadTablet> iter1 = mBadTabletArray.iterator();
