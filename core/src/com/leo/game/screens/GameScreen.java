@@ -99,7 +99,7 @@ public class GameScreen implements Screen {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
        // Gdx.app.log("GameScreen FPS", (1/delta) + "");
-        Gdx.app.log("Time: ", ((TimeUtils.millis() - lastTime)) + "");
+        Gdx.app.log("Time: ", (((TimeUtils.millis() - currrentTime) / 1000)) + "");
 
         mSpriteBatch.begin();
 
@@ -122,13 +122,13 @@ public class GameScreen implements Screen {
         }
 
         if ((TimeUtils.millis() - currrentTime)  < 10000) {
-            if (System.currentTimeMillis() - lastTimeBad > MathUtils.random(3200, 3800)) {
+            if (System.currentTimeMillis() - lastTimeBad > MathUtils.random(3500, 3800)) {
                    spawnBadTablets();
                }
            }
 
         if ((TimeUtils.millis() - currrentTime) >= 10000 && (TimeUtils.millis() - currrentTime) < 20000) {
-            if (System.currentTimeMillis() - lastTimeBad > MathUtils.random(2000, 2400)) {
+            if (System.currentTimeMillis() - lastTimeBad > MathUtils.random(2500, 2800)) {
                 spawnBadTablets();
             }
         }
@@ -194,7 +194,7 @@ public class GameScreen implements Screen {
             BadTablet badTablet = iter1.next();
             badTablet.update(delta);
 
-            if (badTablet.getY() < -75) {
+            if (badTablet.getY() < -1200) {
                 iter1.remove();
             }
             if (badTablet.getY() < 600) {
