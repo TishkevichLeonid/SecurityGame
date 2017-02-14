@@ -116,25 +116,25 @@ public class GameScreen implements Screen {
         mSpriteBatch.end();
 
         if ((TimeUtils.millis() - currrentTime) < 10000) {
-           if (System.currentTimeMillis() - lastTime > MathUtils.random(4000, 5000)) {
+           if (System.currentTimeMillis() - lastTime > MathUtils.random(3500, 4000)) {
                spawnTablets();
            }
         }
 
         if ((TimeUtils.millis() - currrentTime)  < 10000) {
-            if (System.currentTimeMillis() - lastTimeBad > MathUtils.random(4000, 5000)) {
+            if (System.currentTimeMillis() - lastTimeBad > MathUtils.random(3200, 3800)) {
                    spawnBadTablets();
                }
            }
 
-        if ((TimeUtils.millis() - currrentTime) >= 15000 && (TimeUtils.millis() - currrentTime) < 20000) {
+        if ((TimeUtils.millis() - currrentTime) >= 10000 && (TimeUtils.millis() - currrentTime) < 20000) {
             if (System.currentTimeMillis() - lastTimeBad > MathUtils.random(2000, 2400)) {
                 spawnBadTablets();
             }
         }
 
-        if ((TimeUtils.millis() - currrentTime) >= 15000 && (TimeUtils.millis() - currrentTime) < 20000) {
-            if (TimeUtils.millis() - lastTime > MathUtils.random(2000, 2400)) {
+        if ((TimeUtils.millis() - currrentTime) >= 10000 && (TimeUtils.millis() - currrentTime) < 20000) {
+            if (TimeUtils.millis() - lastTime > MathUtils.random(1700, 2200)) {
                    spawnTablets();
                }
 
@@ -147,12 +147,28 @@ public class GameScreen implements Screen {
            }
 
         if (collide(goodTablet.getGoodRec())){
-
+            //float a = 0;
+            //a = goodTablet.getY() - badTablet.getY();
+            //goodTablet.setY(goodTablet.getY() + goodTablet.getHeight() - a + 20);
             goodTablet.setVelocity(badTablet.getVelocity());
+            if (goodTablet.getY() > badTablet.getY()) {
+                float a = 0;
+                a = goodTablet.getY() - badTablet.getY();
+                goodTablet.setY(goodTablet.getY() + a);
+            }
+            if (badTablet.getY() > goodTablet.getY()) {
+                float a = 0;
+                a = badTablet.getY() - goodTablet.getY();
+                badTablet.setY(badTablet.getY() + a);
+            }
 
         }
 
         if (collidebad(badTablet.getBadRec())){
+            //float a = 0;
+            //a = badTablet.getY() - goodTablet.getY();
+            //badTablet.setY(badTablet.getY() + badTablet.getHeight() - a + 20);
+           // badTablet.setY(goodTablet.getY() - 50);
             badTablet.setVelocity(goodTablet.getVelocity());
 
         }
@@ -164,7 +180,7 @@ public class GameScreen implements Screen {
                GameGoodTablet goodTablet = iter.next();
                goodTablet.update(delta);
 
-               if (goodTablet.getY() < -75) {
+               if (goodTablet.getY() < -40) {
                    iter.remove();
                }
 

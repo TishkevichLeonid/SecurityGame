@@ -60,6 +60,9 @@ public class GameGoodTablet {
     public float getY() {
         return position.y;
     }
+    public float setY(float y){
+        return this.position.y = y;
+    }
 
     public float getWidth() {
         return width;

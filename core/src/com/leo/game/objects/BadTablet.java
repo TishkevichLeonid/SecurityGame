@@ -23,7 +23,7 @@ public class BadTablet {
     public BadTablet(int x, int y, int width, int height){
         this.width = width;
         this.height = height;
-        position = new Vector2(x, y);
+        position = new Vector2(x, y + 20);
         velocity = new Vector2(GameScreen.velosity3);
         acceleration = new Vector2(0, -20);
         badRec = new Rectangle(0, 0, AssetLoader.badTablet.getWidth(), AssetLoader.badTablet.getHeight() + 10);
@@ -59,6 +59,9 @@ public class BadTablet {
 
     public float getY() {
         return position.y;
+    }
+    public float setY(float y){
+        return this.position.y = y;
     }
 
     public float getWidth() {
