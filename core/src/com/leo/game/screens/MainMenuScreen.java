@@ -12,6 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
+import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.leo.game.Security;
 
 /**
@@ -34,7 +35,8 @@ public class MainMenuScreen implements Screen {
     public MainMenuScreen(Security gam) {
         this.game = gam;
         mPlayBtn = new Texture("good.png");
-        stage = new Stage(new ScreenViewport());
+       // stage = new Stage(new ScreenViewport());
+        stage = new Stage(new StretchViewport(Security.WIDTH, Security.HEIGHT));
         mCamera = new OrthographicCamera();
         mCamera.setToOrtho(false, Security.WIDTH, Security.HEIGHT);
 
@@ -47,7 +49,7 @@ public class MainMenuScreen implements Screen {
 
         playBt = new ImageButton(stylePlayBt);
         playBt.setSize(mPlayBtn.getWidth(), mPlayBtn.getHeight());
-        playBt.setPosition(Gdx.graphics.getWidth() / 2 - mPlayBtn.getWidth() / 2, Gdx.graphics.getHeight() / 2);
+        playBt.setPosition(Security.WIDTH / 2 - mPlayBtn.getWidth() / 2, Security.HEIGHT / 2);
 
 
         playBt.addListener(new ClickListener(){
