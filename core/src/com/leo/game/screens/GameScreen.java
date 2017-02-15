@@ -50,8 +50,8 @@ public class GameScreen implements Screen {
         mSpriteBatch = new SpriteBatch();
         camera = new OrthographicCamera();
         camera.setToOrtho(false, Security.WIDTH, Security.HEIGHT);
-        position = new Vector2(Gdx.graphics.getWidth() / 2 - AssetLoader.goodTablet.getWidth() / 2,
-                Gdx.graphics.getHeight() + AssetLoader.goodTablet.getHeight() / 2);
+        position = new Vector2(Security.WIDTH / 2 - AssetLoader.goodTablet.getWidth() / 2,
+                Security.HEIGHT + AssetLoader.goodTablet.getHeight() / 2);
         currrentTime = TimeUtils.millis();
 
         mGoodTabletArray = new Array<GameGoodTablet>();
@@ -61,16 +61,16 @@ public class GameScreen implements Screen {
     }
 
     public void spawnTablets(){
-        goodTablet = new GameGoodTablet(Gdx.graphics.getWidth() / 2 - AssetLoader.goodTablet.getWidth() / 2,
-                Gdx.graphics.getHeight() + AssetLoader.goodTablet.getHeight(), AssetLoader.goodTablet.getWidth(),
+        goodTablet = new GameGoodTablet(Security.WIDTH / 2 - AssetLoader.goodTablet.getWidth() / 2,
+                Security.HEIGHT + AssetLoader.goodTablet.getHeight(), AssetLoader.goodTablet.getWidth(),
                 AssetLoader.goodTablet.getHeight());
         mGoodTabletArray.add(goodTablet);
         lastTime = TimeUtils.millis();
     }
 
     public void spawnBadTablets(){
-        badTablet = new BadTablet(Gdx.graphics.getWidth() / 2 - AssetLoader.badTablet.getWidth() / 2,
-                Gdx.graphics.getHeight() + AssetLoader.badTablet.getHeight(), AssetLoader.badTablet.getWidth(),
+        badTablet = new BadTablet(Security.WIDTH / 2 - AssetLoader.badTablet.getWidth() / 2,
+                Security.HEIGHT + AssetLoader.badTablet.getHeight(), AssetLoader.badTablet.getWidth(),
                 AssetLoader.badTablet.getHeight());
         mBadTabletArray.add(badTablet);
         lastTimeBad = TimeUtils.millis();
@@ -101,10 +101,14 @@ public class GameScreen implements Screen {
        // Gdx.app.log("GameScreen FPS", (1/delta) + "");
         Gdx.app.log("Time: ", (((TimeUtils.millis() - currrentTime) / 1000)) + "");
 
+        camera.update();
+
+        mSpriteBatch.setProjectionMatrix(camera.combined);
+
         mSpriteBatch.begin();
 
         mSpriteBatch.disableBlending();
-        mSpriteBatch.draw(AssetLoader.bg, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        mSpriteBatch.draw(AssetLoader.bg, 0, 0, Security.WIDTH, Security.HEIGHT);
 
         for (GameGoodTablet goodTablet: mGoodTabletArray){
             mSpriteBatch.draw(AssetLoader.goodTablet, goodTablet.getX(), goodTablet.getY());
@@ -194,7 +198,7 @@ public class GameScreen implements Screen {
             BadTablet badTablet = iter1.next();
             badTablet.update(delta);
 
-            if (badTablet.getY() < -1200) {
+            if (badTablet.getY() < -100) {
                 iter1.remove();
             }
             if (badTablet.getY() < 600) {

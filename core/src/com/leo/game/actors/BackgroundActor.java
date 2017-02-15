@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.leo.game.Security;
 import com.leo.game.objects.GoodTablet;
 
 /**
@@ -21,7 +22,7 @@ public class BackgroundActor extends Actor {
 
         bg = new Texture("bg.png");
         bgSprite = new Sprite(bg);
-        bgSprite.setSize(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        bgSprite.setSize(Security.WIDTH, Security.HEIGHT);
 
     }
 
