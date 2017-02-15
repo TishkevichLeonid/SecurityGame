@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.leo.game.Security;
@@ -29,9 +30,10 @@ public class GameScreen implements Screen {
     private OrthographicCamera camera;
     private GameGoodTablet goodTablet;
     private BadTablet badTablet;
-    private Vector2 position;
+    private Vector3 touchPos;
     public static Vector2 velosity2;
     public static Vector2 velosity3;
+    private Vector2 vel;
 
     long currrentTime;
     long lastTime;
@@ -46,12 +48,12 @@ public class GameScreen implements Screen {
 
         velosity2 = new Vector2(0, -20);
         velosity3 = new Vector2(0, -50);
+        touchPos = new Vector3();
+        vel = new Vector2(0, 0);
 
         mSpriteBatch = new SpriteBatch();
         camera = new OrthographicCamera();
         camera.setToOrtho(false, Security.WIDTH, Security.HEIGHT);
-        position = new Vector2(Security.WIDTH / 2 - AssetLoader.goodTablet.getWidth() / 2,
-                Security.HEIGHT + AssetLoader.goodTablet.getHeight() / 2);
         currrentTime = TimeUtils.millis();
 
         mGoodTabletArray = new Array<GameGoodTablet>();
@@ -98,7 +100,7 @@ public class GameScreen implements Screen {
     public void render(float delta) {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-       // Gdx.app.log("GameScreen FPS", (1/delta) + "");
+        //Gdx.app.log("GameScreen FPS", (1/delta) + "");
         Gdx.app.log("Time: ", (((TimeUtils.millis() - currrentTime) / 1000)) + "");
 
         camera.update();
@@ -138,7 +140,7 @@ public class GameScreen implements Screen {
         }
 
         if ((TimeUtils.millis() - currrentTime) >= 10000 && (TimeUtils.millis() - currrentTime) < 20000) {
-            if (TimeUtils.millis() - lastTime > MathUtils.random(1700, 2200)) {
+            if (TimeUtils.millis() - lastTime > MathUtils.random(2000, 2400)) {
                    spawnTablets();
                }
 
@@ -150,10 +152,10 @@ public class GameScreen implements Screen {
 
            }
 
+
+
         if (collide(goodTablet.getGoodRec())){
-            //float a = 0;
-            //a = goodTablet.getY() - badTablet.getY();
-            //goodTablet.setY(goodTablet.getY() + goodTablet.getHeight() - a + 20);
+
             goodTablet.setVelocity(badTablet.getVelocity());
             if (goodTablet.getY() > badTablet.getY()) {
                 float a = 0;
@@ -205,9 +207,21 @@ public class GameScreen implements Screen {
                 velosity3 = badTablet.getVelocity();
             }
 
+            if (Gdx.input.isTouched()){
+                touchPos.set(Gdx.input.getX(), Gdx.input.getY(), 0);
+                if ((touchPos.x > (badTablet.getX() - AssetLoader.badTablet.getWidth() / 2) &&
+                        touchPos.x < (badTablet.getX() + AssetLoader.badTablet.getWidth() / 2))
+                        && (touchPos.y < badTablet.getY() + AssetLoader.badTablet.getHeight() / 2)
+                        && (touchPos.y > badTablet.getY() - AssetLoader.badTablet.getHeight()))
+                    camera.unproject(touchPos);
+                badTablet.setVelocity(vel);
+                badTablet.setX(touchPos.x - AssetLoader.badTablet.getWidth() / 2 + 100);
+                badTablet.setY(touchPos.y - AssetLoader.badTablet.getHeight() / 2);
+                if (badTablet.getX() > Security.WIDTH / 2 - AssetLoader.badTablet.getWidth() / 2)
+                    iter1.remove();
+            }
+
         }
-
-
 
 
     }

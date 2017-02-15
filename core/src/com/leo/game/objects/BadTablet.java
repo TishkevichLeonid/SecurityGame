@@ -57,9 +57,14 @@ public class BadTablet {
         return position.x;
     }
 
+    public float setX(float x){
+        return this.position.x = x;
+    }
+
     public float getY() {
         return position.y;
     }
+
     public float setY(float y){
         return this.position.y = y;
     }
