@@ -35,7 +35,6 @@ public class MainMenuScreen implements Screen {
     public MainMenuScreen(Security gam) {
         this.game = gam;
         mPlayBtn = new Texture("good.png");
-       // stage = new Stage(new ScreenViewport());
         stage = new Stage(new StretchViewport(Security.WIDTH, Security.HEIGHT));
         mCamera = new OrthographicCamera();
         mCamera.setToOrtho(false, Security.WIDTH, Security.HEIGHT);
@@ -69,6 +68,7 @@ public class MainMenuScreen implements Screen {
         stage.addActor(game.background);
         stage.addActor(playBt);
         stage.addActor(game.animActor);
+        stage.addActor(game.mBadTabletActor);
         Gdx.input.setInputProcessor(stage);
 
     }

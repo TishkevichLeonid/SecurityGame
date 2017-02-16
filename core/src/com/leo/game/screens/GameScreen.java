@@ -100,8 +100,8 @@ public class GameScreen implements Screen {
     public void render(float delta) {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        //Gdx.app.log("GameScreen FPS", (1/delta) + "");
-        Gdx.app.log("Time: ", (((TimeUtils.millis() - currrentTime) / 1000)) + "");
+       // Gdx.app.log("GameScreen FPS", (1/delta) + "");
+       // Gdx.app.log("Time: ", (((TimeUtils.millis() - currrentTime) / 1000)) + "");
 
         camera.update();
 
@@ -128,7 +128,7 @@ public class GameScreen implements Screen {
         }
 
         if ((TimeUtils.millis() - currrentTime)  < 10000) {
-            if (System.currentTimeMillis() - lastTimeBad > MathUtils.random(3500, 3800)) {
+            if (System.currentTimeMillis() - lastTimeBad > MathUtils.random(1500, 3800)) {
                    spawnBadTablets();
                }
            }
@@ -171,10 +171,17 @@ public class GameScreen implements Screen {
         }
 
         if (collidebad(badTablet.getBadRec())){
-            //float a = 0;
-            //a = badTablet.getY() - goodTablet.getY();
-            //badTablet.setY(badTablet.getY() + badTablet.getHeight() - a + 20);
-           // badTablet.setY(goodTablet.getY() - 50);
+            if (badTablet.getY() > goodTablet.getY()) {
+                float a = 0;
+                a = badTablet.getY() - goodTablet.getY();
+                badTablet.setY(badTablet.getY() + a);
+            }
+            if (goodTablet.getY() > badTablet.getY()) {
+                float a = 0;
+                a = goodTablet.getY() - badTablet.getY();
+                goodTablet.setY(goodTablet.getY() + a);
+            }
+
             badTablet.setVelocity(goodTablet.getVelocity());
 
         }
@@ -203,9 +210,6 @@ public class GameScreen implements Screen {
             if (badTablet.getY() < -100) {
                 iter1.remove();
             }
-            if (badTablet.getY() < 600) {
-                velosity3 = badTablet.getVelocity();
-            }
 
             if (Gdx.input.isTouched()){
                 touchPos.set(Gdx.input.getX(), Gdx.input.getY(), 0);
@@ -215,10 +219,14 @@ public class GameScreen implements Screen {
                         && (touchPos.y > badTablet.getY() - AssetLoader.badTablet.getHeight()))
                     camera.unproject(touchPos);
                 badTablet.setVelocity(vel);
-                badTablet.setX(touchPos.x - AssetLoader.badTablet.getWidth() / 2 + 100);
-                badTablet.setY(touchPos.y - AssetLoader.badTablet.getHeight() / 2);
-                if (badTablet.getX() > Security.WIDTH / 2 - AssetLoader.badTablet.getWidth() / 2)
+              //  badTablet.setX(touchPos.x - AssetLoader.badTablet.getWidth() / 2 + 100);
+               // badTablet.setY(touchPos.y - AssetLoader.badTablet.getHeight() / 2);
+               // if (badTablet.getX() > Security.WIDTH / 2 - AssetLoader.badTablet.getWidth() / 2)
                     iter1.remove();
+            }
+
+            if (badTablet.getY() < 600) {
+                velosity3 = badTablet.getVelocity();
             }
 
         }

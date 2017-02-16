@@ -24,7 +24,8 @@ public class BadTablet {
         this.width = width;
         this.height = height;
         position = new Vector2(x, y + 20);
-        velocity = new Vector2(GameScreen.velosity3);
+      //  velocity = new Vector2(GameScreen.velosity3);
+        velocity = new Vector2(0, -150);
         acceleration = new Vector2(0, -20);
         badRec = new Rectangle(0, 0, AssetLoader.badTablet.getWidth(), AssetLoader.badTablet.getHeight());
 

@@ -11,11 +11,11 @@ import com.leo.game.objects.GoodTablet;
  * Created by leonidtiskevic on 12.02.17.
  */
 
-public class GoodTabletActor extends Actor {
+public class ActorMenu extends Actor {
 
     GoodTablet goodTablet;
 
-    public GoodTabletActor(){
+    public ActorMenu(){
 
         goodTablet = new GoodTablet(Security.WIDTH / 2 - AssetLoader.goodTablet.getWidth() / 2,
                 Security.HEIGHT + AssetLoader.goodTablet.getHeight() / 2, AssetLoader.goodTablet.getWidth(),
