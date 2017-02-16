@@ -14,6 +14,8 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.leo.game.Security;
+import com.leo.game.Textures.AssetLoader;
+import com.leo.game.objects.BadTablet;
 
 /**
  * Created by leonidtiskevic on 07.02.17.
@@ -30,6 +32,7 @@ public class MainMenuScreen implements Screen {
     private ImageButton playBt;
     private Texture mPlayBtn;
     private OrthographicCamera mCamera;
+    private BadTablet mBadTablet;
 
 
     public MainMenuScreen(Security gam) {
@@ -38,6 +41,10 @@ public class MainMenuScreen implements Screen {
         stage = new Stage(new StretchViewport(Security.WIDTH, Security.HEIGHT));
         mCamera = new OrthographicCamera();
         mCamera.setToOrtho(false, Security.WIDTH, Security.HEIGHT);
+
+        mBadTablet = new BadTablet(Security.WIDTH / 2 - AssetLoader.badTablet.getWidth() / 2,
+                Security.HEIGHT + AssetLoader.badTablet.getHeight(), AssetLoader.badTablet.getWidth(),
+                AssetLoader.badTablet.getHeight());
 
         buttonAtlas = new TextureAtlas(Gdx.files.internal("buttons/buttons.atlas"));
         skin = new Skin();
@@ -69,6 +76,7 @@ public class MainMenuScreen implements Screen {
         stage.addActor(playBt);
         stage.addActor(game.animActor);
         stage.addActor(game.mBadTabletActor);
+        if (mBadTablet.getY() < 500) game.mBadTabletActor.remove();
         Gdx.input.setInputProcessor(stage);
 
     }

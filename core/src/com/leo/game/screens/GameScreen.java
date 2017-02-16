@@ -216,13 +216,14 @@ public class GameScreen implements Screen {
                 if ((touchPos.x > (badTablet.getX() - AssetLoader.badTablet.getWidth() / 2) &&
                         touchPos.x < (badTablet.getX() + AssetLoader.badTablet.getWidth() / 2))
                         && (touchPos.y < badTablet.getY() + AssetLoader.badTablet.getHeight() / 2)
-                        && (touchPos.y > badTablet.getY() - AssetLoader.badTablet.getHeight()))
+                        && (touchPos.y > badTablet.getY() - AssetLoader.badTablet.getHeight())){
                     camera.unproject(touchPos);
                 badTablet.setVelocity(vel);
               //  badTablet.setX(touchPos.x - AssetLoader.badTablet.getWidth() / 2 + 100);
                // badTablet.setY(touchPos.y - AssetLoader.badTablet.getHeight() / 2);
                // if (badTablet.getX() > Security.WIDTH / 2 - AssetLoader.badTablet.getWidth() / 2)
                     iter1.remove();
+                }
             }
 
             if (badTablet.getY() < 600) {

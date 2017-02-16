@@ -26,11 +26,11 @@ public class BadTabletActor extends Actor {
 
     public BadTabletActor(){
 
-       /* badTablet = new BadTablet(Security.WIDTH / 2 - AssetLoader.badTablet.getWidth() / 2,
+        badTablet = new BadTablet(Security.WIDTH / 2 - AssetLoader.badTablet.getWidth() / 2,
                 Security.HEIGHT + AssetLoader.badTablet.getHeight(), AssetLoader.badTablet.getWidth(),
-                AssetLoader.badTablet.getHeight()); */
+                AssetLoader.badTablet.getHeight());
 
-        mBadTabletArray = new Array<BadTablet>();
+      //  mBadTabletArray = new Array<BadTablet>();
 
     }
 
@@ -58,8 +58,11 @@ public class BadTabletActor extends Actor {
     @Override
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
+        batch.draw(AssetLoader.badTablet, badTablet.getX(), badTablet.getY());
+        badTablet.update(Gdx.graphics.getDeltaTime());
 
-        for (BadTablet badTablet: mBadTabletArray){
+
+      /*  for (BadTablet badTablet: mBadTabletArray){
             batch.draw(AssetLoader.badTablet, badTablet.getX(), badTablet.getY());
         }
 
@@ -77,6 +80,7 @@ public class BadTabletActor extends Actor {
                 iter1.remove();
             }
 
-        }
+
+        } */
     }
 }
