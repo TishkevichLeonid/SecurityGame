@@ -216,14 +216,14 @@ public class GameScreen implements Screen {
                 velosity3 = badTablet.getVelocity();
             }
 
-            if (Gdx.input.isTouched()){
-                touchPos.set(Gdx.input.getX(), Gdx.input.getY(), 0);
-                if ((touchPos.x > (mBadTabletArray.get(0).getX() - AssetLoader.badTablet.getWidth() / 2) &&
-                        touchPos.x < (mBadTabletArray.get(0).getX() + AssetLoader.badTablet.getWidth() / 2))
-                        && (touchPos.y < mBadTabletArray.get(0).getY() + AssetLoader.badTablet.getHeight() / 2)
-                        && (touchPos.y > mBadTabletArray.get(0).getY() - AssetLoader.badTablet.getHeight())){
-                    camera.unproject(touchPos);
-                    badTablet.setVelocity(vel);
+            if (Gdx.input.justTouched()){
+               // vel.set(Gdx.input.getX(), Gdx.input.getY());
+                if ((Gdx.input.getX() > (mBadTabletArray.get(0).getX() - AssetLoader.badTablet.getWidth() / 2) &&
+                        Gdx.input.getX() < (mBadTabletArray.get(0).getX() + AssetLoader.badTablet.getWidth() / 2))
+                        && (Gdx.input.getY() < mBadTabletArray.get(0).getY() + AssetLoader.badTablet.getHeight() / 2)
+                        && (Gdx.input.getY() > mBadTabletArray.get(0).getY() - AssetLoader.badTablet.getHeight() / 2)){
+                 //   camera.unproject(touchPos);
+                  //  badTablet.setVelocity(vel);
                     //  badTablet.setX(touchPos.x - AssetLoader.badTablet.getWidth() / 2 + 100);
                     // badTablet.setY(touchPos.y - AssetLoader.badTablet.getHeight() / 2);
                     // if (badTablet.getX() > Security.WIDTH / 2 - AssetLoader.badTablet.getWidth() / 2)
@@ -233,12 +233,12 @@ public class GameScreen implements Screen {
 
                 if (mBadTabletArray.size >=2) {
 
-                    if ((touchPos.x > (mBadTabletArray.get(1).getX() - AssetLoader.badTablet.getWidth() / 2) &&
-                            touchPos.x < (mBadTabletArray.get(1).getX() + AssetLoader.badTablet.getWidth() / 2))
-                            && (touchPos.y < mBadTabletArray.get(1).getY() + AssetLoader.badTablet.getHeight() / 2)
-                            && (touchPos.y > mBadTabletArray.get(1).getY() - AssetLoader.badTablet.getHeight())) {
-                        camera.unproject(touchPos);
-                        badTablet.setVelocity(vel);
+                    if ((Gdx.input.getX() > (mBadTabletArray.get(1).getX() - AssetLoader.badTablet.getWidth() / 2) &&
+                            Gdx.input.getX() < (mBadTabletArray.get(1).getX() + AssetLoader.badTablet.getWidth() / 2))
+                            && (Gdx.input.getY() < mBadTabletArray.get(1).getY() + AssetLoader.badTablet.getHeight() / 2)
+                            && (Gdx.input.getY() > mBadTabletArray.get(1).getY() - AssetLoader.badTablet.getHeight() / 2)) {
+                       // camera.unproject(touchPos);
+                       // badTablet.setVelocity(vel);
                         //  badTablet.setX(touchPos.x - AssetLoader.badTablet.getWidth() / 2 + 100);
                         // badTablet.setY(touchPos.y - AssetLoader.badTablet.getHeight() / 2);
                         // if (badTablet.getX() > Security.WIDTH / 2 - AssetLoader.badTablet.getWidth() / 2)
@@ -249,12 +249,12 @@ public class GameScreen implements Screen {
 
                 if (mBadTabletArray.size >= 3) {
 
-                    if ((touchPos.x > (mBadTabletArray.get(2).getX() - AssetLoader.badTablet.getWidth() / 2) &&
-                            touchPos.x < (mBadTabletArray.get(2).getX() + AssetLoader.badTablet.getWidth() / 2))
-                            && (touchPos.y < mBadTabletArray.get(2).getY() + AssetLoader.badTablet.getHeight() / 2)
-                            && (touchPos.y > mBadTabletArray.get(2).getY() - AssetLoader.badTablet.getHeight())) {
-                        camera.unproject(touchPos);
-                        badTablet.setVelocity(vel);
+                    if ((Gdx.input.getX() > (mBadTabletArray.get(2).getX() - AssetLoader.badTablet.getWidth() / 2) &&
+                            Gdx.input.getX() < (mBadTabletArray.get(2).getX() + AssetLoader.badTablet.getWidth() / 2))
+                            && (Gdx.input.getY() < mBadTabletArray.get(2).getY() + AssetLoader.badTablet.getHeight() / 2)
+                            && (Gdx.input.getY() > mBadTabletArray.get(2).getY() - AssetLoader.badTablet.getHeight() / 2)) {
+                      //  camera.unproject(touchPos);
+                      //  badTablet.setVelocity(vel);
                         //  badTablet.setX(touchPos.x - AssetLoader.badTablet.getWidth() / 2 + 100);
                         // badTablet.setY(touchPos.y - AssetLoader.badTablet.getHeight() / 2);
                         // if (badTablet.getX() > Security.WIDTH / 2 - AssetLoader.badTablet.getWidth() / 2)
@@ -265,12 +265,12 @@ public class GameScreen implements Screen {
 
                 if (mBadTabletArray.size >=4) {
 
-                    if ((touchPos.x > (mBadTabletArray.get(3).getX() - AssetLoader.badTablet.getWidth() / 2) &&
-                            touchPos.x < (mBadTabletArray.get(3).getX() + AssetLoader.badTablet.getWidth() / 2))
-                            && (touchPos.y < mBadTabletArray.get(3).getY() + AssetLoader.badTablet.getHeight() / 2)
-                            && (touchPos.y > mBadTabletArray.get(3).getY() - AssetLoader.badTablet.getHeight())) {
-                        camera.unproject(touchPos);
-                        badTablet.setVelocity(vel);
+                    if ((Gdx.input.getX() > (mBadTabletArray.get(3).getX() - AssetLoader.badTablet.getWidth() / 2) &&
+                            Gdx.input.getX() < (mBadTabletArray.get(3).getX() + AssetLoader.badTablet.getWidth() / 2))
+                            && (Gdx.input.getY() < mBadTabletArray.get(3).getY() + AssetLoader.badTablet.getHeight() / 2)
+                            && (Gdx.input.getY() > mBadTabletArray.get(3).getY() - AssetLoader.badTablet.getHeight() / 2)) {
+                      //  camera.unproject(touchPos);
+                      //  badTablet.setVelocity(vel);
                         //  badTablet.setX(touchPos.x - AssetLoader.badTablet.getWidth() / 2 + 100);
                         // badTablet.setY(touchPos.y - AssetLoader.badTablet.getHeight() / 2);
                         // if (badTablet.getX() > Security.WIDTH / 2 - AssetLoader.badTablet.getWidth() / 2)
