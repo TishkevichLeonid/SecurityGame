@@ -102,6 +102,7 @@ public class GameScreen implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
        // Gdx.app.log("GameScreen FPS", (1/delta) + "");
        // Gdx.app.log("Time: ", (((TimeUtils.millis() - currrentTime) / 1000)) + "");
+        Gdx.app.log("Time: ", (mBadTabletArray.size) + "");
 
         camera.update();
 
@@ -211,26 +212,77 @@ public class GameScreen implements Screen {
                 iter1.remove();
             }
 
-            if (Gdx.input.isTouched()){
-                touchPos.set(Gdx.input.getX(), Gdx.input.getY(), 0);
-                if ((touchPos.x > (badTablet.getX() - AssetLoader.badTablet.getWidth() / 2) &&
-                        touchPos.x < (badTablet.getX() + AssetLoader.badTablet.getWidth() / 2))
-                        && (touchPos.y < badTablet.getY() + AssetLoader.badTablet.getHeight() / 2)
-                        && (touchPos.y > badTablet.getY() - AssetLoader.badTablet.getHeight())){
-                    camera.unproject(touchPos);
-                badTablet.setVelocity(vel);
-              //  badTablet.setX(touchPos.x - AssetLoader.badTablet.getWidth() / 2 + 100);
-               // badTablet.setY(touchPos.y - AssetLoader.badTablet.getHeight() / 2);
-               // if (badTablet.getX() > Security.WIDTH / 2 - AssetLoader.badTablet.getWidth() / 2)
-                    iter1.remove();
-                }
-            }
-
             if (badTablet.getY() < 600) {
                 velosity3 = badTablet.getVelocity();
             }
 
+            if (Gdx.input.isTouched()){
+                touchPos.set(Gdx.input.getX(), Gdx.input.getY(), 0);
+                if ((touchPos.x > (mBadTabletArray.get(0).getX() - AssetLoader.badTablet.getWidth() / 2) &&
+                        touchPos.x < (mBadTabletArray.get(0).getX() + AssetLoader.badTablet.getWidth() / 2))
+                        && (touchPos.y < mBadTabletArray.get(0).getY() + AssetLoader.badTablet.getHeight() / 2)
+                        && (touchPos.y > mBadTabletArray.get(0).getY() - AssetLoader.badTablet.getHeight())){
+                    camera.unproject(touchPos);
+                    badTablet.setVelocity(vel);
+                    //  badTablet.setX(touchPos.x - AssetLoader.badTablet.getWidth() / 2 + 100);
+                    // badTablet.setY(touchPos.y - AssetLoader.badTablet.getHeight() / 2);
+                    // if (badTablet.getX() > Security.WIDTH / 2 - AssetLoader.badTablet.getWidth() / 2)
+                    //iter1.remove();
+                     mBadTabletArray.removeIndex(0);
+                }
+
+                if (mBadTabletArray.size >=2) {
+
+                    if ((touchPos.x > (mBadTabletArray.get(1).getX() - AssetLoader.badTablet.getWidth() / 2) &&
+                            touchPos.x < (mBadTabletArray.get(1).getX() + AssetLoader.badTablet.getWidth() / 2))
+                            && (touchPos.y < mBadTabletArray.get(1).getY() + AssetLoader.badTablet.getHeight() / 2)
+                            && (touchPos.y > mBadTabletArray.get(1).getY() - AssetLoader.badTablet.getHeight())) {
+                        camera.unproject(touchPos);
+                        badTablet.setVelocity(vel);
+                        //  badTablet.setX(touchPos.x - AssetLoader.badTablet.getWidth() / 2 + 100);
+                        // badTablet.setY(touchPos.y - AssetLoader.badTablet.getHeight() / 2);
+                        // if (badTablet.getX() > Security.WIDTH / 2 - AssetLoader.badTablet.getWidth() / 2)
+                        //iter1.remove();
+                         mBadTabletArray.removeIndex(1);
+                    }
+                }
+
+                if (mBadTabletArray.size >= 3) {
+
+                    if ((touchPos.x > (mBadTabletArray.get(2).getX() - AssetLoader.badTablet.getWidth() / 2) &&
+                            touchPos.x < (mBadTabletArray.get(2).getX() + AssetLoader.badTablet.getWidth() / 2))
+                            && (touchPos.y < mBadTabletArray.get(2).getY() + AssetLoader.badTablet.getHeight() / 2)
+                            && (touchPos.y > mBadTabletArray.get(2).getY() - AssetLoader.badTablet.getHeight())) {
+                        camera.unproject(touchPos);
+                        badTablet.setVelocity(vel);
+                        //  badTablet.setX(touchPos.x - AssetLoader.badTablet.getWidth() / 2 + 100);
+                        // badTablet.setY(touchPos.y - AssetLoader.badTablet.getHeight() / 2);
+                        // if (badTablet.getX() > Security.WIDTH / 2 - AssetLoader.badTablet.getWidth() / 2)
+                        //iter1.remove();
+                         mBadTabletArray.removeIndex(2);
+                    }
+                }
+
+                if (mBadTabletArray.size >=4) {
+
+                    if ((touchPos.x > (mBadTabletArray.get(3).getX() - AssetLoader.badTablet.getWidth() / 2) &&
+                            touchPos.x < (mBadTabletArray.get(3).getX() + AssetLoader.badTablet.getWidth() / 2))
+                            && (touchPos.y < mBadTabletArray.get(3).getY() + AssetLoader.badTablet.getHeight() / 2)
+                            && (touchPos.y > mBadTabletArray.get(3).getY() - AssetLoader.badTablet.getHeight())) {
+                        camera.unproject(touchPos);
+                        badTablet.setVelocity(vel);
+                        //  badTablet.setX(touchPos.x - AssetLoader.badTablet.getWidth() / 2 + 100);
+                        // badTablet.setY(touchPos.y - AssetLoader.badTablet.getHeight() / 2);
+                        // if (badTablet.getX() > Security.WIDTH / 2 - AssetLoader.badTablet.getWidth() / 2)
+                        //iter1.remove();
+                        mBadTabletArray.removeIndex(3);
+                    }
+                }
+
+            }
+
         }
+
 
 
     }
