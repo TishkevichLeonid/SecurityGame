@@ -228,12 +228,6 @@ public class GameScreen implements Screen {
                         vel.x < (mBadTabletArray.get(0).getX() + AssetLoader.badTablet.getWidth()))
                         && (vel.y < mBadTabletArray.get(0).getY() + AssetLoader.badTablet.getHeight())
                         && (vel.y > mBadTabletArray.get(0).getY() - AssetLoader.badTablet.getHeight() / 2)){
-                  //  camera.unproject(touchPos);
-                  //  badTablet.setVelocity(vel);
-                    //  badTablet.setX(touchPos.x - AssetLoader.badTablet.getWidth() / 2 + 100);
-                    // badTablet.setY(touchPos.y - AssetLoader.badTablet.getHeight() / 2);
-                    // if (badTablet.getX() > Security.WIDTH / 2 - AssetLoader.badTablet.getWidth() / 2)
-                    //iter1.remove();
                      mBadTabletArray.removeIndex(0);
                 }
 
@@ -243,12 +237,6 @@ public class GameScreen implements Screen {
                             vel.x < (mBadTabletArray.get(1).getX() + AssetLoader.badTablet.getWidth()))
                             && (vel.y < mBadTabletArray.get(1).getY() + AssetLoader.badTablet.getHeight())
                             && (vel.y > mBadTabletArray.get(1).getY() - AssetLoader.badTablet.getHeight() / 2)) {
-                      //  camera.unproject(touchPos);
-                       // badTablet.setVelocity(vel);
-                        //  badTablet.setX(touchPos.x - AssetLoader.badTablet.getWidth() / 2 + 100);
-                        // badTablet.setY(touchPos.y - AssetLoader.badTablet.getHeight() / 2);
-                        // if (badTablet.getX() > Security.WIDTH / 2 - AssetLoader.badTablet.getWidth() / 2)
-                        //iter1.remove();
                          mBadTabletArray.removeIndex(1);
                     }
                 }
@@ -259,12 +247,6 @@ public class GameScreen implements Screen {
                             vel.x < (mBadTabletArray.get(2).getX() + AssetLoader.badTablet.getWidth()))
                             && (vel.y < mBadTabletArray.get(2).getY() + AssetLoader.badTablet.getHeight())
                             && (vel.y > mBadTabletArray.get(2).getY() - AssetLoader.badTablet.getHeight() / 2)) {
-                      //  camera.unproject(touchPos);
-                      //  badTablet.setVelocity(vel);
-                        //  badTablet.setX(touchPos.x - AssetLoader.badTablet.getWidth() / 2 + 100);
-                        // badTablet.setY(touchPos.y - AssetLoader.badTablet.getHeight() / 2);
-                        // if (badTablet.getX() > Security.WIDTH / 2 - AssetLoader.badTablet.getWidth() / 2)
-                        //iter1.remove();
                          mBadTabletArray.removeIndex(2);
                     }
                 }
@@ -275,12 +257,6 @@ public class GameScreen implements Screen {
                             vel.x < (mBadTabletArray.get(3).getX() + AssetLoader.badTablet.getWidth()))
                             && (vel.y < mBadTabletArray.get(3).getY() + AssetLoader.badTablet.getHeight())
                             && (vel.y > mBadTabletArray.get(3).getY() - AssetLoader.badTablet.getHeight() / 2)) {
-                       // camera.unproject(touchPos);
-                      //  badTablet.setVelocity(vel);
-                        //  badTablet.setX(touchPos.x - AssetLoader.badTablet.getWidth() / 2 + 100);
-                        // badTablet.setY(touchPos.y - AssetLoader.badTablet.getHeight() / 2);
-                        // if (badTablet.getX() > Security.WIDTH / 2 - AssetLoader.badTablet.getWidth() / 2)
-                        //iter1.remove();
                         mBadTabletArray.removeIndex(3);
                     }
                 }
