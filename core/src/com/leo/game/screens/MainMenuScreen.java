@@ -75,8 +75,6 @@ public class MainMenuScreen implements Screen {
         stage.addActor(game.background);
         stage.addActor(playBt);
         stage.addActor(game.animActor);
-        stage.addActor(game.mBadTabletActor);
-        if (mBadTablet.getY() < 500) game.mBadTabletActor.remove();
         Gdx.input.setInputProcessor(stage);
 
     }
