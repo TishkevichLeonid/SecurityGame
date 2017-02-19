@@ -20,7 +20,7 @@ public class BackgroundActor extends Actor {
 
     public BackgroundActor(){
 
-        bg = new Texture("bg.png");
+        bg = new Texture("bg1.png");
         bgSprite = new Sprite(bg);
         bgSprite.setSize(Security.WIDTH, Security.HEIGHT);
 
