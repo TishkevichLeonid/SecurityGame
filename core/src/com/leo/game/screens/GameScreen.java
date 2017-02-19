@@ -116,10 +116,10 @@ public class GameScreen implements Screen {
         mSpriteBatch.draw(AssetLoader.bg, 0, 0, Security.WIDTH, Security.HEIGHT);
 
         for (GameGoodTablet goodTablet: mGoodTabletArray){
-            mSpriteBatch.draw(AssetLoader.goodTablet, goodTablet.getX(), goodTablet.getY(), AssetLoader.goodTablet.getWidth(), AssetLoader.goodTablet.getHeight());
+            mSpriteBatch.draw(AssetLoader.goodTablet, goodTablet.getX(), goodTablet.getY(), goodTablet.getWidth(), goodTablet.getHeight());
         }
-        for (BadTablet badTablet: mBadTabletArray){
-            mSpriteBatch.draw(AssetLoader.badTablet, badTablet.getX(), badTablet.getY());
+        for (BadTablet badTablet : mBadTabletArray){
+            mSpriteBatch.draw(AssetLoader.badTablet, badTablet.getX(), badTablet.getY(), badTablet.getWidth(), badTablet.getHeight());
         }
 
         mSpriteBatch.end();
@@ -154,8 +154,6 @@ public class GameScreen implements Screen {
                }
 
            }
-
-
 
         if (collide(goodTablet.getGoodRec())){
 
