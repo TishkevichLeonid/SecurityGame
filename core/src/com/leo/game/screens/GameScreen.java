@@ -40,7 +40,7 @@ public class GameScreen implements Screen {
     long lastTime;
     long lastTimeBad;
 
-    public Array<GameGoodTablet> mGoodTabletArray;
+    private Array<GameGoodTablet> mGoodTabletArray;
     private Array<BadTablet> mBadTabletArray;
 
 
