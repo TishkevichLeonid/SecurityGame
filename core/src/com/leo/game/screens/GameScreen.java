@@ -64,13 +64,6 @@ public class GameScreen implements Screen {
 
     }
 
-    public Array<GameGoodTablet> getGoodTabletArray() {
-        return mGoodTabletArray;
-    }
-
-    public Array<BadTablet> getBadTabletArray() {
-        return mBadTabletArray;
-    }
 
     public void spawnTablets(){
         goodTablet = new GameGoodTablet(Security.WIDTH / 2 - AssetLoader.goodTablet.getWidth() / 2,
