@@ -92,6 +92,20 @@ public class GameScreen implements Screen {
 
     }
 
+    public boolean collideGoodtoBad(Rectangle tablet){
+        return tablet.overlaps(mBadTabletArray.get(0).getBadRec());
+    }
+
+    public boolean collideBadtoGood(Rectangle tablet){
+        return tablet.overlaps(mGoodTabletArray.get(0).getGoodRec());
+    }
+    public boolean collideGoodtoGood(Rectangle tablet){
+        return tablet.overlaps(mGoodTabletArray.get(0).getGoodRec());
+    }
+    public boolean colliedBadtoBad(Rectangle tablet){
+        return tablet.overlaps(mBadTabletArray.get(0).getBadRec());
+    }
+
     @Override
     public void show() {
 
@@ -155,35 +169,73 @@ public class GameScreen implements Screen {
 
            }
 
-        if (collide(goodTablet.getGoodRec())){
+        if (goodTablet.getY() > 800 && badTablet.getY() > 800) {
 
-            goodTablet.setVelocity(badTablet.getVelocity());
-            if (goodTablet.getY() > badTablet.getY()) {
-                float a = 0;
-                a = goodTablet.getY() - badTablet.getY();
-                goodTablet.setY(goodTablet.getY() + a);
-            }
-            if (badTablet.getY() > goodTablet.getY()) {
-                float a = 0;
-                a = badTablet.getY() - goodTablet.getY();
-                badTablet.setY(badTablet.getY() + a);
+            if (collide(goodTablet.getGoodRec())) {
+
+                goodTablet.setVelocity(badTablet.getVelocity());
+                if (goodTablet.getY() > badTablet.getY()) {
+                    float a = 0;
+                    a = goodTablet.getY() - badTablet.getY();
+                    goodTablet.setY(goodTablet.getY() + a);
+                }
+                if (badTablet.getY() > goodTablet.getY()) {
+                    float a = 0;
+                    a = badTablet.getY() - goodTablet.getY();
+                    badTablet.setY(badTablet.getY() + a);
+                }
+
             }
 
+            if (collidebad(badTablet.getBadRec())) {
+                if (badTablet.getY() > goodTablet.getY()) {
+                    float a = 0;
+                    a = badTablet.getY() - goodTablet.getY();
+                    badTablet.setY(badTablet.getY() + a);
+                }
+                if (goodTablet.getY() > badTablet.getY()) {
+                    float a = 0;
+                    a = goodTablet.getY() - badTablet.getY();
+                    goodTablet.setY(goodTablet.getY() + a);
+                }
+
+                badTablet.setVelocity(goodTablet.getVelocity());
+
+            }
         }
 
-        if (collidebad(badTablet.getBadRec())){
-            if (badTablet.getY() > goodTablet.getY()) {
-                float a = 0;
-                a = badTablet.getY() - goodTablet.getY();
-                badTablet.setY(badTablet.getY() + a);
-            }
-            if (goodTablet.getY() > badTablet.getY()) {
-                float a = 0;
-                a = goodTablet.getY() - badTablet.getY();
-                goodTablet.setY(goodTablet.getY() + a);
+        if (goodTablet.getY() < 800 && badTablet.getY() < 800){
+
+            if (collideGoodtoBad(goodTablet.getGoodRec())){
+                if (goodTablet.getY() > badTablet.getY()){
+                    goodTablet.setVelocity(badTablet.getVelocity());
+                }
+
+                if (goodTablet.getY() < badTablet.getY()){
+                    badTablet.setVelocity(goodTablet.getVelocity());
+                }
             }
 
-            badTablet.setVelocity(goodTablet.getVelocity());
+            if (collideBadtoGood(badTablet.getBadRec())){
+                if (badTablet.getY() > goodTablet.getY()){
+                    badTablet.setVelocity(goodTablet.getVelocity());
+                }
+
+                if (badTablet.getY() < goodTablet.getY()){
+                    goodTablet.setVelocity(badTablet.getVelocity());
+                }
+            }
+
+            if (mBadTabletArray.size > 2 && mGoodTabletArray.size > 2) {
+
+                if (collideGoodtoGood(mGoodTabletArray.get(1).getGoodRec())) {
+                    mGoodTabletArray.get(1).setVelocity(mGoodTabletArray.get(0).getVelocity());
+
+                }
+                if (colliedBadtoBad(mBadTabletArray.get(1).getBadRec())) {
+                    mBadTabletArray.get(1).setVelocity(mBadTabletArray.get(0).getVelocity());
+                }
+            }
 
         }
 
