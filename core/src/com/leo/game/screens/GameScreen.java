@@ -113,7 +113,6 @@ public class GameScreen implements Screen {
 
         mSpriteBatch.begin();
 
-       // mSpriteBatch.disableBlending();
         mSpriteBatch.draw(AssetLoader.bg, 0, 0, Security.WIDTH, Security.HEIGHT);
 
         for (GameGoodTablet goodTablet: mGoodTabletArray){
@@ -229,7 +228,7 @@ public class GameScreen implements Screen {
                         && (vel.y > mBadTabletArray.get(0).getY() - AssetLoader.badTablet.getHeight() / 2)){
                     mBadTabletArray.get(0).setX(vel.x - AssetLoader.badTablet.getWidth() / 2);
                     mBadTabletArray.get(0).setY(vel.y - AssetLoader.badTablet.getHeight() / 2);
-                    if (mBadTabletArray.get(0).getX() > 350 || mBadTabletArray.get(0).getX() < 130) {
+                    if (mBadTabletArray.get(0).getX() > 230 || mBadTabletArray.get(0).getX() < 180) {
                         mBadTabletArray.removeIndex(0);
                     }
                 }
@@ -242,7 +241,7 @@ public class GameScreen implements Screen {
                             && (vel.y > mBadTabletArray.get(1).getY() - AssetLoader.badTablet.getHeight() / 2)) {
                         mBadTabletArray.get(1).setX(vel.x - AssetLoader.badTablet.getWidth() / 2);
                         mBadTabletArray.get(1).setY(vel.y - AssetLoader.badTablet.getHeight() / 2);
-                        if (mBadTabletArray.get(1).getX() > 350 || mBadTabletArray.get(1).getX() < 130) {
+                        if (mBadTabletArray.get(1).getX() > 230 || mBadTabletArray.get(1).getX() < 180) {
                             mBadTabletArray.removeIndex(1);
                         }
                     }
@@ -256,7 +255,7 @@ public class GameScreen implements Screen {
                             && (vel.y > mBadTabletArray.get(2).getY() - AssetLoader.badTablet.getHeight() / 2)) {
                         mBadTabletArray.get(2).setX(vel.x - AssetLoader.badTablet.getWidth() / 2);
                         mBadTabletArray.get(2).setY(vel.y - AssetLoader.badTablet.getHeight() / 2);
-                        if (mBadTabletArray.get(2).getX() > 350 || mBadTabletArray.get(2).getX() < 130) {
+                        if (mBadTabletArray.get(2).getX() > 230 || mBadTabletArray.get(2).getX() < 180) {
                             mBadTabletArray.removeIndex(2);
                         }
                     }
@@ -270,7 +269,7 @@ public class GameScreen implements Screen {
                             && (vel.y > mBadTabletArray.get(3).getY() - AssetLoader.badTablet.getHeight() / 2)) {
                         mBadTabletArray.get(3).setX(vel.x - AssetLoader.badTablet.getWidth() / 2);
                         mBadTabletArray.get(3).setY(vel.y - AssetLoader.badTablet.getHeight() / 2);
-                        if (mBadTabletArray.get(3).getX() > 350 || mBadTabletArray.get(3).getX() < 130) {
+                        if (mBadTabletArray.get(3).getX() > 230 || mBadTabletArray.get(3).getX() < 180) {
                             mBadTabletArray.removeIndex(3);
                         }
                     }
