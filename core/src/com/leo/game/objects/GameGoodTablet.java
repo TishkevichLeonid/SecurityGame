@@ -28,7 +28,7 @@ public class GameGoodTablet {
         position = new Vector2(x, y);
         velocity = new Vector2(GameScreen.velosity2);
         acceleration = new Vector2(0, -20);
-        goodRec = new Rectangle(0, 0, AssetLoader.goodTablet.getWidth(), AssetLoader.goodTablet.getHeight());
+        goodRec = new Rectangle(0, 0, AssetLoader.goodTablet.getWidth(), AssetLoader.goodTablet.getHeight() + 40);
 
     }
 

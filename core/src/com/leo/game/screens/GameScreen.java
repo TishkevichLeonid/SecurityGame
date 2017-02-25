@@ -13,6 +13,8 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.leo.game.Security;
 import com.leo.game.objects.BadTablet;
+import com.leo.game.objects.BottomLight;
+import com.leo.game.objects.BottomWave;
 import com.leo.game.objects.GameGoodTablet;
 import com.leo.game.Textures.AssetLoader;
 
@@ -35,6 +37,8 @@ public class GameScreen implements Screen {
     public static Vector2 velosity3;
     private Vector3 touch;
     private Vector2 vel;
+    private BottomLight mBottomLight;
+    private BottomWave mBottomWave;
 
     long currrentTime;
     long lastTime;
@@ -57,6 +61,10 @@ public class GameScreen implements Screen {
         camera = new OrthographicCamera();
         camera.setToOrtho(false, Security.WIDTH, Security.HEIGHT);
         currrentTime = TimeUtils.millis();
+
+        mBottomLight = new BottomLight(Security.WIDTH / 2 - AssetLoader.bottomLight.getWidth() / 2, -10, AssetLoader.bottomLight.getWidth()
+                , AssetLoader.bottomLight.getHeight());
+        mBottomWave = new BottomWave(Security.WIDTH / 2 - 150, -10, 300, 100);
 
         mGoodTabletArray = new Array<GameGoodTablet>();
         mBadTabletArray = new Array<BadTablet>();
@@ -136,6 +144,10 @@ public class GameScreen implements Screen {
             mSpriteBatch.draw(AssetLoader.badTablet, badTablet.getX(), badTablet.getY(), badTablet.getWidth(), badTablet.getHeight());
         }
 
+        mSpriteBatch.draw(AssetLoader.bottomLight, mBottomLight.getX(), mBottomLight.getY(), mBottomLight.getWidth(), mBottomLight.getHeight());
+        mBottomLight.update(delta);
+        mSpriteBatch.draw(AssetLoader.testwave, mBottomWave.getX(), mBottomWave.getY(), mBottomWave.getWidth(), mBottomWave.getHeight());
+        mBottomWave.update(delta);
         mSpriteBatch.end();
 
         if ((TimeUtils.millis() - currrentTime) < 10000) {

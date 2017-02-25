@@ -12,10 +12,14 @@ public class AssetLoader {
     public static Texture bg;
     public static Texture goodTablet;
     public static Texture badTablet;
+    public static Texture bottomLight;
+    public static Texture testwave;
 
     public static void load(){
 
         bg = new Texture("bg.png");
+        bottomLight = new Texture("bottomLight.png");
+        testwave = new Texture("testvolna.png");
 
         goodTablet = new Texture("goodTablet.png");
         badTablet = new Texture("badTablet.png");
@@ -30,6 +34,8 @@ public class AssetLoader {
         bg.dispose();
         goodTablet.dispose();
         badTablet.dispose();
+        bottomLight.dispose();
+        testwave.dispose();
 
     }
 

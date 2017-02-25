@@ -2,11 +2,10 @@ package com.leo.game;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.assets.AssetManager;
+import com.leo.game.Actors.BottomActor;
 import com.leo.game.Textures.AssetLoader;
 import com.leo.game.Actors.BackgroundActor;
 import com.leo.game.Actors.AnimationMenuActor;
-import com.leo.game.Screens.MainMenuScreen;
-import com.leo.game.Actors.ActorMenu;
 
 public class Security extends Game {
 	public static final int WIDTH = 480;
@@ -16,8 +15,8 @@ public class Security extends Game {
 	// public SpriteBatch batch;
 	public BackgroundActor background;
 	public AnimationMenuActor animActor;
-	public ActorMenu mGoodTabletActor;
 	public AssetManager mManager;
+	public BottomActor mBottomActor;
 	
 	@Override
 	public void create () {
@@ -28,7 +27,7 @@ public class Security extends Game {
 		background = new BackgroundActor();
 		background.setPosition(0,0);
 		animActor = new AnimationMenuActor();
-		mGoodTabletActor = new ActorMenu();
+		mBottomActor = new BottomActor();
 		mManager = new AssetManager();
 
 	}
