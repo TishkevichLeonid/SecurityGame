@@ -15,6 +15,7 @@ import com.leo.game.Security;
 import com.leo.game.objects.BadTablet;
 import com.leo.game.objects.BottomLight;
 import com.leo.game.objects.BottomWave;
+import com.leo.game.objects.DustBottom;
 import com.leo.game.objects.GameGoodTablet;
 import com.leo.game.Textures.AssetLoader;
 
@@ -39,6 +40,7 @@ public class GameScreen implements Screen {
     private Vector2 vel;
     private BottomLight mBottomLight;
     private BottomWave mBottomWave;
+    private DustBottom mDustBottom;
 
     private long currrentTime;
     private long lastTime;
@@ -58,6 +60,7 @@ public class GameScreen implements Screen {
         touchPos = new Vector3();
         touch = new Vector3(0, 0, 0);
         vel = new Vector2(0, 0);
+        mDustBottom = new DustBottom(Security.WIDTH / 2 - AssetLoader.dustBottom.getWidth() / 2, -10, AssetLoader.dustBottom.getWidth(), AssetLoader.dustBottom.getHeight());
 
         mSpriteBatch = new SpriteBatch();
         camera = new OrthographicCamera();
@@ -77,7 +80,7 @@ public class GameScreen implements Screen {
     }
 
     public void bottomWaves(){
-        mBottomWave = new BottomWave(Security.WIDTH / 2 - 150, -10, 300, 100);
+        mBottomWave = new BottomWave(Security.WIDTH / 2 - AssetLoader.dustBottom.getWidth() / 2, -20, 300, 100);
         mBottomWaveArray.add(mBottomWave);
         lastWave = TimeUtils.millis();
 
@@ -157,10 +160,15 @@ public class GameScreen implements Screen {
 
         mSpriteBatch.draw(AssetLoader.bottomLight, mBottomLight.getX(), mBottomLight.getY(), mBottomLight.getWidth(), mBottomLight.getHeight());
         mBottomLight.update(delta);
-        mSpriteBatch.draw(AssetLoader.testwave, Security.WIDTH / 2 - mBottomWave.getWidth() / 2, mBottomWave.getY(), mBottomWave.getWidth(), mBottomWave.getHeight());
+        mSpriteBatch.draw(AssetLoader.dustBottom, mDustBottom.getX(), mDustBottom.getY());
+        mDustBottom.update(delta);
+
+        for (BottomWave bottomWave: mBottomWaveArray) {
+            mSpriteBatch.draw(AssetLoader.testwave, Security.WIDTH / 2 - bottomWave.getWidth() / 2, bottomWave.getY(), bottomWave.getWidth(), bottomWave.getHeight());
+        }
         mSpriteBatch.end();
 
-        if (TimeUtils.millis() - lastWave > 500) bottomWaves();
+        if (TimeUtils.millis() - lastWave > 600) bottomWaves();
 
 
         if ((TimeUtils.millis() - currrentTime) < 10000) {
@@ -280,7 +288,7 @@ public class GameScreen implements Screen {
            while (iter2.hasNext()){
                BottomWave bottomWave = iter2.next();
                bottomWave.update(delta);
-               if (bottomWave.getY() > 400){
+               if (bottomWave.getY() > 90){
                    iter2.remove();
                }
 

@@ -1,20 +1,19 @@
 package com.leo.game.objects;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 
 /**
  * Created by leonidtiskevic on 25.02.17.
  */
 
-public class BottomLight {
+public class DustBottom {
     private Vector2 position;
     private Vector2 velocity;
 
     private int width;
     private int height;
 
-    public BottomLight(float x, float y, int width, int height){
+    public DustBottom(float x, float y, int width, int height){
         this.width = width;
         this.height = height;
         position = new Vector2(x, y);
@@ -28,11 +27,11 @@ public class BottomLight {
         position.add(velocity.cpy().scl(dt));
 
         if (position.y > -5){
-            velocity.y = -20;
+            velocity.y = -12;
 
         }
         if (position.y < -25){
-            velocity.y = 20;
+            velocity.y = 12;
         }
 
 

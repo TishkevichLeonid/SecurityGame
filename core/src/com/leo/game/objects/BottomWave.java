@@ -34,8 +34,8 @@ public class BottomWave {
 
         if (position.y < -10){
             velocity.y = 50;
-            deltaWidth.x = -50;
-            deltaWidth.y = -25;
+            deltaWidth.x = -110;
+            deltaWidth.y = -38;
         }
 
     }
