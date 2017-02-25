@@ -40,12 +40,14 @@ public class GameScreen implements Screen {
     private BottomLight mBottomLight;
     private BottomWave mBottomWave;
 
-    long currrentTime;
-    long lastTime;
-    long lastTimeBad;
+    private long currrentTime;
+    private long lastTime;
+    private long lastTimeBad;
+    private long lastWave;
 
     private Array<GameGoodTablet> mGoodTabletArray;
     private Array<BadTablet> mBadTabletArray;
+    private Array<BottomWave> mBottomWaveArray;
 
 
     public GameScreen(Security gam) {
@@ -62,13 +64,22 @@ public class GameScreen implements Screen {
         camera.setToOrtho(false, Security.WIDTH, Security.HEIGHT);
         currrentTime = TimeUtils.millis();
 
+
         mBottomLight = new BottomLight(Security.WIDTH / 2 - AssetLoader.bottomLight.getWidth() / 2, -10, AssetLoader.bottomLight.getWidth()
                 , AssetLoader.bottomLight.getHeight());
         mBottomWave = new BottomWave(Security.WIDTH / 2 - 150, -10, 300, 100);
 
         mGoodTabletArray = new Array<GameGoodTablet>();
         mBadTabletArray = new Array<BadTablet>();
+        mBottomWaveArray = new Array<BottomWave>();
         spawnTablets();
+
+    }
+
+    public void bottomWaves(){
+        mBottomWave = new BottomWave(Security.WIDTH / 2 - 150, -10, 300, 100);
+        mBottomWaveArray.add(mBottomWave);
+        lastWave = TimeUtils.millis();
 
     }
 
@@ -146,9 +157,11 @@ public class GameScreen implements Screen {
 
         mSpriteBatch.draw(AssetLoader.bottomLight, mBottomLight.getX(), mBottomLight.getY(), mBottomLight.getWidth(), mBottomLight.getHeight());
         mBottomLight.update(delta);
-        mSpriteBatch.draw(AssetLoader.testwave, mBottomWave.getX(), mBottomWave.getY(), mBottomWave.getWidth(), mBottomWave.getHeight());
-        mBottomWave.update(delta);
+        mSpriteBatch.draw(AssetLoader.testwave, Security.WIDTH / 2 - mBottomWave.getWidth() / 2, mBottomWave.getY(), mBottomWave.getWidth(), mBottomWave.getHeight());
         mSpriteBatch.end();
+
+        if (TimeUtils.millis() - lastWave > 500) bottomWaves();
+
 
         if ((TimeUtils.millis() - currrentTime) < 10000) {
            if (System.currentTimeMillis() - lastTime > MathUtils.random(3500, 4000)) {
@@ -262,6 +275,16 @@ public class GameScreen implements Screen {
 
            Iterator<GameGoodTablet> iter = mGoodTabletArray.iterator();
            Iterator<BadTablet> iter1 = mBadTabletArray.iterator();
+           Iterator<BottomWave> iter2 = mBottomWaveArray.iterator();
+
+           while (iter2.hasNext()){
+               BottomWave bottomWave = iter2.next();
+               bottomWave.update(delta);
+               if (bottomWave.getY() > 400){
+                   iter2.remove();
+               }
+
+           }
 
            while (iter.hasNext()) {
                GameGoodTablet goodTablet = iter.next();
