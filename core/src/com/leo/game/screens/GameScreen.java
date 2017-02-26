@@ -16,6 +16,7 @@ import com.leo.game.objects.BadTablet;
 import com.leo.game.objects.BottomLight;
 import com.leo.game.objects.BottomWave;
 import com.leo.game.objects.DustBottom;
+import com.leo.game.objects.DustTop;
 import com.leo.game.objects.GameGoodTablet;
 import com.leo.game.Textures.AssetLoader;
 
@@ -41,6 +42,7 @@ public class GameScreen implements Screen {
     private BottomLight mBottomLight;
     private BottomWave mBottomWave;
     private DustBottom mDustBottom;
+    private DustTop mDustTop;
 
     private long currrentTime;
     private long lastTime;
@@ -61,6 +63,7 @@ public class GameScreen implements Screen {
         touch = new Vector3(0, 0, 0);
         vel = new Vector2(0, 0);
         mDustBottom = new DustBottom(Security.WIDTH / 2 - AssetLoader.dustBottom.getWidth() / 2, -10, AssetLoader.dustBottom.getWidth(), AssetLoader.dustBottom.getHeight());
+        mDustTop = new DustTop(Security.WIDTH / 2 - AssetLoader.topShadow.getWidth() / 2, 300, AssetLoader.topShadow.getWidth(), AssetLoader.topShadow.getHeight());
 
         mSpriteBatch = new SpriteBatch();
         camera = new OrthographicCamera();
@@ -70,7 +73,7 @@ public class GameScreen implements Screen {
 
         mBottomLight = new BottomLight(Security.WIDTH / 2 - AssetLoader.bottomLight.getWidth() / 2, -10, AssetLoader.bottomLight.getWidth()
                 , AssetLoader.bottomLight.getHeight());
-        mBottomWave = new BottomWave(Security.WIDTH / 2 - 150, -10, 300, 100);
+        mBottomWave = new BottomWave(Security.WIDTH / 2 - 150, -10, -25, 100);
 
         mGoodTabletArray = new Array<GameGoodTablet>();
         mBadTabletArray = new Array<BadTablet>();
@@ -139,9 +142,9 @@ public class GameScreen implements Screen {
     public void render(float delta) {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-       // Gdx.app.log("GameScreen FPS", (1/delta) + "");
+        Gdx.app.log("GameScreen FPS", (1/delta) + "");
        // Gdx.app.log("Time: ", (((TimeUtils.millis() - currrentTime) / 1000)) + "");
-        Gdx.app.log("Time: ", (mBadTabletArray.size) + "");
+       // Gdx.app.log("Time: ", (mBadTabletArray.size) + "");
 
         camera.update();
 
@@ -162,6 +165,7 @@ public class GameScreen implements Screen {
         mBottomLight.update(delta);
         mSpriteBatch.draw(AssetLoader.dustBottom, mDustBottom.getX(), mDustBottom.getY());
         mDustBottom.update(delta);
+        mSpriteBatch.draw(AssetLoader.topShadow, mDustTop.getX(), mDustTop.getY(), mDustTop.getWidth(), mDustTop.getHeight());
 
         for (BottomWave bottomWave: mBottomWaveArray) {
             mSpriteBatch.draw(AssetLoader.testwave, Security.WIDTH / 2 - bottomWave.getWidth() / 2, bottomWave.getY(), bottomWave.getWidth(), bottomWave.getHeight());

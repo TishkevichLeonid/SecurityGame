@@ -41,6 +41,7 @@ public class LoadScreen implements Screen {
         CRAssetManager.getInstance().load("goodTablet.png", Texture.class);
         CRAssetManager.getInstance().load("bottomLight.png", Texture.class);
         CRAssetManager.getInstance().load("testvolna.png", Texture.class);
+        CRAssetManager.getInstance().load("topShadow.png", Texture.class);
 
     }
 
