@@ -44,6 +44,7 @@ public class LoadScreen implements Screen {
         CRAssetManager.getInstance().load("topShadow.png", Texture.class);
         CRAssetManager.getInstance().load("leftShadow.png", Texture.class);
         CRAssetManager.getInstance().load("rightShadow.png", Texture.class);
+        CRAssetManager.getInstance().load("orangeWave.png", Texture.class);
 
     }
 

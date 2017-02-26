@@ -20,6 +20,7 @@ import com.leo.game.objects.DustTop;
 import com.leo.game.objects.GameGoodTablet;
 import com.leo.game.Textures.AssetLoader;
 import com.leo.game.objects.LeftShadow;
+import com.leo.game.objects.OrangeWave;
 import com.leo.game.objects.RightShadow;
 
 import java.util.Iterator;
@@ -43,6 +44,7 @@ public class GameScreen implements Screen {
     private Vector2 vel;
     private BottomLight mBottomLight;
     private BottomWave mBottomWave;
+    private OrangeWave mOrangeWave;
     private DustBottom mDustBottom;
     private DustTop mDustTop;
     private LeftShadow mLeftShadow;
@@ -52,10 +54,12 @@ public class GameScreen implements Screen {
     private long lastTime;
     private long lastTimeBad;
     private long lastWave;
+    private long lastWaveOrange;
 
     private Array<GameGoodTablet> mGoodTabletArray;
     private Array<BadTablet> mBadTabletArray;
     private Array<BottomWave> mBottomWaveArray;
+    private Array<OrangeWave> mOrangeWaveArray;
 
 
     public GameScreen(Security gam) {
@@ -84,6 +88,7 @@ public class GameScreen implements Screen {
         mGoodTabletArray = new Array<GameGoodTablet>();
         mBadTabletArray = new Array<BadTablet>();
         mBottomWaveArray = new Array<BottomWave>();
+        mOrangeWaveArray = new Array<OrangeWave>();
         spawnTablets();
 
     }
@@ -95,6 +100,11 @@ public class GameScreen implements Screen {
 
     }
 
+    public void orangeWaves(){
+        mOrangeWave = new OrangeWave(-90, Security.HEIGHT / 2 - AssetLoader.orangeWave.getWidth() / 2, AssetLoader.orangeWave.getHeight(), AssetLoader.orangeWave.getWidth());
+        mOrangeWaveArray.add(mOrangeWave);
+        lastWaveOrange = TimeUtils.millis();
+    }
 
     public void spawnTablets(){
         goodTablet = new GameGoodTablet(Security.WIDTH / 2 - AssetLoader.goodTablet.getWidth() / 2,
@@ -180,9 +190,15 @@ public class GameScreen implements Screen {
         for (BottomWave bottomWave: mBottomWaveArray) {
             mSpriteBatch.draw(AssetLoader.testwave, Security.WIDTH / 2 - bottomWave.getWidth() / 2, bottomWave.getY(), bottomWave.getWidth(), bottomWave.getHeight());
         }
+
+        for (OrangeWave orangeWave: mOrangeWaveArray){
+            mSpriteBatch.draw(AssetLoader.orangeWave, orangeWave.getX(), Security.HEIGHT / 2 - orangeWave.getHeight() / 2 - orangeWave.getWidth() / 2 + 60, orangeWave.getHeight(), orangeWave.getWidth());
+        }
+
         mSpriteBatch.end();
 
         if (TimeUtils.millis() - lastWave > 600) bottomWaves();
+        if (TimeUtils.millis() - lastWaveOrange > 750) orangeWaves();
 
 
         if ((TimeUtils.millis() - currrentTime) < 10000) {
@@ -298,12 +314,22 @@ public class GameScreen implements Screen {
            Iterator<GameGoodTablet> iter = mGoodTabletArray.iterator();
            Iterator<BadTablet> iter1 = mBadTabletArray.iterator();
            Iterator<BottomWave> iter2 = mBottomWaveArray.iterator();
+           Iterator<OrangeWave> iter3 = mOrangeWaveArray.iterator();
 
            while (iter2.hasNext()){
                BottomWave bottomWave = iter2.next();
                bottomWave.update(delta);
                if (bottomWave.getY() > 90){
                    iter2.remove();
+               }
+
+           }
+
+           while (iter3.hasNext()){
+               OrangeWave orangeWave = iter3.next();
+               orangeWave.update(delta);
+               if (orangeWave.getX() > 60){
+                   iter3.remove();
                }
 
            }

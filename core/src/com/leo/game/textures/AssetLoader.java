@@ -18,6 +18,7 @@ public class AssetLoader {
     public static Texture topShadow;
     public static Texture leftShadow;
     public static Texture rightShadow;
+    public static Texture orangeWave;
 
     public static void load(){
 
@@ -28,6 +29,7 @@ public class AssetLoader {
         topShadow = new Texture("topShadow.png");
         leftShadow = new Texture("leftShadow.png");
         rightShadow = new Texture("rightShadow.png");
+        orangeWave = new Texture("orangeWave.png");
 
         goodTablet = new Texture("goodTablet.png");
         badTablet = new Texture("badTablet.png");
@@ -47,6 +49,7 @@ public class AssetLoader {
         dustBottom.dispose();
         topShadow.dispose();
         leftShadow.dispose();
+        orangeWave.dispose();
 
     }
 
