@@ -19,6 +19,8 @@ import com.leo.game.objects.DustBottom;
 import com.leo.game.objects.DustTop;
 import com.leo.game.objects.GameGoodTablet;
 import com.leo.game.Textures.AssetLoader;
+import com.leo.game.objects.LeftShadow;
+import com.leo.game.objects.RightShadow;
 
 import java.util.Iterator;
 
@@ -43,6 +45,8 @@ public class GameScreen implements Screen {
     private BottomWave mBottomWave;
     private DustBottom mDustBottom;
     private DustTop mDustTop;
+    private LeftShadow mLeftShadow;
+    private RightShadow mRightShadow;
 
     private long currrentTime;
     private long lastTime;
@@ -64,6 +68,8 @@ public class GameScreen implements Screen {
         vel = new Vector2(0, 0);
         mDustBottom = new DustBottom(Security.WIDTH / 2 - AssetLoader.dustBottom.getWidth() / 2, -10, AssetLoader.dustBottom.getWidth(), AssetLoader.dustBottom.getHeight());
         mDustTop = new DustTop(Security.WIDTH / 2 - AssetLoader.topShadow.getWidth() / 2, 300, AssetLoader.topShadow.getWidth(), AssetLoader.topShadow.getHeight());
+        mLeftShadow = new LeftShadow(-26, Security.HEIGHT / 2 - AssetLoader.leftShadow.getHeight() / 2 + 40, AssetLoader.leftShadow.getWidth(), AssetLoader.leftShadow.getHeight());
+        mRightShadow = new RightShadow(-34, Security.HEIGHT / 2 - AssetLoader.rightShadow.getHeight() / 2 +40, AssetLoader.rightShadow.getWidth(), AssetLoader.rightShadow.getHeight());
 
         mSpriteBatch = new SpriteBatch();
         camera = new OrthographicCamera();
@@ -166,6 +172,10 @@ public class GameScreen implements Screen {
         mSpriteBatch.draw(AssetLoader.dustBottom, mDustBottom.getX(), mDustBottom.getY());
         mDustBottom.update(delta);
         mSpriteBatch.draw(AssetLoader.topShadow, mDustTop.getX(), mDustTop.getY(), mDustTop.getWidth(), mDustTop.getHeight());
+        mSpriteBatch.draw(AssetLoader.leftShadow, mLeftShadow.getX(), mLeftShadow.getY(), mLeftShadow.getWidth(), mLeftShadow.getHeight());
+        mLeftShadow.update(delta);
+        mSpriteBatch.draw(AssetLoader.rightShadow, mRightShadow.getX(), mRightShadow.getY(), mRightShadow.getWidth(), mRightShadow.getHeight());
+        mRightShadow.update(delta);
 
         for (BottomWave bottomWave: mBottomWaveArray) {
             mSpriteBatch.draw(AssetLoader.testwave, Security.WIDTH / 2 - bottomWave.getWidth() / 2, bottomWave.getY(), bottomWave.getWidth(), bottomWave.getHeight());
