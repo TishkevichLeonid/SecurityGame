@@ -21,6 +21,7 @@ import com.leo.game.objects.GameGoodTablet;
 import com.leo.game.Textures.AssetLoader;
 import com.leo.game.objects.LeftShadow;
 import com.leo.game.objects.OrangeWave;
+import com.leo.game.objects.OrangeWaveRight;
 import com.leo.game.objects.RightShadow;
 
 import java.util.Iterator;
@@ -45,6 +46,7 @@ public class GameScreen implements Screen {
     private BottomLight mBottomLight;
     private BottomWave mBottomWave;
     private OrangeWave mOrangeWave;
+    private OrangeWaveRight mOrangeWaveRight;
     private DustBottom mDustBottom;
     private DustTop mDustTop;
     private LeftShadow mLeftShadow;
@@ -55,11 +57,13 @@ public class GameScreen implements Screen {
     private long lastTimeBad;
     private long lastWave;
     private long lastWaveOrange;
+    private long lastWaveOrangeRight;
 
     private Array<GameGoodTablet> mGoodTabletArray;
     private Array<BadTablet> mBadTabletArray;
     private Array<BottomWave> mBottomWaveArray;
     private Array<OrangeWave> mOrangeWaveArray;
+    private Array<OrangeWaveRight> mOrangeWaveRightArray;
 
 
     public GameScreen(Security gam) {
@@ -89,6 +93,7 @@ public class GameScreen implements Screen {
         mBadTabletArray = new Array<BadTablet>();
         mBottomWaveArray = new Array<BottomWave>();
         mOrangeWaveArray = new Array<OrangeWave>();
+        mOrangeWaveRightArray = new Array<OrangeWaveRight>();
         spawnTablets();
 
     }
@@ -98,6 +103,12 @@ public class GameScreen implements Screen {
         mBottomWaveArray.add(mBottomWave);
         lastWave = TimeUtils.millis();
 
+    }
+
+    public void orangeWavesRight(){
+        mOrangeWaveRight = new OrangeWaveRight(480, Security.HEIGHT / 2 - AssetLoader.orangeWave.getWidth() / 2, AssetLoader.orangeWave.getHeight(), AssetLoader.orangeWave.getWidth());
+        mOrangeWaveRightArray.add(mOrangeWaveRight);
+        lastWaveOrangeRight = TimeUtils.millis();
     }
 
     public void orangeWaves(){
@@ -195,10 +206,15 @@ public class GameScreen implements Screen {
             mSpriteBatch.draw(AssetLoader.orangeWave, orangeWave.getX(), Security.HEIGHT / 2 - orangeWave.getHeight() / 2 - orangeWave.getWidth() / 2 + 60, orangeWave.getHeight(), orangeWave.getWidth());
         }
 
+        for (OrangeWaveRight orangeWaveRight: mOrangeWaveRightArray){
+            mSpriteBatch.draw(AssetLoader.orangeWave, orangeWaveRight.getX(), Security.HEIGHT / 2 - orangeWaveRight.getHeight() / 2 - orangeWaveRight.getWidth() / 2 + 60, orangeWaveRight.getHeight(), orangeWaveRight.getWidth());
+        }
+
         mSpriteBatch.end();
 
         if (TimeUtils.millis() - lastWave > 600) bottomWaves();
         if (TimeUtils.millis() - lastWaveOrange > 750) orangeWaves();
+        if (TimeUtils.millis() - lastWaveOrangeRight > 650) orangeWavesRight();
 
 
         if ((TimeUtils.millis() - currrentTime) < 10000) {
@@ -315,6 +331,7 @@ public class GameScreen implements Screen {
            Iterator<BadTablet> iter1 = mBadTabletArray.iterator();
            Iterator<BottomWave> iter2 = mBottomWaveArray.iterator();
            Iterator<OrangeWave> iter3 = mOrangeWaveArray.iterator();
+           Iterator<OrangeWaveRight> iter4 = mOrangeWaveRightArray.iterator();
 
            while (iter2.hasNext()){
                BottomWave bottomWave = iter2.next();
@@ -323,6 +340,12 @@ public class GameScreen implements Screen {
                    iter2.remove();
                }
 
+           }
+
+           while (iter4.hasNext()){
+               OrangeWaveRight orangeWaveRight = iter4.next();
+               orangeWaveRight.update(delta);
+               if (orangeWaveRight.getX() < 350) iter4.remove();
            }
 
            while (iter3.hasNext()){
