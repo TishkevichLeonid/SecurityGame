@@ -6,13 +6,16 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
+import com.leo.game.Actors.AnimationMenuActor;
 import com.leo.game.Security;
 import com.leo.game.Textures.AssetLoader;
 import com.leo.game.objects.BadTablet;
@@ -32,7 +35,6 @@ public class MainMenuScreen implements Screen {
     private ImageButton playBt;
     private Texture mPlayBtn;
     private OrthographicCamera mCamera;
-    private BadTablet mBadTablet;
 
 
     public MainMenuScreen(Security gam) {
@@ -41,10 +43,6 @@ public class MainMenuScreen implements Screen {
         stage = new Stage(new StretchViewport(Security.WIDTH, Security.HEIGHT));
         mCamera = new OrthographicCamera();
         mCamera.setToOrtho(false, Security.WIDTH, Security.HEIGHT);
-
-        mBadTablet = new BadTablet(Security.WIDTH / 2 - AssetLoader.badTablet.getWidth() / 2,
-                Security.HEIGHT + AssetLoader.badTablet.getHeight(), AssetLoader.badTablet.getWidth(),
-                AssetLoader.badTablet.getHeight());
 
         buttonAtlas = new TextureAtlas(Gdx.files.internal("buttons/buttons.atlas"));
         skin = new Skin();
@@ -70,7 +68,6 @@ public class MainMenuScreen implements Screen {
 
             }
         });
-
 
         stage.addActor(game.background);
         stage.addActor(playBt);

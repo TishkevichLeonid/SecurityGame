@@ -2,6 +2,8 @@ package com.leo.game.objects;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
+import com.leo.game.Security;
+import com.leo.game.Textures.AssetLoader;
 
 /**
  * Created by leonidtiskevic on 07.02.17.
@@ -32,11 +34,15 @@ public class GoodTablet{
             velocity.y = 100;
 
         }
-        if (position.y > Gdx.graphics.getHeight()){
+        if (position.y > Security.HEIGHT - AssetLoader.goodTablet.getHeight() / 2){
             velocity.y = -100;
         }
 
 
+    }
+
+    public void setPosition(Vector2 position) {
+        this.position = position;
     }
 
     public float getX() {

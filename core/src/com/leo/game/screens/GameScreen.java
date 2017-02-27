@@ -365,7 +365,7 @@ public class GameScreen implements Screen {
                    iter.remove();
                }
 
-               if (goodTablet.getY() < 500) {
+               if (goodTablet.getY() < 300) {
                    velosity2 = goodTablet.getVelocity();
                }
 
@@ -379,7 +379,7 @@ public class GameScreen implements Screen {
                 iter1.remove();
             }
 
-            if (badTablet.getY() < 600) {
+            if (badTablet.getY() < 400) {
                 velosity3 = badTablet.getVelocity();
             }
 
