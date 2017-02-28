@@ -14,16 +14,17 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.leo.game.Security;
 import com.leo.game.objects.BadTablet;
-import com.leo.game.objects.BottomLight;
-import com.leo.game.objects.BottomWave;
-import com.leo.game.objects.DustBottom;
-import com.leo.game.objects.DustTop;
+import com.leo.game.objects.Animation.BottomLight;
+import com.leo.game.objects.Animation.BottomWave;
+import com.leo.game.objects.Animation.DustBottom;
+import com.leo.game.objects.Animation.DustTop;
 import com.leo.game.objects.GameGoodTablet;
 import com.leo.game.Textures.AssetLoader;
-import com.leo.game.objects.LeftShadow;
-import com.leo.game.objects.OrangeWave;
-import com.leo.game.objects.OrangeWaveRight;
-import com.leo.game.objects.RightShadow;
+import com.leo.game.objects.Animation.LeftShadow;
+import com.leo.game.objects.Animation.OrangeWave;
+import com.leo.game.objects.Animation.OrangeWaveRight;
+import com.leo.game.objects.Animation.RightShadow;
+import com.leo.game.objects.Lives;
 
 import java.util.Iterator;
 
@@ -62,7 +63,10 @@ public class GameScreen implements Screen {
 
     public static int score;
     private int score1;
+    private int lives;
     private BitmapFont font;
+
+    private Lives mLives;
 
     private Array<GameGoodTablet> mGoodTabletArray;
     private Array<BadTablet> mBadTabletArray;
@@ -79,6 +83,8 @@ public class GameScreen implements Screen {
         touchPos = new Vector3();
         touch = new Vector3(0, 0, 0);
         vel = new Vector2(0, 0);
+        lives = 4;
+        mLives = new Lives();
         mDustBottom = new DustBottom(Security.WIDTH / 2 - AssetLoader.dustBottom.getWidth() / 2, -10, AssetLoader.dustBottom.getWidth(), AssetLoader.dustBottom.getHeight());
         mDustTop = new DustTop(Security.WIDTH / 2 - AssetLoader.topShadow.getWidth() / 2, 300, AssetLoader.topShadow.getWidth(), AssetLoader.topShadow.getHeight());
         mLeftShadow = new LeftShadow(-26, Security.HEIGHT / 2 - AssetLoader.leftShadow.getHeight() / 2 + 40, AssetLoader.leftShadow.getWidth(), AssetLoader.leftShadow.getHeight());
@@ -193,6 +199,9 @@ public class GameScreen implements Screen {
         for (BadTablet badTablet : mBadTabletArray){
             mSpriteBatch.draw(AssetLoader.badTablet, badTablet.getX(), badTablet.getY(), badTablet.getWidth(), badTablet.getHeight());
         }
+        for (Rectangle heart: mLives.getLives()){
+            mSpriteBatch.draw(AssetLoader.heart, heart.x, heart.y, heart.getWidth(), heart.getHeight());
+        }
 
         mSpriteBatch.draw(AssetLoader.bottomLight, mBottomLight.getX(), mBottomLight.getY(), mBottomLight.getWidth(), mBottomLight.getHeight());
         mBottomLight.update(delta);
@@ -300,6 +309,7 @@ public class GameScreen implements Screen {
            Iterator<BottomWave> iter2 = mBottomWaveArray.iterator();
            Iterator<OrangeWave> iter3 = mOrangeWaveArray.iterator();
            Iterator<OrangeWaveRight> iter4 = mOrangeWaveRightArray.iterator();
+           Iterator<Rectangle> iter5 = mLives.getLives().iterator();
 
            while (iter2.hasNext()){
                BottomWave bottomWave = iter2.next();
@@ -322,7 +332,6 @@ public class GameScreen implements Screen {
                if (orangeWave.getX() > 60){
                    iter3.remove();
                }
-
            }
 
            while (iter.hasNext()) {
@@ -331,22 +340,35 @@ public class GameScreen implements Screen {
 
                if (goodTablet.getY() < -40) {
                    iter.remove();
+                   score1++;
+                   score++;
                }
 
                if (goodTablet.getY() < 300) {
                    velosity2 = goodTablet.getVelocity();
                }
-
            }
 
         while (iter1.hasNext()){
             BadTablet badTablet = iter1.next();
             badTablet.update(delta);
 
+            while (iter5.hasNext()){
+                Rectangle heart = iter5.next();
+            }
+
             if (badTablet.getY() < -100) {
                 iter1.remove();
-                score += 5;
-                score1 += 5;
+                iter5.remove();
+                lives--;
+                score -= 5;
+                score1 -= 5;
+            }
+
+            if (lives ==0){
+                score1 = 0;
+                game.setScreen(new GameOverScreen(game));
+                dispose();
             }
 
             if (badTablet.getY() < 400) {

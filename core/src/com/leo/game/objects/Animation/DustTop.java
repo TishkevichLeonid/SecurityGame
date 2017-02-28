@@ -1,12 +1,13 @@
-package com.leo.game.objects;
+package com.leo.game.objects.Animation;
 
 import com.badlogic.gdx.math.Vector2;
+import com.leo.game.Security;
 
 /**
  * Created by leonidtiskevic on 26.02.17.
  */
 
-public class LeftShadow {
+public class DustTop {
 
     private Vector2 position;
     private Vector2 velocity;
@@ -14,29 +15,15 @@ public class LeftShadow {
     private int width;
     private int height;
 
-    public LeftShadow(float x, float y, int width, int height){
+    public DustTop(float x, float y, int width, int height){
         this.width = width;
         this.height = height;
         position = new Vector2(x, y);
-        velocity = new Vector2(0, 0);
+        velocity = new Vector2(0, -100);
         x = position.x;
         y = position.y;
     }
 
-
-    public void update(float dt){
-        position.add(velocity.cpy().scl(dt));
-
-        if (position.x > -5){
-            velocity.x = -12;
-
-        }
-        if (position.x < -25){
-            velocity.x = 12;
-        }
-
-
-    }
 
     public float getX() {
         return position.x;

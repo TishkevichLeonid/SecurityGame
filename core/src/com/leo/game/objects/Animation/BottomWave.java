@@ -1,12 +1,12 @@
-package com.leo.game.objects;
+package com.leo.game.objects.Animation;
 
 import com.badlogic.gdx.math.Vector2;
 
 /**
- * Created by leonidtiskevic on 26.02.17.
+ * Created by leonidtiskevic on 25.02.17.
  */
 
-public class OrangeWaveRight {
+public class BottomWave {
 
     private Vector2 position;
     private Vector2 velocity;
@@ -16,11 +16,11 @@ public class OrangeWaveRight {
     private int width;
     private int height;
 
-    public OrangeWaveRight(float x, float y, int width, int height){
+    public BottomWave(float x, float y, int width, int height){
         this.width = width;
         this.height = height;
         position = new Vector2(x, y);
-        velocity = new Vector2(-50, 0);
+        velocity = new Vector2(0, -100);
         widthChange = new Vector2(300, 100);
         deltaWidth = new Vector2(30, 0);
         x = position.x;
@@ -32,14 +32,13 @@ public class OrangeWaveRight {
         position.add(velocity.cpy().scl(dt));
         widthChange.add(deltaWidth.cpy().scl(dt));
 
-        if (position.x < 410){
-            velocity.x = -35;
-            deltaWidth.y = -20;
+        if (position.y < -10){
+            velocity.y = 50;
             deltaWidth.x = -110;
+            deltaWidth.y = -38;
         }
 
     }
-
 
     public float getX() {
         return position.x;
@@ -56,5 +55,6 @@ public class OrangeWaveRight {
     public float getHeight() {
         return widthChange.y;
     }
+
 
 }

@@ -1,24 +1,28 @@
-package com.leo.game.objects;
+package com.leo.game.objects.Animation;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 
 /**
- * Created by leonidtiskevic on 25.02.17.
+ * Created by leonidtiskevic on 26.02.17.
  */
 
-public class BottomLight {
+public class OrangeWave {
+
     private Vector2 position;
     private Vector2 velocity;
+    private Vector2 widthChange;
+    private Vector2 deltaWidth;
 
     private int width;
     private int height;
 
-    public BottomLight(float x, float y, int width, int height){
+    public OrangeWave(float x, float y, int width, int height){
         this.width = width;
         this.height = height;
         position = new Vector2(x, y);
-        velocity = new Vector2(0, -100);
+        velocity = new Vector2(50, 0);
+        widthChange = new Vector2(300, 100);
+        deltaWidth = new Vector2(30, 0);
         x = position.x;
         y = position.y;
     }
@@ -26,17 +30,16 @@ public class BottomLight {
 
     public void update(float dt){
         position.add(velocity.cpy().scl(dt));
+        widthChange.add(deltaWidth.cpy().scl(dt));
 
-        if (position.y > -5){
-            velocity.y = -20;
-
+        if (position.x > -20){
+            velocity.x = 40;
+            deltaWidth.y = -20;
+            deltaWidth.x = -110;
         }
-        if (position.y < -25){
-            velocity.y = 20;
-        }
-
 
     }
+
 
     public float getX() {
         return position.x;
@@ -47,12 +50,13 @@ public class BottomLight {
     }
 
     public float getWidth() {
-        return width;
+        return widthChange.x;
     }
 
     public float getHeight() {
-        return height;
+        return widthChange.y;
     }
+
 
 
 }

@@ -5,7 +5,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.leo.game.Security;
 import com.leo.game.Textures.AssetLoader;
-import com.leo.game.objects.BottomLight;
+import com.leo.game.objects.Animation.BottomLight;
 
 /**
  * Created by leonidtiskevic on 25.02.17.

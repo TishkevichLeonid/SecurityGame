@@ -50,6 +50,11 @@ public class GameOverScreen implements Screen {
         mFont.draw(batch, "Yor score is : " + GameScreen.score, Security.WIDTH / 2, Security.HEIGHT / 2);
         batch.end();
 
+        if (Gdx.input.isTouched()){
+            game.setScreen(new GameScreen(game));
+            dispose();
+        }
+
     }
 
     @Override

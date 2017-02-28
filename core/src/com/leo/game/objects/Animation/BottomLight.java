@@ -1,21 +1,20 @@
-package com.leo.game.objects;
+package com.leo.game.objects.Animation;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
-import com.leo.game.Security;
 
 /**
- * Created by leonidtiskevic on 26.02.17.
+ * Created by leonidtiskevic on 25.02.17.
  */
 
-public class DustTop {
-
+public class BottomLight {
     private Vector2 position;
     private Vector2 velocity;
 
     private int width;
     private int height;
 
-    public DustTop(float x, float y, int width, int height){
+    public BottomLight(float x, float y, int width, int height){
         this.width = width;
         this.height = height;
         position = new Vector2(x, y);
@@ -24,6 +23,20 @@ public class DustTop {
         y = position.y;
     }
 
+
+    public void update(float dt){
+        position.add(velocity.cpy().scl(dt));
+
+        if (position.y > -5){
+            velocity.y = -20;
+
+        }
+        if (position.y < -25){
+            velocity.y = 20;
+        }
+
+
+    }
 
     public float getX() {
         return position.x;
@@ -40,7 +53,6 @@ public class DustTop {
     public float getHeight() {
         return height;
     }
-
 
 
 }

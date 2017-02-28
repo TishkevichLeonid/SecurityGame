@@ -1,4 +1,4 @@
-package com.leo.game.objects;
+package com.leo.game.objects.Animation;
 
 import com.badlogic.gdx.math.Vector2;
 
@@ -6,19 +6,23 @@ import com.badlogic.gdx.math.Vector2;
  * Created by leonidtiskevic on 26.02.17.
  */
 
-public class RightShadow {
+public class OrangeWaveRight {
 
     private Vector2 position;
     private Vector2 velocity;
+    private Vector2 widthChange;
+    private Vector2 deltaWidth;
 
     private int width;
     private int height;
 
-    public RightShadow(float x, float y, int width, int height){
+    public OrangeWaveRight(float x, float y, int width, int height){
         this.width = width;
         this.height = height;
         position = new Vector2(x, y);
-        velocity = new Vector2(0, 0);
+        velocity = new Vector2(-50, 0);
+        widthChange = new Vector2(300, 100);
+        deltaWidth = new Vector2(30, 0);
         x = position.x;
         y = position.y;
     }
@@ -26,17 +30,16 @@ public class RightShadow {
 
     public void update(float dt){
         position.add(velocity.cpy().scl(dt));
+        widthChange.add(deltaWidth.cpy().scl(dt));
 
-        if (position.x < -55){
-            velocity.x = 12;
-
+        if (position.x < 410){
+            velocity.x = -35;
+            deltaWidth.y = -20;
+            deltaWidth.x = -110;
         }
-        if (position.x > -35){
-            velocity.x = -12;
-        }
-
 
     }
+
 
     public float getX() {
         return position.x;
@@ -47,14 +50,11 @@ public class RightShadow {
     }
 
     public float getWidth() {
-        return width;
+        return widthChange.x;
     }
 
     public float getHeight() {
-        return height;
+        return widthChange.y;
     }
-
-
-
 
 }
