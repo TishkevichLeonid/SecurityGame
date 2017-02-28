@@ -43,6 +43,7 @@ public class GameScreen implements Screen {
     private Vector3 touchPos;
     public static Vector2 velosity2;
     public static Vector2 velosity3;
+    private Vector2 acceleration;
     private Vector3 touch;
     private Vector2 vel;
     private BottomLight mBottomLight;
@@ -80,6 +81,7 @@ public class GameScreen implements Screen {
 
         velosity2 = new Vector2(0, -20);
         velosity3 = new Vector2(0, -50);
+        acceleration = new Vector2(0, MathUtils.random(500, 600));
         touchPos = new Vector3();
         touch = new Vector3(0, 0, 0);
         vel = new Vector2(0, 0);
@@ -371,8 +373,9 @@ public class GameScreen implements Screen {
                 dispose();
             }
 
-            if (badTablet.getY() < 400) {
-                velosity3 = badTablet.getVelocity();
+            if (badTablet.getY() < 800) {
+               // velosity3 = badTablet.getVelocity();
+                velosity3.add(acceleration.cpy().scl(delta));
             }
 
             if (Gdx.input.isTouched()){
@@ -381,10 +384,10 @@ public class GameScreen implements Screen {
                 vel.x = touch.x;
                 vel.y = touch.y;
 
-                if ((vel.x > (mBadTabletArray.get(0).getX() - AssetLoader.badTablet.getWidth() / 2) &&
-                        vel.x < (mBadTabletArray.get(0).getX() + AssetLoader.badTablet.getWidth()))
-                        && (vel.y < mBadTabletArray.get(0).getY() + AssetLoader.badTablet.getHeight())
-                        && (vel.y > mBadTabletArray.get(0).getY() - AssetLoader.badTablet.getHeight() / 2)){
+                if ((vel.x > (mBadTabletArray.get(0).getX() - AssetLoader.badTablet.getWidth() / 2 - 15) &&
+                        vel.x < (mBadTabletArray.get(0).getX() + AssetLoader.badTablet.getWidth() + 15))
+                        && (vel.y < mBadTabletArray.get(0).getY() + AssetLoader.badTablet.getHeight() + 50)
+                        && (vel.y > mBadTabletArray.get(0).getY() - AssetLoader.badTablet.getHeight() / 2 + 30)){
                     mBadTabletArray.get(0).setX(vel.x - AssetLoader.badTablet.getWidth() / 2);
                     mBadTabletArray.get(0).setY(vel.y - AssetLoader.badTablet.getHeight() / 2);
                     if (mBadTabletArray.get(0).getX() > 250 || mBadTabletArray.get(0).getX() < 160) {
@@ -396,10 +399,10 @@ public class GameScreen implements Screen {
 
                 if (mBadTabletArray.size >=2) {
 
-                    if ((vel.x > (mBadTabletArray.get(1).getX() - AssetLoader.badTablet.getWidth() / 2) &&
-                            vel.x < (mBadTabletArray.get(1).getX() + AssetLoader.badTablet.getWidth()))
-                            && (vel.y < mBadTabletArray.get(1).getY() + AssetLoader.badTablet.getHeight())
-                            && (vel.y > mBadTabletArray.get(1).getY() - AssetLoader.badTablet.getHeight() / 2)) {
+                    if ((vel.x > (mBadTabletArray.get(1).getX() - AssetLoader.badTablet.getWidth() / 2 -15) &&
+                            vel.x < (mBadTabletArray.get(1).getX() + AssetLoader.badTablet.getWidth() + 15))
+                            && (vel.y < mBadTabletArray.get(1).getY() + AssetLoader.badTablet.getHeight() + 50)
+                            && (vel.y > mBadTabletArray.get(1).getY() - AssetLoader.badTablet.getHeight() / 2 + 30)) {
                         mBadTabletArray.get(1).setX(vel.x - AssetLoader.badTablet.getWidth() / 2);
                         mBadTabletArray.get(1).setY(vel.y - AssetLoader.badTablet.getHeight() / 2);
                         if (mBadTabletArray.get(1).getX() > 250 || mBadTabletArray.get(1).getX() < 160) {
