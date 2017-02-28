@@ -81,7 +81,7 @@ public class GameScreen implements Screen {
 
         velosity2 = new Vector2(0, -20);
         velosity3 = new Vector2(0, -50);
-        acceleration = new Vector2(0, MathUtils.random(500, 600));
+        acceleration = new Vector2(0, MathUtils.random(-20, -10));
         touchPos = new Vector3();
         touch = new Vector3(0, 0, 0);
         vel = new Vector2(0, 0);
@@ -158,25 +158,10 @@ public class GameScreen implements Screen {
 
     }
 
-    public boolean collideGoodtoBad(Rectangle tablet){
-        return tablet.overlaps(mBadTabletArray.get(0).getBadRec());
-    }
-
-    public boolean collideBadtoGood(Rectangle tablet){
-        return tablet.overlaps(mGoodTabletArray.get(0).getGoodRec());
-    }
-    public boolean collideGoodtoGood(Rectangle tablet){
-        return tablet.overlaps(mGoodTabletArray.get(0).getGoodRec());
-    }
-    public boolean colliedBadtoBad(Rectangle tablet){
-        return tablet.overlaps(mBadTabletArray.get(0).getBadRec());
-    }
-
     @Override
     public void show() {
 
     }
-
 
 
     @Override
@@ -363,8 +348,8 @@ public class GameScreen implements Screen {
                 iter1.remove();
                 iter5.remove();
                 lives--;
-                score -= 5;
-                score1 -= 5;
+                score -= 10;
+                score1 -= 10;
             }
 
             if (lives ==0){
