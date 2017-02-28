@@ -169,7 +169,7 @@ public class GameScreen implements Screen {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
       //  Gdx.app.log("GameScreen FPS", (1/delta) + "");
-       // Gdx.app.log("Time: ", (((TimeUtils.millis() - currrentTime) / 1000)) + "");
+        Gdx.app.log("Time: ", (((TimeUtils.millis() - currrentTime) / 1000)) + "");
        // Gdx.app.log("Time: ", (mBadTabletArray.size) + "");
 
         camera.update();
@@ -244,19 +244,55 @@ public class GameScreen implements Screen {
                }
 
            }
-        if ((TimeUtils.millis() - currrentTime) >= 20000) {
-            if (TimeUtils.millis() - lastTime > MathUtils.random(1500, 2000)) {
+        if ((TimeUtils.millis() - currrentTime) >= 20000 && (TimeUtils.millis() - currrentTime) < 30000) {
+            if (TimeUtils.millis() - lastTime > MathUtils.random(1300, 1600)) {
                    spawnTablets();
                }
            }
 
-        if ((TimeUtils.millis() - currrentTime) >= 20000) {
-            if (TimeUtils.millis() - lastTime > MathUtils.random(1500, 2000)) {
+        if ((TimeUtils.millis() - currrentTime) >= 20000 && (TimeUtils.millis() - currrentTime) < 30000) {
+            if (TimeUtils.millis() - lastTimeBad > MathUtils.random(1200, 1500)) {
                 spawnBadTablets();
             }
         }
 
-        if (goodTablet.getY() > 800 && badTablet.getY() > 800) {
+        if ((TimeUtils.millis() - currrentTime) >= 30000 && (TimeUtils.millis() - currrentTime) < 45000) {
+            if (TimeUtils.millis() - lastTime > MathUtils.random(800, 1100)) {
+                spawnTablets();
+            }
+        }
+
+        if ((TimeUtils.millis() - currrentTime) >= 30000 && (TimeUtils.millis() - currrentTime) < 45000) {
+            if (TimeUtils.millis() - lastTimeBad > MathUtils.random(750, 1050)) {
+                spawnBadTablets();
+            }
+        }
+
+        if ((TimeUtils.millis() - currrentTime) >= 45000 && (TimeUtils.millis() - currrentTime) < 65000) {
+            if (TimeUtils.millis() - lastTime > MathUtils.random(450, 1200)) {
+                spawnTablets();
+            }
+        }
+
+        if ((TimeUtils.millis() - currrentTime) >= 45000 && (TimeUtils.millis() - currrentTime) < 65000) {
+            if (TimeUtils.millis() - lastTimeBad > MathUtils.random(400, 1000)) {
+                spawnBadTablets();
+            }
+        }
+        if ((TimeUtils.millis() - currrentTime) > 65000) {
+            if (TimeUtils.millis() - lastTime > MathUtils.random(350, 1200)) {
+                spawnTablets();
+            }
+        }
+
+        if ((TimeUtils.millis() - currrentTime) > 65000) {
+            if (TimeUtils.millis() - lastTimeBad > MathUtils.random(300, 1000)) {
+                spawnBadTablets();
+            }
+        }
+
+
+    /*    if (goodTablet.getY() > 800 && badTablet.getY() > 800) {
 
             if (collide(goodTablet.getGoodRec())) {
 
@@ -289,7 +325,7 @@ public class GameScreen implements Screen {
                 badTablet.setVelocity(goodTablet.getVelocity());
 
             }
-        }
+        } */
 
            Iterator<GameGoodTablet> iter = mGoodTabletArray.iterator();
            Iterator<BadTablet> iter1 = mBadTabletArray.iterator();

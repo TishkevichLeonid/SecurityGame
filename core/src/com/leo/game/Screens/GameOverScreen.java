@@ -44,6 +44,7 @@ public class GameOverScreen implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         camera.update();
+        batch.setProjectionMatrix(camera.combined);
 
         batch.begin();
         batch.draw(bg, 0, 0, Security.WIDTH, Security.HEIGHT);
