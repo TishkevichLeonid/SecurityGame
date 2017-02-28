@@ -169,7 +169,7 @@ public class GameScreen implements Screen {
     public void render(float delta) {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        Gdx.app.log("GameScreen FPS", (1/delta) + "");
+      //  Gdx.app.log("GameScreen FPS", (1/delta) + "");
        // Gdx.app.log("Time: ", (((TimeUtils.millis() - currrentTime) / 1000)) + "");
        // Gdx.app.log("Time: ", (mBadTabletArray.size) + "");
 
@@ -288,7 +288,7 @@ public class GameScreen implements Screen {
             }
         }
 
-        if (mBadTabletArray.size > 0 & mGoodTabletArray.size > 0) {
+     /*   if (mBadTabletArray.size > 0 & mGoodTabletArray.size > 0) {
 
         if (goodTablet.getY() < 800 && badTablet.getY() < 800) {
 
@@ -325,7 +325,7 @@ public class GameScreen implements Screen {
                 }
             }
 
-        }
+        } */
 
            Iterator<GameGoodTablet> iter = mGoodTabletArray.iterator();
            Iterator<BadTablet> iter1 = mBadTabletArray.iterator();
@@ -395,7 +395,7 @@ public class GameScreen implements Screen {
                         && (vel.y > mBadTabletArray.get(0).getY() - AssetLoader.badTablet.getHeight() / 2)){
                     mBadTabletArray.get(0).setX(vel.x - AssetLoader.badTablet.getWidth() / 2);
                     mBadTabletArray.get(0).setY(vel.y - AssetLoader.badTablet.getHeight() / 2);
-                    if (mBadTabletArray.get(0).getX() > 230 || mBadTabletArray.get(0).getX() < 180) {
+                    if (mBadTabletArray.get(0).getX() > 250 || mBadTabletArray.get(0).getX() < 160) {
                         mBadTabletArray.removeIndex(0);
                     }
                 }
@@ -408,13 +408,13 @@ public class GameScreen implements Screen {
                             && (vel.y > mBadTabletArray.get(1).getY() - AssetLoader.badTablet.getHeight() / 2)) {
                         mBadTabletArray.get(1).setX(vel.x - AssetLoader.badTablet.getWidth() / 2);
                         mBadTabletArray.get(1).setY(vel.y - AssetLoader.badTablet.getHeight() / 2);
-                        if (mBadTabletArray.get(1).getX() > 230 || mBadTabletArray.get(1).getX() < 180) {
+                        if (mBadTabletArray.get(1).getX() > 250 || mBadTabletArray.get(1).getX() < 160) {
                             mBadTabletArray.removeIndex(1);
                         }
                     }
                 }
 
-                if (mBadTabletArray.size >= 3) {
+             /*   if (mBadTabletArray.size >= 3) {
 
                     if ((vel.x > (mBadTabletArray.get(2).getX() - AssetLoader.badTablet.getWidth() / 2) &&
                             vel.x < (mBadTabletArray.get(2).getX() + AssetLoader.badTablet.getWidth()))
@@ -422,7 +422,7 @@ public class GameScreen implements Screen {
                             && (vel.y > mBadTabletArray.get(2).getY() - AssetLoader.badTablet.getHeight() / 2)) {
                         mBadTabletArray.get(2).setX(vel.x - AssetLoader.badTablet.getWidth() / 2);
                         mBadTabletArray.get(2).setY(vel.y - AssetLoader.badTablet.getHeight() / 2);
-                        if (mBadTabletArray.get(2).getX() > 230 || mBadTabletArray.get(2).getX() < 180) {
+                        if (mBadTabletArray.get(2).getX() > 250 || mBadTabletArray.get(2).getX() < 160) {
                             mBadTabletArray.removeIndex(2);
                         }
                     }
@@ -436,11 +436,11 @@ public class GameScreen implements Screen {
                             && (vel.y > mBadTabletArray.get(3).getY() - AssetLoader.badTablet.getHeight() / 2)) {
                         mBadTabletArray.get(3).setX(vel.x - AssetLoader.badTablet.getWidth() / 2);
                         mBadTabletArray.get(3).setY(vel.y - AssetLoader.badTablet.getHeight() / 2);
-                        if (mBadTabletArray.get(3).getX() > 230 || mBadTabletArray.get(3).getX() < 180) {
+                        if (mBadTabletArray.get(3).getX() > 250 || mBadTabletArray.get(3).getX() < 160) {
                             mBadTabletArray.removeIndex(3);
                         }
                     }
-                }
+                } */
 
             }
 

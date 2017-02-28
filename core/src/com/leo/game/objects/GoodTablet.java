@@ -41,8 +41,11 @@ public class GoodTablet{
 
     }
 
-    public void setPosition(Vector2 position) {
-        this.position = position;
+    public void setX(float x){
+        this.position.x = x;
+    }
+    public void setY(float y){
+        this.position.y = y;
     }
 
     public float getX() {

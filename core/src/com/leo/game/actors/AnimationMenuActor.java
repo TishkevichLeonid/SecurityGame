@@ -1,8 +1,10 @@
 package com.leo.game.Actors;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
@@ -18,29 +20,32 @@ import com.leo.game.objects.GoodTablet;
 public class AnimationMenuActor extends Actor {
 
     private GoodTablet goodTablet;
+    private float X;
+    private float Y;
 
     public AnimationMenuActor(){
-
-
         goodTablet = new GoodTablet(Security.WIDTH / 2 - AssetLoader.goodTablet.getWidth() / 2,
                 Security.HEIGHT - AssetLoader.goodTablet.getHeight() / 2, AssetLoader.goodTablet.getWidth(),
                 AssetLoader.goodTablet.getHeight());
         setWidth(goodTablet.getWidth());
         setHeight(goodTablet.getHeight());
-        setBounds(goodTablet.getX(), goodTablet.getY(), getWidth(), getHeight());
+        setBounds(X, Y, getWidth(), getHeight());
 
         setTouchable(Touchable.enabled);
         addListener(new InputListener(){
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                goodTablet.setX(x + 190);
+                goodTablet.setY(y + 730);
                 return true; //super.touchDown(event, x, y, pointer, button);
             }
 
             @Override
             public void touchDragged(InputEvent event, float x, float y, int pointer) {
                 super.touchDragged(event, x, y, pointer);
-                Vector2 vector2 = new Vector2(x, y);
-                goodTablet.setPosition(vector2);
+                goodTablet.setY(y + 730);
+                goodTablet.setX(x + 190);
+                System.out.println(x + " " + y);
             }
 
             @Override
@@ -55,11 +60,14 @@ public class AnimationMenuActor extends Actor {
         this.goodTablet = goodTablet;
     }
 
+
+
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
         batch.draw(AssetLoader.goodTablet, goodTablet.getX(), goodTablet.getY(), goodTablet.getWidth(), goodTablet.getHeight());
         goodTablet.update(Gdx.graphics.getDeltaTime());
-
+        X = goodTablet.getX();
+        Y = goodTablet.getY();
 
     }
 
