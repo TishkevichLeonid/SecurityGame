@@ -199,7 +199,7 @@ public class GameScreen implements Screen {
         mLeftShadow.update(delta);
         mSpriteBatch.draw(AssetLoader.rightShadow, mRightShadow.getX(), mRightShadow.getY(), mRightShadow.getWidth(), mRightShadow.getHeight());
         mRightShadow.update(delta);
-        font.draw(mSpriteBatch, "Your score is : " + score1, 0, 780);
+        game.font.draw(mSpriteBatch, " Score :" + score1, 15, 790);
 
         for (BottomWave bottomWave: mBottomWaveArray) {
             mSpriteBatch.draw(AssetLoader.testwave, Security.WIDTH / 2 - bottomWave.getWidth() / 2, bottomWave.getY(), bottomWave.getWidth(), bottomWave.getHeight());

@@ -1,7 +1,11 @@
 package com.leo.game;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.leo.game.Actors.BottomActor;
 import com.leo.game.Textures.AssetLoader;
 import com.leo.game.Actors.BackgroundActor;
@@ -11,16 +15,18 @@ public class Security extends Game {
 	public static final int WIDTH = 480;
 	public static final int HEIGHT = 800;
 	public static final String TITLE = "Security";
+	private static final String FONT_CHARACTERS = "абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789][_!$%#@|\\/?-+=()*&.;,{}\"´`'<>";
+	private static final String FONT_CHARACTERS1 = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789][_!$%#@|\\/?-+=()*&.;,{}\"´`'<>";
 
-	// public SpriteBatch batch;
+	public BitmapFont font;
+
 	public BackgroundActor background;
 	public AnimationMenuActor animActor;
 	public AssetManager mManager;
 	public BottomActor mBottomActor;
-	
+
 	@Override
 	public void create () {
-	//	batch = new SpriteBatch();
 		this.setScreen(new LoadScreen(this));
 		mManager = new AssetManager();
 		AssetLoader.load();
@@ -29,6 +35,14 @@ public class Security extends Game {
 		animActor = new AnimationMenuActor();
 		mBottomActor = new BottomActor();
 		mManager = new AssetManager();
+
+		FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("Orbitron-Regular.ttf"));
+		FreeTypeFontGenerator.FreeTypeFontParameter param = new FreeTypeFontGenerator.FreeTypeFontParameter();
+		param.size = Gdx.graphics.getHeight() / 39;
+		param.characters = FONT_CHARACTERS;
+		font = generator.generateFont(param);
+		font.setColor(0.168f, 0.4156f, 0.592f, 1);
+		generator.dispose();
 
 	}
 
