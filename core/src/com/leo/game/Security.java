@@ -41,7 +41,7 @@ public class Security extends Game {
 		param.size = Gdx.graphics.getHeight() / 39;
 		param.characters = FONT_CHARACTERS;
 		font = generator.generateFont(param);
-		font.setColor(0.168f, 0.4156f, 0.592f, 1);
+		font.setColor(0.196f, 0.4588f, 0.643f, 1);
 		generator.dispose();
 
 	}
