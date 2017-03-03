@@ -269,7 +269,7 @@ public class GameScreen implements Screen {
         }
 
         if ((TimeUtils.millis() - currrentTime) >= 45000 && (TimeUtils.millis() - currrentTime) < 65000) {
-            if (TimeUtils.millis() - lastTime > MathUtils.random(300, 700)) {
+            if (TimeUtils.millis() - lastTime > MathUtils.random(500, 700)) {
                 spawnTablets();
             }
         }
