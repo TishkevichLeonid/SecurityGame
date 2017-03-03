@@ -269,24 +269,36 @@ public class GameScreen implements Screen {
         }
 
         if ((TimeUtils.millis() - currrentTime) >= 45000 && (TimeUtils.millis() - currrentTime) < 65000) {
-            if (TimeUtils.millis() - lastTime > MathUtils.random(450, 1200)) {
+            if (TimeUtils.millis() - lastTime > MathUtils.random(300, 700)) {
                 spawnTablets();
             }
         }
 
         if ((TimeUtils.millis() - currrentTime) >= 45000 && (TimeUtils.millis() - currrentTime) < 65000) {
-            if (TimeUtils.millis() - lastTimeBad > MathUtils.random(400, 1000)) {
+            if (TimeUtils.millis() - lastTimeBad > MathUtils.random(250, 500)) {
                 spawnBadTablets();
             }
         }
-        if ((TimeUtils.millis() - currrentTime) > 65000) {
-            if (TimeUtils.millis() - lastTime > MathUtils.random(350, 1200)) {
+        if ((TimeUtils.millis() - currrentTime) >= 65000 && (TimeUtils.millis() - currrentTime < 70000)) {
+            if (TimeUtils.millis() - lastTime > MathUtils.random(250, 400)) {
                 spawnTablets();
             }
         }
 
-        if ((TimeUtils.millis() - currrentTime) > 65000) {
-            if (TimeUtils.millis() - lastTimeBad > MathUtils.random(300, 1000)) {
+        if ((TimeUtils.millis() - currrentTime) >= 65000 && (TimeUtils.millis() - currrentTime < 70000)) {
+            if (TimeUtils.millis() - lastTimeBad > MathUtils.random(150, 250)) {
+                spawnBadTablets();
+            }
+        }
+
+        if ((TimeUtils.millis() - currrentTime) > 70000) {
+            if (TimeUtils.millis() - lastTime > MathUtils.random(60, 150)) {
+                spawnTablets();
+            }
+        }
+
+        if ((TimeUtils.millis() - currrentTime) > 70000) {
+            if (TimeUtils.millis() - lastTimeBad > MathUtils.random(20, 100)) {
                 spawnBadTablets();
             }
         }

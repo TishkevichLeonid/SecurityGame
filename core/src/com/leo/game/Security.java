@@ -38,7 +38,7 @@ public class Security extends Game {
 
 		FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("Orbitron-Regular.ttf"));
 		FreeTypeFontGenerator.FreeTypeFontParameter param = new FreeTypeFontGenerator.FreeTypeFontParameter();
-		param.size = Gdx.graphics.getHeight() / 39;
+		param.size = Security.HEIGHT / 39;
 		param.characters = FONT_CHARACTERS;
 		font = generator.generateFont(param);
 		font.setColor(0.196f, 0.4588f, 0.643f, 1);

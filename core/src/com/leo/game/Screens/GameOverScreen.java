@@ -19,7 +19,6 @@ public class GameOverScreen implements Screen {
     private OrthographicCamera camera;
     private SpriteBatch batch;
     private Texture bg;
-    private BitmapFont mFont;
 
     public GameOverScreen(Security gam) {
         this.game = gam;
@@ -28,7 +27,6 @@ public class GameOverScreen implements Screen {
         camera.setToOrtho(false, Security.WIDTH, Security.HEIGHT);
         batch = new SpriteBatch();
         bg = new Texture("bg1.png");
-        mFont = new BitmapFont();
 
     }
 
@@ -48,7 +46,8 @@ public class GameOverScreen implements Screen {
 
         batch.begin();
         batch.draw(bg, 0, 0, Security.WIDTH, Security.HEIGHT);
-        mFont.draw(batch, "Yor score is : " + GameScreen.score, Security.WIDTH / 2, Security.HEIGHT / 2);
+        game.font.draw(batch, "Your score is : " + GameScreen.score, Security.WIDTH / 2 - 100, Security.HEIGHT / 2 + 50);
+        game.font.draw(batch, "Tap to restart", Security.WIDTH / 2 - 85, Security.HEIGHT / 2);
         batch.end();
 
         if (Gdx.input.isTouched()){
