@@ -6,7 +6,12 @@ import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
+import com.leo.game.Actors.menuActors.BottomLightMenuActor;
+import com.leo.game.Actors.menuActors.DustBottomActor;
+import com.leo.game.Actors.menuActors.DustTopActor;
+import com.leo.game.Actors.menuActors.LeftDustActor;
 import com.leo.game.Actors.menuActors.LeftWaveMenuActor;
+import com.leo.game.Actors.menuActors.RightDustActor;
 import com.leo.game.Actors.menuActors.RightWaveMenuActor;
 import com.leo.game.Textures.AssetLoader;
 import com.leo.game.Actors.menuActors.BackgroundActor;
@@ -29,6 +34,11 @@ public class Security extends Game {
 	public RightWaveMenuActor mRightWaveMenu;
 	public LeftWaveMenuActor mLeftWaveMenuActor;
 	public AssetManager mManager;
+	public BottomLightMenuActor mBottomLightMenuActor;
+	public DustBottomActor mDustBottomActor;
+	public LeftDustActor mLeftDustActor;
+	public RightDustActor mRightDustActor;
+	public DustTopActor mDustTopActor;
 
 	@Override
 	public void create () {
@@ -40,6 +50,11 @@ public class Security extends Game {
 		animActor = new BottomMenuActor();
 		mRightWaveMenu = new RightWaveMenuActor();
 		mLeftWaveMenuActor = new LeftWaveMenuActor();
+		mBottomLightMenuActor = new BottomLightMenuActor();
+		mDustBottomActor = new DustBottomActor();
+		mLeftDustActor = new LeftDustActor();
+		mRightDustActor = new RightDustActor();
+		mDustTopActor = new DustTopActor();
 
 		mManager = new AssetManager();
 
