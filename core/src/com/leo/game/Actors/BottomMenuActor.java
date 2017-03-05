@@ -15,13 +15,13 @@ import java.util.Iterator;
  * Created by leonidtiskevic on 10.02.17.
  */
 
-public class AnimationMenuActor extends Actor {
+public class BottomMenuActor extends Actor {
 
     private long lastWave;
     private BottomWaveMenu mBottomWave;
     private Array<BottomWaveMenu> mBottomWaveMenuArray;
 
-    public AnimationMenuActor(){
+    public BottomMenuActor(){
 
         mBottomWaveMenuArray = new Array<BottomWaveMenu>();
 

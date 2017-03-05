@@ -6,9 +6,11 @@ import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
+import com.leo.game.Actors.RightWaveMenuActor;
 import com.leo.game.Textures.AssetLoader;
 import com.leo.game.Actors.BackgroundActor;
-import com.leo.game.Actors.AnimationMenuActor;
+import com.leo.game.Actors.BottomMenuActor;
+import com.leo.game.objects.animationMenu.RightWaveMenu;
 
 public class Security extends Game {
 	public static final int WIDTH = 480;
@@ -23,7 +25,8 @@ public class Security extends Game {
 	public static Preferences pref;
 
 	public BackgroundActor background;
-	public AnimationMenuActor animActor;
+	public BottomMenuActor animActor;
+	public RightWaveMenuActor mRightWaveMenu;
 	public AssetManager mManager;
 
 	@Override
@@ -33,7 +36,9 @@ public class Security extends Game {
 		AssetLoader.load();
 		background = new BackgroundActor();
 		background.setPosition(0,0);
-		animActor = new AnimationMenuActor();
+		animActor = new BottomMenuActor();
+		mRightWaveMenu = new RightWaveMenuActor();
+
 		mManager = new AssetManager();
 
 		pref = Gdx.app.getPreferences("Score");
