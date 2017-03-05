@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
@@ -40,7 +39,6 @@ public class GameScreen implements Screen {
     private OrthographicCamera camera;
     private GameGoodTablet goodTablet;
     private BadTablet badTablet;
-    private Vector3 touchPos;
     public static Vector2 velosity2;
     public static Vector2 velosity3;
     private Vector2 acceleration;
@@ -62,10 +60,8 @@ public class GameScreen implements Screen {
     private long lastWaveOrange;
     private long lastWaveOrangeRight;
 
-    public static int score;
     private int score1;
     private int lives;
-    private BitmapFont font;
 
     private Lives mLives;
 
@@ -82,7 +78,6 @@ public class GameScreen implements Screen {
         velosity2 = new Vector2(0, -20);
         velosity3 = new Vector2(0, -50);
         acceleration = new Vector2(0, MathUtils.random(-20, -10));
-        touchPos = new Vector3();
         touch = new Vector3(0, 0, 0);
         vel = new Vector2(0, 0);
         lives = 4;
@@ -93,7 +88,6 @@ public class GameScreen implements Screen {
         mRightShadow = new RightShadow(-34, Security.HEIGHT / 2 - AssetLoader.rightShadow.getHeight() / 2 +40, AssetLoader.rightShadow.getWidth(), AssetLoader.rightShadow.getHeight());
 
         mSpriteBatch = new SpriteBatch();
-        font = new BitmapFont();
         camera = new OrthographicCamera();
         camera.setToOrtho(false, Security.WIDTH, Security.HEIGHT);
         currrentTime = TimeUtils.millis();
@@ -376,7 +370,7 @@ public class GameScreen implements Screen {
                if (goodTablet.getY() < -40) {
                    iter.remove();
                    score1++;
-                   score++;
+                   game.score++;
                }
 
                if (goodTablet.getY() < 300) {
@@ -396,7 +390,7 @@ public class GameScreen implements Screen {
                 iter1.remove();
                 iter5.remove();
                 lives--;
-                score -= 10;
+                game.score -= 10;
                 score1 -= 10;
             }
 
@@ -425,7 +419,7 @@ public class GameScreen implements Screen {
                     mBadTabletArray.get(0).setY(vel.y - AssetLoader.badTablet.getHeight() / 2);
                     if (mBadTabletArray.get(0).getX() > 250 || mBadTabletArray.get(0).getX() < 160) {
                         mBadTabletArray.removeIndex(0);
-                        score += 5;
+                        game.score += 5;
                         score1 += 5;
                     }
                 }
@@ -440,7 +434,7 @@ public class GameScreen implements Screen {
                         mBadTabletArray.get(1).setY(vel.y - AssetLoader.badTablet.getHeight() / 2);
                         if (mBadTabletArray.get(1).getX() > 250 || mBadTabletArray.get(1).getX() < 160) {
                             mBadTabletArray.removeIndex(1);
-                            score += 5;
+                            game.score += 5;
                             score1 += 5;
                         }
                     }

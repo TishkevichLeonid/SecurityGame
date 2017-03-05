@@ -46,12 +46,17 @@ public class GameOverScreen implements Screen {
 
         batch.begin();
         batch.draw(bg, 0, 0, Security.WIDTH, Security.HEIGHT);
-        game.font.draw(batch, "Your score is : " + GameScreen.score, Security.WIDTH / 2 - 100, Security.HEIGHT / 2 + 50);
+        game.font.draw(batch, "Your record is : " + game.pref.getInteger("record"), Security.WIDTH / 2 - 80, Security.HEIGHT / 2 + 50);
+        game.font.draw(batch, "Your score is : " + game.score, Security.WIDTH / 2 - 100, Security.HEIGHT / 2 + 50);
         game.font.draw(batch, "Tap to restart", Security.WIDTH / 2 - 85, Security.HEIGHT / 2);
         batch.end();
 
+        if (game.score > game.pref.getInteger("record")){
+            game.pref.putInteger("record", game.score);
+        }
+
         if (Gdx.input.isTouched()){
-            GameScreen.score = 0;
+            game.score = 0;
             game.setScreen(new GameScreen(game));
             dispose();
         }

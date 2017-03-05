@@ -2,10 +2,11 @@ package com.leo.game;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.assets.AssetManager;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
+import com.badlogic.gdx.utils.SharedLibraryLoader;
 import com.leo.game.Actors.BottomActor;
 import com.leo.game.Textures.AssetLoader;
 import com.leo.game.Actors.BackgroundActor;
@@ -16,9 +17,12 @@ public class Security extends Game {
 	public static final int HEIGHT = 800;
 	public static final String TITLE = "Security";
 	private static final String FONT_CHARACTERS = "абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789][_!$%#@|\\/?-+=()*&.;,{}\"´`'<>";
-	private static final String FONT_CHARACTERS1 = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789][_!$%#@|\\/?-+=()*&.;,{}\"´`'<>";
-
 	public BitmapFont font;
+
+	public static int score;
+	public static int record;
+
+	public static Preferences pref;
 
 	public BackgroundActor background;
 	public AnimationMenuActor animActor;
@@ -36,6 +40,10 @@ public class Security extends Game {
 		mBottomActor = new BottomActor();
 		mManager = new AssetManager();
 
+		pref = Gdx.app.getPreferences("Score");
+		pref.putInteger("record", record);
+
+
 		FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("Orbitron-Regular.ttf"));
 		FreeTypeFontGenerator.FreeTypeFontParameter param = new FreeTypeFontGenerator.FreeTypeFontParameter();
 		param.size = Security.HEIGHT / 39;
@@ -45,6 +53,7 @@ public class Security extends Game {
 		generator.dispose();
 
 	}
+
 
 	@Override
 	public void render () {
