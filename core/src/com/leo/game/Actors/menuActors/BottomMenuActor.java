@@ -1,4 +1,4 @@
-package com.leo.game.Actors;
+package com.leo.game.Actors.menuActors;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Batch;

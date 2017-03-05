@@ -6,11 +6,11 @@ import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
-import com.leo.game.Actors.RightWaveMenuActor;
+import com.leo.game.Actors.menuActors.LeftWaveMenuActor;
+import com.leo.game.Actors.menuActors.RightWaveMenuActor;
 import com.leo.game.Textures.AssetLoader;
-import com.leo.game.Actors.BackgroundActor;
-import com.leo.game.Actors.BottomMenuActor;
-import com.leo.game.objects.animationMenu.RightWaveMenu;
+import com.leo.game.Actors.menuActors.BackgroundActor;
+import com.leo.game.Actors.menuActors.BottomMenuActor;
 
 public class Security extends Game {
 	public static final int WIDTH = 480;
@@ -27,6 +27,7 @@ public class Security extends Game {
 	public BackgroundActor background;
 	public BottomMenuActor animActor;
 	public RightWaveMenuActor mRightWaveMenu;
+	public LeftWaveMenuActor mLeftWaveMenuActor;
 	public AssetManager mManager;
 
 	@Override
@@ -38,6 +39,7 @@ public class Security extends Game {
 		background.setPosition(0,0);
 		animActor = new BottomMenuActor();
 		mRightWaveMenu = new RightWaveMenuActor();
+		mLeftWaveMenuActor = new LeftWaveMenuActor();
 
 		mManager = new AssetManager();
 

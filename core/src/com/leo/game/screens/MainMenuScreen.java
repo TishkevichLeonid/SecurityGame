@@ -64,6 +64,7 @@ public class MainMenuScreen implements Screen {
         stage.addActor(playBt);
         stage.addActor(game.animActor);
         stage.addActor(game.mRightWaveMenu);
+        stage.addActor(game.mLeftWaveMenuActor);
         Gdx.input.setInputProcessor(stage);
 
     }
