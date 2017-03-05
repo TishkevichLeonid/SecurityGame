@@ -8,9 +8,9 @@ import com.badlogic.gdx.tools.texturepacker.TexturePacker;
  */
 
 public class TextureParker1 {
-    private static final String TEXTURES_DIRECTORY = "desktop/pots";
-    private static final String ATLAS_DIRECTORY = "buttons";
-    private static final String ATLAS_FILE_NAME = "buttons";
+    private static final String TEXTURES_DIRECTORY = "desktop/menuBtn";
+    private static final String ATLAS_DIRECTORY = "menuBtn";
+    private static final String ATLAS_FILE_NAME = "menuBtn";
 
     public static void main(String[] args) {
 

@@ -33,13 +33,11 @@ public class MainMenuScreen implements Screen {
     private Skin skin;
     private ImageButton.ImageButtonStyle stylePlayBt;
     private ImageButton playBt;
-    private Texture mPlayBtn;
     private OrthographicCamera mCamera;
 
 
     public MainMenuScreen(Security gam) {
         this.game = gam;
-        mPlayBtn = new Texture("good.png");
         stage = new Stage(new StretchViewport(Security.WIDTH, Security.HEIGHT));
         mCamera = new OrthographicCamera();
         mCamera.setToOrtho(false, Security.WIDTH, Security.HEIGHT);
@@ -52,8 +50,8 @@ public class MainMenuScreen implements Screen {
         stylePlayBt.down = skin.getDrawable("good");
 
         playBt = new ImageButton(stylePlayBt);
-        playBt.setSize(mPlayBtn.getWidth(), mPlayBtn.getHeight());
-        playBt.setPosition(Security.WIDTH / 2 - mPlayBtn.getWidth() / 2, Security.HEIGHT / 2);
+        playBt.setSize(40, 49);
+        playBt.setPosition(Security.WIDTH / 2 - 20, Security.HEIGHT / 2);
 
 
         playBt.addListener(new ClickListener(){
