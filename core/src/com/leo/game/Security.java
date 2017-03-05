@@ -20,7 +20,7 @@ public class Security extends Game {
 	public BitmapFont font;
 
 	public static int score;
-	public static int record;
+	public static int record = 10;
 
 	public static Preferences pref;
 

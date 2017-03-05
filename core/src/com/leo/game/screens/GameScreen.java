@@ -104,6 +104,7 @@ public class GameScreen implements Screen {
         mOrangeWaveRightArray = new Array<OrangeWaveRight>();
         spawnTablets();
 
+
     }
 
     public void bottomWaves(){
@@ -139,17 +140,6 @@ public class GameScreen implements Screen {
                 AssetLoader.badTablet.getHeight());
         mBadTabletArray.add(badTablet);
         lastTimeBad = TimeUtils.millis();
-    }
-
-
-    public boolean collide(Rectangle tablet){
-        return tablet.overlaps(badTablet.getBadRec());
-
-    }
-
-    public boolean collidebad(Rectangle tablet){
-        return tablet.overlaps(goodTablet.getGoodRec());
-
     }
 
     @Override
@@ -298,40 +288,6 @@ public class GameScreen implements Screen {
         }
 
 
-    /*    if (goodTablet.getY() > 800 && badTablet.getY() > 800) {
-
-            if (collide(goodTablet.getGoodRec())) {
-
-                goodTablet.setVelocity(badTablet.getVelocity());
-                if (goodTablet.getY() > badTablet.getY()) {
-                    float a = 0;
-                    a = goodTablet.getY() - badTablet.getY();
-                    goodTablet.setY(goodTablet.getY() + a);
-                }
-                if (badTablet.getY() > goodTablet.getY()) {
-                    float a = 0;
-                    a = badTablet.getY() - goodTablet.getY();
-                    badTablet.setY(badTablet.getY() + a);
-                }
-
-            }
-
-            if (collidebad(badTablet.getBadRec())) {
-                if (badTablet.getY() > goodTablet.getY()) {
-                    float a = 0;
-                    a = badTablet.getY() - goodTablet.getY();
-                    badTablet.setY(badTablet.getY() + a);
-                }
-                if (goodTablet.getY() > badTablet.getY()) {
-                    float a = 0;
-                    a = goodTablet.getY() - badTablet.getY();
-                    goodTablet.setY(goodTablet.getY() + a);
-                }
-
-                badTablet.setVelocity(goodTablet.getVelocity());
-
-            }
-        } */
 
            Iterator<GameGoodTablet> iter = mGoodTabletArray.iterator();
            Iterator<BadTablet> iter1 = mBadTabletArray.iterator();
@@ -394,7 +350,7 @@ public class GameScreen implements Screen {
                 score1 -= 10;
             }
 
-            if (lives ==0){
+            if (lives == 0){
                 score1 = 0;
                 game.setScreen(new GameOverScreen(game));
                 dispose();
