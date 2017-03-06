@@ -4,29 +4,40 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.leo.game.Security;
 
 /**
- * Created by leonidtiskevic on 28.02.17.
+ * Created by leonidtiskevic on 06.03.17.
  */
 
 public class GameOverScreen implements Screen {
     final Security game;
 
+    private Stage stage;
     private OrthographicCamera camera;
-    private SpriteBatch batch;
-    private Texture bg;
+
 
     public GameOverScreen(Security gam) {
         this.game = gam;
 
-        camera = new OrthographicCamera();
-        camera.setToOrtho(false, Security.WIDTH, Security.HEIGHT);
-        batch = new SpriteBatch();
-        bg = new Texture("bg1.png");
+        stage = new Stage(new StretchViewport(Security.WIDTH, Security.HEIGHT));
+
+        stage.addActor(game.background);
+        stage.addActor(game.animActor);
+        stage.addActor(game.mRightWaveMenu);
+        stage.addActor(game.mLeftWaveMenuActor);
+        stage.addActor(game.mBottomLightMenuActor);
+        stage.addActor(game.mDustBottomActor);
+        stage.addActor(game.mLeftDustActor);
+        stage.addActor(game.mRightDustActor);
+        stage.addActor(game.mDustTopActor);
+        stage.addActor(game.mBackgroundActorMenu);
+
+        stage.addActor(game.mRecord);
+        stage.addActor(game.mScore);
+        stage.addActor(game.mBackTouch);
 
     }
 
@@ -37,19 +48,16 @@ public class GameOverScreen implements Screen {
 
     @Override
     public void render(float delta) {
-
-        Gdx.gl.glClearColor(0, 0, 0.2f, 1);
+        Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        camera.update();
-        batch.setProjectionMatrix(camera.combined);
 
-        batch.begin();
-        batch.draw(bg, 0, 0, Security.WIDTH, Security.HEIGHT);
-        game.font.draw(batch, "Your record is : " + game.pref.getInteger("record"), Security.WIDTH / 2 - 95, Security.HEIGHT / 2 + 100);
-        game.font.draw(batch, "Your score is : " + game.score, Security.WIDTH / 2 - 100, Security.HEIGHT / 2 + 50);
-        game.font.draw(batch, "Tap to restart", Security.WIDTH / 2 - 85, Security.HEIGHT / 2);
-        batch.end();
+        //  Gdx.app.log("MainMenuScreen FPS", (1/delta) + "");
+
+
+        stage.act(delta);
+        stage.draw();
+        stage.act();
 
         if (game.score > game.pref.getInteger("record", game.record)){
             game.pref.putInteger("record", game.score);
@@ -61,6 +69,7 @@ public class GameOverScreen implements Screen {
             game.setScreen(new MainMenuScreen(game));
             dispose();
         }
+
 
     }
 

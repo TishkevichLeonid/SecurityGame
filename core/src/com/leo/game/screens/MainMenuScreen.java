@@ -3,7 +3,6 @@ package com.leo.game.Screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -26,14 +25,11 @@ public class MainMenuScreen implements Screen {
     private Skin skin;
     private ImageButton.ImageButtonStyle stylePlayBt;
     private ImageButton playBt;
-    private OrthographicCamera mCamera;
 
 
     public MainMenuScreen(Security gam) {
         this.game = gam;
         stage = new Stage(new StretchViewport(Security.WIDTH, Security.HEIGHT));
-        mCamera = new OrthographicCamera();
-        mCamera.setToOrtho(false, Security.WIDTH, Security.HEIGHT);
 
         buttonAtlas = new TextureAtlas(Gdx.files.internal("menuBtn/menuBtn.atlas"));
         skin = new Skin();
@@ -70,7 +66,9 @@ public class MainMenuScreen implements Screen {
         stage.addActor(game.mRightDustActor);
         stage.addActor(game.mDustTopActor);
         stage.addActor(game.mBackgroundActorMenu);
+
         stage.addActor(playBt);
+        stage.addActor(game.mLockActor);
         Gdx.input.setInputProcessor(stage);
 
     }

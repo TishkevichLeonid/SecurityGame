@@ -6,12 +6,16 @@ import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
+import com.leo.game.Actors.gameOverActors.BackTouch;
+import com.leo.game.Actors.gameOverActors.Record;
+import com.leo.game.Actors.gameOverActors.Score;
 import com.leo.game.Actors.menuActors.BackgroundActorMenu;
 import com.leo.game.Actors.menuActors.BottomLightMenuActor;
 import com.leo.game.Actors.menuActors.DustBottomActor;
 import com.leo.game.Actors.menuActors.DustTopActor;
 import com.leo.game.Actors.menuActors.LeftDustActor;
 import com.leo.game.Actors.menuActors.LeftWaveMenuActor;
+import com.leo.game.Actors.menuActors.LockActor;
 import com.leo.game.Actors.menuActors.RightDustActor;
 import com.leo.game.Actors.menuActors.RightWaveMenuActor;
 import com.leo.game.Textures.AssetLoader;
@@ -23,7 +27,7 @@ public class Security extends Game {
 	public static final int HEIGHT = 800;
 	public static final String TITLE = "Security";
 	private static final String FONT_CHARACTERS = "абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789][_!$%#@|\\/?-+=()*&.;,{}\"´`'<>";
-	public BitmapFont font;
+	public BitmapFont font, font1, font2;
 
 	public static int score;
 	public static int record = 10;
@@ -41,6 +45,10 @@ public class Security extends Game {
 	public RightDustActor mRightDustActor;
 	public DustTopActor mDustTopActor;
 	public BackgroundActorMenu mBackgroundActorMenu;
+	public LockActor mLockActor;
+	public Record mRecord;
+	public Score mScore;
+	public BackTouch mBackTouch;
 
 	@Override
 	public void create () {
@@ -58,6 +66,10 @@ public class Security extends Game {
 		mRightDustActor = new RightDustActor();
 		mDustTopActor = new DustTopActor();
 		mBackgroundActorMenu = new BackgroundActorMenu();
+		mLockActor = new LockActor();
+		mRecord = new Record(this);
+		mScore = new Score(this);
+		mBackTouch = new BackTouch(this);
 
 		mManager = new AssetManager();
 
@@ -71,6 +83,18 @@ public class Security extends Game {
 		param.characters = FONT_CHARACTERS;
 		font = generator.generateFont(param);
 		font.setColor(0.196f, 0.4588f, 0.643f, 1);
+
+		FreeTypeFontGenerator.FreeTypeFontParameter param1 = new FreeTypeFontGenerator.FreeTypeFontParameter();
+		param1.size = Security.HEIGHT / 19;
+		param1.characters = FONT_CHARACTERS;
+		font1 = generator.generateFont(param1);
+		font1.setColor(0.196f, 0.4588f, 0.643f, 1);
+
+		FreeTypeFontGenerator.FreeTypeFontParameter param2 = new FreeTypeFontGenerator.FreeTypeFontParameter();
+		param2.size = Security.HEIGHT / 10;
+		param2.characters = FONT_CHARACTERS;
+		font2 = generator.generateFont(param2);
+		font2.setColor(0.196f, 0.4588f, 0.643f, 1);
 		generator.dispose();
 
 	}
