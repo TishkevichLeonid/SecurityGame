@@ -4,6 +4,7 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.leo.game.Actors.gameOverActors.BackTouch;
@@ -31,6 +32,8 @@ public class Security extends Game {
 
 	public static int score;
 	public static int record = 10;
+
+	private Music mMusic;
 
 	public static Preferences pref;
 
@@ -70,6 +73,11 @@ public class Security extends Game {
 		mRecord = new Record(this);
 		mScore = new Score(this);
 		mBackTouch = new BackTouch(this);
+
+		mMusic = Gdx.audio.newMusic(Gdx.files.internal("music/backmusic.mp3"));
+
+		mMusic.setLooping(true);
+		mMusic.play();
 
 		mManager = new AssetManager();
 

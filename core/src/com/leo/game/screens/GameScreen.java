@@ -334,6 +334,7 @@ public class GameScreen implements Screen {
                }
            }
 
+
         while (iter1.hasNext()){
             BadTablet badTablet = iter1.next();
             badTablet.update(delta);
@@ -349,6 +350,8 @@ public class GameScreen implements Screen {
                 game.score -= 10;
                 score1 -= 10;
             }
+
+
 
             if (lives == 0){
                 score1 = 0;
@@ -396,6 +399,12 @@ public class GameScreen implements Screen {
                     }
                 }
 
+            }
+
+
+            if (game.score > game.pref.getInteger("record", game.record)){
+                game.pref.putInteger("record", game.score);
+                game.pref.flush();
             }
 
         }

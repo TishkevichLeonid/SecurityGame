@@ -59,11 +59,6 @@ public class GameOverScreen implements Screen {
         stage.draw();
         stage.act();
 
-        if (game.score > game.pref.getInteger("record", game.record)){
-            game.pref.putInteger("record", game.score);
-            game.pref.flush();
-        }
-
         if (Gdx.input.isTouched()){
             game.score = 0;
             game.setScreen(new MainMenuScreen(game));
