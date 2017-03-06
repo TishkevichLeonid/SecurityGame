@@ -35,16 +35,16 @@ public class MainMenuScreen implements Screen {
         mCamera = new OrthographicCamera();
         mCamera.setToOrtho(false, Security.WIDTH, Security.HEIGHT);
 
-        buttonAtlas = new TextureAtlas(Gdx.files.internal("buttons/buttons.atlas"));
+        buttonAtlas = new TextureAtlas(Gdx.files.internal("menuBtn/menuBtn.atlas"));
         skin = new Skin();
         skin.addRegions(buttonAtlas);
         stylePlayBt = new ImageButton.ImageButtonStyle();
-        stylePlayBt.up = skin.getDrawable("bad");
-        stylePlayBt.down = skin.getDrawable("good");
+        stylePlayBt.up = skin.getDrawable("Start button");
+        stylePlayBt.down = skin.getDrawable("Start button");
 
         playBt = new ImageButton(stylePlayBt);
-        playBt.setSize(40, 49);
-        playBt.setPosition(Security.WIDTH / 2 - 20, Security.HEIGHT / 2);
+        playBt.setSize(400, 70);
+        playBt.setPosition(Security.WIDTH / 2 - 200, 130);
 
 
         playBt.addListener(new ClickListener(){
