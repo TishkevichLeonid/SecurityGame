@@ -6,6 +6,7 @@ import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
+import com.leo.game.Actors.menuActors.BackgroundActorMenu;
 import com.leo.game.Actors.menuActors.BottomLightMenuActor;
 import com.leo.game.Actors.menuActors.DustBottomActor;
 import com.leo.game.Actors.menuActors.DustTopActor;
@@ -39,6 +40,7 @@ public class Security extends Game {
 	public LeftDustActor mLeftDustActor;
 	public RightDustActor mRightDustActor;
 	public DustTopActor mDustTopActor;
+	public BackgroundActorMenu mBackgroundActorMenu;
 
 	@Override
 	public void create () {
@@ -55,6 +57,7 @@ public class Security extends Game {
 		mLeftDustActor = new LeftDustActor();
 		mRightDustActor = new RightDustActor();
 		mDustTopActor = new DustTopActor();
+		mBackgroundActorMenu = new BackgroundActorMenu();
 
 		mManager = new AssetManager();
 
