@@ -109,9 +109,13 @@ public class MainMenuScreen implements Screen {
                 if (Security.mMusic.getVolume() > 0.99) {
                     Security.mMusic.setVolume(0);
                     stage.addActor(game.mMusicOff);
+                    game.mMusicOn.remove();
                 }
-                else Security.mMusic.setVolume(1);
-                stage.addActor(game.mMusicOn);
+                else {
+                    Security.mMusic.setVolume(1);
+                    stage.addActor(game.mMusicOn);
+                    game.mMusicOff.remove();
+                }
             }
         }
 
