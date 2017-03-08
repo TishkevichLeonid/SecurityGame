@@ -17,6 +17,7 @@ import com.leo.game.Actors.menuActors.DustTopActor;
 import com.leo.game.Actors.menuActors.LeftDustActor;
 import com.leo.game.Actors.menuActors.LeftWaveMenuActor;
 import com.leo.game.Actors.menuActors.LockActor;
+import com.leo.game.Actors.menuActors.MusicOn;
 import com.leo.game.Actors.menuActors.RightDustActor;
 import com.leo.game.Actors.menuActors.RightWaveMenuActor;
 import com.leo.game.Textures.AssetLoader;
@@ -33,7 +34,7 @@ public class Security extends Game {
 	public static int score;
 	public static int record = 10;
 
-	private Music mMusic;
+	public static Music mMusic;
 
 	public static Preferences pref;
 
@@ -52,6 +53,8 @@ public class Security extends Game {
 	public Record mRecord;
 	public Score mScore;
 	public BackTouch mBackTouch;
+	public MusicOn mMusicOn;
+	public MusicOn.MusicOff mMusicOff;
 
 	@Override
 	public void create () {
@@ -73,6 +76,8 @@ public class Security extends Game {
 		mRecord = new Record(this);
 		mScore = new Score(this);
 		mBackTouch = new BackTouch(this);
+		mMusicOn = new MusicOn();
+		mMusicOff = new MusicOn.MusicOff();
 
 		mMusic = Gdx.audio.newMusic(Gdx.files.internal("music/backmusic.mp3"));
 

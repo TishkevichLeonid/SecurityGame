@@ -3,7 +3,9 @@ package com.leo.game.Screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
@@ -25,11 +27,16 @@ public class MainMenuScreen implements Screen {
     private Skin skin;
     private ImageButton.ImageButtonStyle stylePlayBt;
     private ImageButton playBt;
+    private Vector3 touch;
+    private OrthographicCamera camera;
 
 
     public MainMenuScreen(Security gam) {
         this.game = gam;
         stage = new Stage(new StretchViewport(Security.WIDTH, Security.HEIGHT));
+        touch = new Vector3(0, 0, 0);
+        camera = new OrthographicCamera();
+        camera.setToOrtho(false, Security.WIDTH, Security.HEIGHT);
 
         buttonAtlas = new TextureAtlas(Gdx.files.internal("menuBtn/menuBtn.atlas"));
         skin = new Skin();
@@ -69,6 +76,9 @@ public class MainMenuScreen implements Screen {
 
         stage.addActor(playBt);
         stage.addActor(game.mLockActor);
+        stage.addActor(game.mMusicOn);
+
+
         Gdx.input.setInputProcessor(stage);
 
     }
@@ -90,6 +100,20 @@ public class MainMenuScreen implements Screen {
         stage.act(delta);
         stage.draw();
         stage.act();
+
+        if (Gdx.input.justTouched()){
+            touch.set(Gdx.input.getX(), Gdx.input.getY(), 0);
+            camera.unproject(touch);
+
+            if ((touch.x > 15) && (touch.x < 85) && (touch.y > 700) && (touch.y < 760)){
+                if (Security.mMusic.getVolume() > 0.99) {
+                    Security.mMusic.setVolume(0);
+                    stage.addActor(game.mMusicOff);
+                }
+                else Security.mMusic.setVolume(1);
+                stage.addActor(game.mMusicOn);
+            }
+        }
 
     }
 
