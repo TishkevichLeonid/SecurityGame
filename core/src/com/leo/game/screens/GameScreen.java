@@ -206,55 +206,55 @@ public class GameScreen implements Screen {
 
 
         if ((TimeUtils.millis() - currrentTime) < 10000) {
-           if (System.currentTimeMillis() - lastTime > MathUtils.random(3500, 4000)) {
+           if (System.currentTimeMillis() - lastTime > MathUtils.random(25, 40) * 100) {
                spawnTablets();
            }
         }
 
         if ((TimeUtils.millis() - currrentTime)  < 10000) {
-            if (System.currentTimeMillis() - lastTimeBad > MathUtils.random(1500, 3800)) {
+            if (System.currentTimeMillis() - lastTimeBad > MathUtils.random(15, 38) * 100) {
                    spawnBadTablets();
                }
            }
 
         if ((TimeUtils.millis() - currrentTime) >= 10000 && (TimeUtils.millis() - currrentTime) < 20000) {
-            if (System.currentTimeMillis() - lastTimeBad > MathUtils.random(2300, 2800)) {
+            if (System.currentTimeMillis() - lastTimeBad > MathUtils.random(23, 28) * 100) {
                 spawnBadTablets();
             }
         }
 
         if ((TimeUtils.millis() - currrentTime) >= 10000 && (TimeUtils.millis() - currrentTime) < 20000) {
-            if (TimeUtils.millis() - lastTime > MathUtils.random(1700, 2300)) {
+            if (TimeUtils.millis() - lastTime > MathUtils.random(17, 23) * 100) {
                    spawnTablets();
                }
 
            }
         if ((TimeUtils.millis() - currrentTime) >= 20000 && (TimeUtils.millis() - currrentTime) < 30000) {
-            if (TimeUtils.millis() - lastTime > MathUtils.random(1200, 1600)) {
+            if (TimeUtils.millis() - lastTime > MathUtils.random(12, 16) * 100) {
                    spawnTablets();
                }
            }
 
         if ((TimeUtils.millis() - currrentTime) >= 20000 && (TimeUtils.millis() - currrentTime) < 30000) {
-            if (TimeUtils.millis() - lastTimeBad > MathUtils.random(1000, 1500)) {
+            if (TimeUtils.millis() - lastTimeBad > MathUtils.random(10, 15) * 100) {
                 spawnBadTablets();
             }
         }
 
         if ((TimeUtils.millis() - currrentTime) >= 30000 && (TimeUtils.millis() - currrentTime) < 45000) {
-            if (TimeUtils.millis() - lastTime > MathUtils.random(800, 1100)) {
+            if (TimeUtils.millis() - lastTime > MathUtils.random(8, 11) * 100) {
                 spawnTablets();
             }
         }
 
         if ((TimeUtils.millis() - currrentTime) >= 30000 && (TimeUtils.millis() - currrentTime) < 45000) {
-            if (TimeUtils.millis() - lastTimeBad > MathUtils.random(750, 1050)) {
+            if (TimeUtils.millis() - lastTimeBad > MathUtils.random(7, 10) * 100) {
                 spawnBadTablets();
             }
         }
 
         if ((TimeUtils.millis() - currrentTime) >= 45000 && (TimeUtils.millis() - currrentTime) < 65000) {
-            if (TimeUtils.millis() - lastTime > MathUtils.random(500, 700)) {
+            if (TimeUtils.millis() - lastTime > MathUtils.random(5, 7) * 100) {
                 spawnTablets();
             }
         }
@@ -265,25 +265,25 @@ public class GameScreen implements Screen {
             }
         }
         if ((TimeUtils.millis() - currrentTime) >= 65000 && (TimeUtils.millis() - currrentTime < 70000)) {
-            if (TimeUtils.millis() - lastTime > MathUtils.random(250, 400)) {
+            if (TimeUtils.millis() - lastTime > MathUtils.random(25, 40) * 10) {
                 spawnTablets();
             }
         }
 
         if ((TimeUtils.millis() - currrentTime) >= 65000 && (TimeUtils.millis() - currrentTime < 70000)) {
-            if (TimeUtils.millis() - lastTimeBad > MathUtils.random(150, 250)) {
+            if (TimeUtils.millis() - lastTimeBad > MathUtils.random(15, 25) * 10) {
                 spawnBadTablets();
             }
         }
 
         if ((TimeUtils.millis() - currrentTime) > 70000) {
-            if (TimeUtils.millis() - lastTime > MathUtils.random(60, 150)) {
+            if (TimeUtils.millis() - lastTime > MathUtils.random(6, 15) * 10) {
                 spawnTablets();
             }
         }
 
         if ((TimeUtils.millis() - currrentTime) > 70000) {
-            if (TimeUtils.millis() - lastTimeBad > MathUtils.random(20, 100)) {
+            if (TimeUtils.millis() - lastTimeBad > MathUtils.random(2, 10) * 10) {
                 spawnBadTablets();
             }
         }
@@ -379,34 +379,37 @@ public class GameScreen implements Screen {
                 vel.x = touch.x;
                 vel.y = touch.y;
 
-                if ((vel.x > (mBadTabletArray.get(0).getX() - AssetLoader.badTablet.getWidth() / 2 - 15) &&
-                        vel.x < (mBadTabletArray.get(0).getX() + AssetLoader.badTablet.getWidth() + 15))
-                        && (vel.y < mBadTabletArray.get(0).getY() + AssetLoader.badTablet.getHeight() + 50)
-                        && (vel.y > mBadTabletArray.get(0).getY() - AssetLoader.badTablet.getHeight() / 2 + 30)){
-                    mBadTabletArray.get(0).setX(vel.x - AssetLoader.badTablet.getWidth() / 2);
-                    mBadTabletArray.get(0).setY(vel.y - AssetLoader.badTablet.getHeight() / 2);
-                    if (mBadTabletArray.get(0).getX() > 250 || mBadTabletArray.get(0).getX() < 160) {
-                        mBadTabletArray.removeIndex(0);
-                        if (lives > 0) {
-                            game.score += 5;
-                            score1 += 5;
-                        }
-                    }
-                }
+                if (vel.y > 240 && vel.y < 560) {
 
-                if (mBadTabletArray.size >=2) {
-
-                    if ((vel.x > (mBadTabletArray.get(1).getX() - AssetLoader.badTablet.getWidth() / 2 -15) &&
-                            vel.x < (mBadTabletArray.get(1).getX() + AssetLoader.badTablet.getWidth() + 15))
-                            && (vel.y < mBadTabletArray.get(1).getY() + AssetLoader.badTablet.getHeight() + 50)
-                            && (vel.y > mBadTabletArray.get(1).getY() - AssetLoader.badTablet.getHeight() / 2 + 30)) {
-                        mBadTabletArray.get(1).setX(vel.x - AssetLoader.badTablet.getWidth() / 2);
-                        mBadTabletArray.get(1).setY(vel.y - AssetLoader.badTablet.getHeight() / 2);
-                        if (mBadTabletArray.get(1).getX() > 250 || mBadTabletArray.get(1).getX() < 160) {
-                            mBadTabletArray.removeIndex(1);
+                    if ((vel.x > (mBadTabletArray.get(0).getX() - AssetLoader.badTablet.getWidth() / 2 - 15) &&
+                            vel.x < (mBadTabletArray.get(0).getX() + AssetLoader.badTablet.getWidth() + 15))
+                            && (vel.y < mBadTabletArray.get(0).getY() + AssetLoader.badTablet.getHeight() + 50)
+                            && (vel.y > mBadTabletArray.get(0).getY() - AssetLoader.badTablet.getHeight() / 2 + 30)) {
+                        mBadTabletArray.get(0).setX(vel.x - AssetLoader.badTablet.getWidth() / 2);
+                        mBadTabletArray.get(0).setY(vel.y - AssetLoader.badTablet.getHeight() / 2);
+                        if (mBadTabletArray.get(0).getX() > 250 || mBadTabletArray.get(0).getX() < 160) {
+                            mBadTabletArray.removeIndex(0);
                             if (lives > 0) {
                                 game.score += 5;
                                 score1 += 5;
+                            }
+                        }
+                    }
+
+                    if (mBadTabletArray.size >= 2) {
+
+                        if ((vel.x > (mBadTabletArray.get(1).getX() - AssetLoader.badTablet.getWidth() / 2 - 15) &&
+                                vel.x < (mBadTabletArray.get(1).getX() + AssetLoader.badTablet.getWidth() + 15))
+                                && (vel.y < mBadTabletArray.get(1).getY() + AssetLoader.badTablet.getHeight() + 50)
+                                && (vel.y > mBadTabletArray.get(1).getY() - AssetLoader.badTablet.getHeight() / 2 + 30)) {
+                            mBadTabletArray.get(1).setX(vel.x - AssetLoader.badTablet.getWidth() / 2);
+                            mBadTabletArray.get(1).setY(vel.y - AssetLoader.badTablet.getHeight() / 2);
+                            if (mBadTabletArray.get(1).getX() > 250 || mBadTabletArray.get(1).getX() < 160) {
+                                mBadTabletArray.removeIndex(1);
+                                if (lives > 0) {
+                                    game.score += 5;
+                                    score1 += 5;
+                                }
                             }
                         }
                     }

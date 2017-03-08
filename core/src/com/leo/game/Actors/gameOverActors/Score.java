@@ -12,12 +12,13 @@ import com.sun.org.apache.xpath.internal.operations.String;
 public class Score extends Actor {
 
     final Security game;
-    private java.lang.String sc;
 
     public Score(Security gam){
 
         this.game = gam;
-        sc = Integer.toString(game.score);
+
+        if (game.score < 0) game.score = 0;
+
     }
 
     @Override
