@@ -218,25 +218,25 @@ public class GameScreen implements Screen {
            }
 
         if ((TimeUtils.millis() - currrentTime) >= 10000 && (TimeUtils.millis() - currrentTime) < 20000) {
-            if (System.currentTimeMillis() - lastTimeBad > MathUtils.random(2500, 2800)) {
+            if (System.currentTimeMillis() - lastTimeBad > MathUtils.random(2300, 2800)) {
                 spawnBadTablets();
             }
         }
 
         if ((TimeUtils.millis() - currrentTime) >= 10000 && (TimeUtils.millis() - currrentTime) < 20000) {
-            if (TimeUtils.millis() - lastTime > MathUtils.random(2000, 2400)) {
+            if (TimeUtils.millis() - lastTime > MathUtils.random(1700, 2300)) {
                    spawnTablets();
                }
 
            }
         if ((TimeUtils.millis() - currrentTime) >= 20000 && (TimeUtils.millis() - currrentTime) < 30000) {
-            if (TimeUtils.millis() - lastTime > MathUtils.random(1300, 1600)) {
+            if (TimeUtils.millis() - lastTime > MathUtils.random(1200, 1600)) {
                    spawnTablets();
                }
            }
 
         if ((TimeUtils.millis() - currrentTime) >= 20000 && (TimeUtils.millis() - currrentTime) < 30000) {
-            if (TimeUtils.millis() - lastTimeBad > MathUtils.random(1200, 1500)) {
+            if (TimeUtils.millis() - lastTimeBad > MathUtils.random(1000, 1500)) {
                 spawnBadTablets();
             }
         }
