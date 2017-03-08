@@ -54,6 +54,7 @@ public class GameScreen implements Screen {
     private RightShadow mRightShadow;
 
     private long currrentTime;
+    private long timeGameOver;
     private long lastTime;
     private long lastTimeBad;
     private long lastWave;
@@ -153,7 +154,7 @@ public class GameScreen implements Screen {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
       //  Gdx.app.log("GameScreen FPS", (1/delta) + "");
-        Gdx.app.log("Time: ", (((TimeUtils.millis() - currrentTime) / 1000)) + "");
+        Gdx.app.log("Time: ", (((TimeUtils.millis() - timeGameOver) / 1000)) + "");
        // Gdx.app.log("Time: ", (mBadTabletArray.size) + "");
 
         camera.update();
@@ -325,8 +326,10 @@ public class GameScreen implements Screen {
 
                if (goodTablet.getY() < -40) {
                    iter.remove();
-                   score1++;
-                   game.score++;
+                   if (lives > 0) {
+                       score1++;
+                       game.score++;
+                   }
                }
 
                if (goodTablet.getY() < 300) {
@@ -339,24 +342,30 @@ public class GameScreen implements Screen {
             BadTablet badTablet = iter1.next();
             badTablet.update(delta);
 
-            while (iter5.hasNext()){
+            while (iter5.hasNext()) {
                 Rectangle heart = iter5.next();
             }
+                if (badTablet.getY() < -100) {
+                    iter1.remove();
+                    if (lives > 0) {
+                        iter5.remove();
+                        game.score -= 10;
+                        score1 -= 10;
+                    }
+                    lives--;
+                }
 
-            if (badTablet.getY() < -100) {
-                iter1.remove();
-                iter5.remove();
-                lives--;
-                game.score -= 10;
-                score1 -= 10;
-            }
+            if (lives == 0) timeGameOver = TimeUtils.millis();
 
-
-
-            if (lives == 0){
-                score1 = 0;
-                game.setScreen(new GameOverScreen(game));
-                dispose();
+            if (lives <= 0){
+                mSpriteBatch.begin();
+                game.font1.draw(mSpriteBatch, "GAME OVER", Security.WIDTH / 2 - 150, Security.HEIGHT / 2 + 220);
+                mSpriteBatch.end();
+                if ((TimeUtils.millis() - timeGameOver) > 2500) {
+                    score1 = 0;
+                    game.setScreen(new GameOverScreen(game));
+                    dispose();
+                }
             }
 
             if (badTablet.getY() < 800) {
@@ -378,8 +387,10 @@ public class GameScreen implements Screen {
                     mBadTabletArray.get(0).setY(vel.y - AssetLoader.badTablet.getHeight() / 2);
                     if (mBadTabletArray.get(0).getX() > 250 || mBadTabletArray.get(0).getX() < 160) {
                         mBadTabletArray.removeIndex(0);
-                        game.score += 5;
-                        score1 += 5;
+                        if (lives > 0) {
+                            game.score += 5;
+                            score1 += 5;
+                        }
                     }
                 }
 
@@ -393,8 +404,10 @@ public class GameScreen implements Screen {
                         mBadTabletArray.get(1).setY(vel.y - AssetLoader.badTablet.getHeight() / 2);
                         if (mBadTabletArray.get(1).getX() > 250 || mBadTabletArray.get(1).getX() < 160) {
                             mBadTabletArray.removeIndex(1);
-                            game.score += 5;
-                            score1 += 5;
+                            if (lives > 0) {
+                                game.score += 5;
+                                score1 += 5;
+                            }
                         }
                     }
                 }
