@@ -276,13 +276,37 @@ public class GameScreen implements Screen {
             }
         }
 
-        if ((TimeUtils.millis() - currrentTime) > 70000) {
+        if ((TimeUtils.millis() - currrentTime) >= 70000 && (TimeUtils.millis() - currrentTime < 77000)) {
             if (TimeUtils.millis() - lastTime > MathUtils.random(6, 15) * 10) {
                 spawnTablets();
             }
         }
 
-        if ((TimeUtils.millis() - currrentTime) > 70000) {
+        if ((TimeUtils.millis() - currrentTime) >= 70000 && (TimeUtils.millis() - currrentTime < 77000)) {
+            if (TimeUtils.millis() - lastTimeBad > MathUtils.random(5, 12) * 10) {
+                spawnBadTablets();
+            }
+        }
+
+        if ((TimeUtils.millis() - currrentTime) >= 77000 && (TimeUtils.millis() - currrentTime < 85000)) {
+            if (TimeUtils.millis() - lastTime > MathUtils.random(6, 15) * 100) {
+                spawnTablets();
+            }
+        }
+
+        if ((TimeUtils.millis() - currrentTime) >= 77000 && (TimeUtils.millis() - currrentTime < 85000)) {
+            if (TimeUtils.millis() - lastTimeBad > MathUtils.random(5, 12) * 100) {
+                spawnBadTablets();
+            }
+        }
+
+        if ((TimeUtils.millis() - currrentTime) >= 85000) {
+            if (TimeUtils.millis() - lastTime > MathUtils.random(6, 15) * 10) {
+                spawnTablets();
+            }
+        }
+
+        if ((TimeUtils.millis() - currrentTime) >= 85000) {
             if (TimeUtils.millis() - lastTimeBad > MathUtils.random(5, 12) * 10) {
                 spawnBadTablets();
             }
