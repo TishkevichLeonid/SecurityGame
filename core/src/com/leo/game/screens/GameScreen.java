@@ -78,7 +78,7 @@ public class GameScreen implements Screen {
 
         velosity2 = new Vector2(0, -20);
         velosity3 = new Vector2(0, -50);
-        acceleration = new Vector2(0, MathUtils.random(-20, -10));
+        acceleration = new Vector2(0, MathUtils.random(-3, 1) * 10);
         touch = new Vector3(0, 0, 0);
         vel = new Vector2(0, 0);
         lives = 4;
@@ -242,13 +242,13 @@ public class GameScreen implements Screen {
         }
 
         if ((TimeUtils.millis() - currrentTime) >= 30000 && (TimeUtils.millis() - currrentTime) < 45000) {
-            if (TimeUtils.millis() - lastTime > MathUtils.random(8, 14) * 100) {
+            if (TimeUtils.millis() - lastTime > MathUtils.random(6, 13) * 100) {
                 spawnTablets();
             }
         }
 
         if ((TimeUtils.millis() - currrentTime) >= 30000 && (TimeUtils.millis() - currrentTime) < 45000) {
-            if (TimeUtils.millis() - lastTimeBad > MathUtils.random(7, 10) * 100) {
+            if (TimeUtils.millis() - lastTimeBad > MathUtils.random(8, 17) * 100) {
                 spawnBadTablets();
             }
         }
@@ -260,30 +260,32 @@ public class GameScreen implements Screen {
         }
 
         if ((TimeUtils.millis() - currrentTime) >= 45000 && (TimeUtils.millis() - currrentTime) < 65000) {
-            if (TimeUtils.millis() - lastTimeBad > MathUtils.random(25, 50) * 10) {
+            if (TimeUtils.millis() - lastTimeBad > MathUtils.random(7, 14) * 100) {
                 spawnBadTablets();
             }
         }
         if ((TimeUtils.millis() - currrentTime) >= 65000 && (TimeUtils.millis() - currrentTime < 70000)) {
-            if (TimeUtils.millis() - lastTime > MathUtils.random(10, 17) * 100) {
+            velosity2.y = -250;
+            if (TimeUtils.millis() - lastTime > MathUtils.random(8, 17) * 100) {
                 spawnTablets();
             }
         }
 
         if ((TimeUtils.millis() - currrentTime) >= 65000 && (TimeUtils.millis() - currrentTime < 70000)) {
+            velosity3.y = -250;
             if (TimeUtils.millis() - lastTimeBad > MathUtils.random(7, 14) * 100) {
                 spawnBadTablets();
             }
         }
 
         if ((TimeUtils.millis() - currrentTime) >= 70000 && (TimeUtils.millis() - currrentTime < 77000)) {
-            if (TimeUtils.millis() - lastTime > MathUtils.random(6, 15) * 10) {
+            if (TimeUtils.millis() - lastTime > MathUtils.random(25, 35) * 10) {
                 spawnTablets();
             }
         }
 
         if ((TimeUtils.millis() - currrentTime) >= 70000 && (TimeUtils.millis() - currrentTime < 77000)) {
-            if (TimeUtils.millis() - lastTimeBad > MathUtils.random(5, 12) * 10) {
+            if (TimeUtils.millis() - lastTimeBad > MathUtils.random(50, 78) * 10) {
                 spawnBadTablets();
             }
         }
@@ -295,19 +297,19 @@ public class GameScreen implements Screen {
         }
 
         if ((TimeUtils.millis() - currrentTime) >= 77000 && (TimeUtils.millis() - currrentTime < 85000)) {
-            if (TimeUtils.millis() - lastTimeBad > MathUtils.random(5, 12) * 100) {
+            if (TimeUtils.millis() - lastTimeBad > MathUtils.random(7, 12) * 100) {
                 spawnBadTablets();
             }
         }
 
         if ((TimeUtils.millis() - currrentTime) >= 85000) {
-            if (TimeUtils.millis() - lastTime > MathUtils.random(6, 15) * 10) {
+            if (TimeUtils.millis() - lastTime > MathUtils.random(27, 100) * 10) {
                 spawnTablets();
             }
         }
 
         if ((TimeUtils.millis() - currrentTime) >= 85000) {
-            if (TimeUtils.millis() - lastTimeBad > MathUtils.random(5, 12) * 10) {
+            if (TimeUtils.millis() - lastTimeBad > MathUtils.random(37, 60) * 10) {
                 spawnBadTablets();
             }
         }
@@ -443,6 +445,7 @@ public class GameScreen implements Screen {
 
 
             if (game.score > game.pref.getInteger("record", game.record)){
+                game.pref.remove("record");
                 game.pref.putInteger("record", game.score);
                 game.pref.flush();
             }

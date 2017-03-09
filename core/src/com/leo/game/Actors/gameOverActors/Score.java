@@ -25,7 +25,7 @@ public class Score extends Actor {
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
 
-        game.font2.draw(batch, "" + game.score, Security.WIDTH / 2 - 55, Security.HEIGHT / 2 + 250);
+        game.font2.draw(batch, "" + game.score, Security.WIDTH / 2 - 90, Security.HEIGHT / 2 + 250);
     }
 
 }

@@ -2,9 +2,11 @@ package com.leo.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.leo.game.Actors.CRAssetManager;
@@ -49,6 +51,9 @@ public class LoadScreen implements Screen {
         CRAssetManager.getInstance().load("lock.png", Texture.class);
         CRAssetManager.getInstance().load("mOn.png", Texture.class);
         CRAssetManager.getInstance().load("mOff.png", Texture.class);
+        CRAssetManager.getInstance().load("music/backmusic.mp3", Music.class);
+        CRAssetManager.getInstance().load("menuBtn/menuBtn.png", Texture.class);
+
 
     }
 
