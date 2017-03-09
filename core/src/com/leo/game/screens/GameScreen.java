@@ -218,7 +218,7 @@ public class GameScreen implements Screen {
            }
 
         if ((TimeUtils.millis() - currrentTime) >= 10000 && (TimeUtils.millis() - currrentTime) < 20000) {
-            if (System.currentTimeMillis() - lastTimeBad > MathUtils.random(23, 28) * 100) {
+            if (System.currentTimeMillis() - lastTimeBad > MathUtils.random(15, 21) * 100) {
                 spawnBadTablets();
             }
         }
@@ -230,7 +230,7 @@ public class GameScreen implements Screen {
 
            }
         if ((TimeUtils.millis() - currrentTime) >= 20000 && (TimeUtils.millis() - currrentTime) < 30000) {
-            if (TimeUtils.millis() - lastTime > MathUtils.random(12, 16) * 100) {
+            if (TimeUtils.millis() - lastTime > MathUtils.random(10, 20) * 100) {
                    spawnTablets();
                }
            }
@@ -242,7 +242,7 @@ public class GameScreen implements Screen {
         }
 
         if ((TimeUtils.millis() - currrentTime) >= 30000 && (TimeUtils.millis() - currrentTime) < 45000) {
-            if (TimeUtils.millis() - lastTime > MathUtils.random(8, 11) * 100) {
+            if (TimeUtils.millis() - lastTime > MathUtils.random(8, 14) * 100) {
                 spawnTablets();
             }
         }
@@ -260,18 +260,18 @@ public class GameScreen implements Screen {
         }
 
         if ((TimeUtils.millis() - currrentTime) >= 45000 && (TimeUtils.millis() - currrentTime) < 65000) {
-            if (TimeUtils.millis() - lastTimeBad > MathUtils.random(250, 500)) {
+            if (TimeUtils.millis() - lastTimeBad > MathUtils.random(25, 50) * 10) {
                 spawnBadTablets();
             }
         }
         if ((TimeUtils.millis() - currrentTime) >= 65000 && (TimeUtils.millis() - currrentTime < 70000)) {
-            if (TimeUtils.millis() - lastTime > MathUtils.random(25, 40) * 10) {
+            if (TimeUtils.millis() - lastTime > MathUtils.random(10, 17) * 100) {
                 spawnTablets();
             }
         }
 
         if ((TimeUtils.millis() - currrentTime) >= 65000 && (TimeUtils.millis() - currrentTime < 70000)) {
-            if (TimeUtils.millis() - lastTimeBad > MathUtils.random(15, 25) * 10) {
+            if (TimeUtils.millis() - lastTimeBad > MathUtils.random(7, 14) * 100) {
                 spawnBadTablets();
             }
         }
@@ -283,7 +283,7 @@ public class GameScreen implements Screen {
         }
 
         if ((TimeUtils.millis() - currrentTime) > 70000) {
-            if (TimeUtils.millis() - lastTimeBad > MathUtils.random(2, 10) * 10) {
+            if (TimeUtils.millis() - lastTimeBad > MathUtils.random(5, 12) * 10) {
                 spawnBadTablets();
             }
         }
