@@ -78,7 +78,7 @@ public class GameScreen implements Screen {
 
         velosity2 = new Vector2(0, -20);
         velosity3 = new Vector2(0, -50);
-        acceleration = new Vector2(0, MathUtils.random(-3, 1) * 10);
+        acceleration = new Vector2(0, MathUtils.random(-17, -10));
         touch = new Vector3(0, 0, 0);
         vel = new Vector2(0, 0);
         lives = 4;
@@ -387,7 +387,7 @@ public class GameScreen implements Screen {
                 mSpriteBatch.begin();
                 game.font1.draw(mSpriteBatch, "GAME OVER", Security.WIDTH / 2 - 150, Security.HEIGHT / 2 + 220);
                 mSpriteBatch.end();
-                if ((TimeUtils.millis() - timeGameOver) > 2500) {
+                if ((TimeUtils.millis() - timeGameOver) > 1500) {
                     score1 = 0;
                     game.setScreen(new GameOverScreen(game));
                     dispose();
