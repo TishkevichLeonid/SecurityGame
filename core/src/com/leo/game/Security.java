@@ -31,8 +31,8 @@ public class Security extends Game {
 	private static final String FONT_CHARACTERS = "абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789][_!$%#@|\\/?-+=()*&.;,{}\"´`'<>";
 	public BitmapFont font, font1, font2;
 
-	public static int score;
-	public static int record = 10;
+	public static int score = 0;
+	public static int record = 0;
 
 	public static Music mMusic;
 
@@ -88,7 +88,7 @@ public class Security extends Game {
 
 		pref = Gdx.app.getPreferences("Score");
 		pref.putInteger("record", record);
-
+		pref.flush();
 
 		FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("Orbitron-Regular.ttf"));
 		FreeTypeFontGenerator.FreeTypeFontParameter param = new FreeTypeFontGenerator.FreeTypeFontParameter();

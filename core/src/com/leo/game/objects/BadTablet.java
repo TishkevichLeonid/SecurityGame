@@ -1,11 +1,9 @@
 package com.leo.game.objects;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.leo.game.Screens.GameScreen;
 import com.leo.game.Textures.AssetLoader;
 import com.badlogic.gdx.math.Rectangle;
-//import java.awt.Rectangle;
 
 /**
  * Created by leonidtiskevic on 13.02.17.
@@ -25,7 +23,6 @@ public class BadTablet {
         this.height = height;
         position = new Vector2(x, y + 20);
         velocity = new Vector2(GameScreen.velosity3);
-       // velocity = new Vector2(0, -150);
         acceleration = new Vector2(0, -20);
         badRec = new Rectangle(0, 0, AssetLoader.badTablet.getWidth(), AssetLoader.badTablet.getHeight() + 40);
 

@@ -24,7 +24,6 @@ public class GameGoodTablet {
     public GameGoodTablet(int x, int y, int width, int height){
         this.width = width;
         this.height = height;
-       // position = new Vector2(Gdx.graphics.getWidth() / 2 - AssetLoader.goodTablet.getWidth() / 2, Gdx.graphics.getHeight());
         position = new Vector2(x, y);
         velocity = new Vector2(GameScreen.velosity2);
         acceleration = new Vector2(0, -20);

@@ -265,15 +265,15 @@ public class GameScreen implements Screen {
             }
         }
         if ((TimeUtils.millis() - currrentTime) >= 65000 && (TimeUtils.millis() - currrentTime < 70000)) {
-            velosity2.y = -250;
-            if (TimeUtils.millis() - lastTime > MathUtils.random(8, 17) * 100) {
+            velosity2.y = -300;
+            if (TimeUtils.millis() - lastTime > MathUtils.random(9, 17) * 100) {
                 spawnTablets();
             }
         }
 
         if ((TimeUtils.millis() - currrentTime) >= 65000 && (TimeUtils.millis() - currrentTime < 70000)) {
-            velosity3.y = -250;
-            if (TimeUtils.millis() - lastTimeBad > MathUtils.random(7, 14) * 100) {
+            velosity3.y = -300;
+            if (TimeUtils.millis() - lastTimeBad > MathUtils.random(8, 14) * 100) {
                 spawnBadTablets();
             }
         }
@@ -443,12 +443,6 @@ public class GameScreen implements Screen {
 
             }
 
-
-            if (game.score > game.pref.getInteger("record", game.record)){
-                game.pref.remove("record");
-                game.pref.putInteger("record", game.score);
-                game.pref.flush();
-            }
 
         }
 

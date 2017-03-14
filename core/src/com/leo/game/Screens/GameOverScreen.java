@@ -32,6 +32,11 @@ public class GameOverScreen implements Screen {
         camera = new OrthographicCamera();
         camera.setToOrtho(false, Security.WIDTH, Security.HEIGHT);
 
+        if (game.score > game.pref.getInteger("record", game.record)){
+            game.pref.putInteger("record", game.score);
+            game.pref.flush();
+        }
+
         stage.addActor(game.background);
         stage.addActor(game.animActor);
         stage.addActor(game.mRightWaveMenu);

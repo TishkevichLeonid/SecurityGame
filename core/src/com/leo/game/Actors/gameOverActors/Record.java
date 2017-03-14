@@ -14,12 +14,13 @@ public class Record extends Actor {
     public Record(Security gam){
 
         this.game = gam;
+
     }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
 
-        game.font1.draw(batch,  "BEST  " + game.pref.getInteger("record"), Security.WIDTH / 2 - 110, Security.HEIGHT / 2 + 140);
+        game.font1.draw(batch,  "BEST  " + game.pref.getInteger("record"), Security.WIDTH / 2 - 100, Security.HEIGHT / 2 + 140);
     }
 }
