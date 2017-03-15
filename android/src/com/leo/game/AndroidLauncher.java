@@ -7,7 +7,6 @@ import android.view.WindowManager;
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
 import com.google.android.gms.games.Games;
-import com.google.android.gms.games.leaderboard.Leaderboards;
 import com.google.example.games.basegameutils.GameHelper;
 import com.leo.game.Security;
 
@@ -74,7 +73,7 @@ public class AndroidLauncher extends AndroidApplication implements GameHelper.Ga
 
 	@Override
 	public boolean getSignedInGPGS() {
-		return gameHelper.isSignedIn();;
+		return gameHelper.isSignedIn();
 	}
 
 	@Override
@@ -99,11 +98,8 @@ public class AndroidLauncher extends AndroidApplication implements GameHelper.Ga
 
 	@Override
 	public void submitScoreGPGS(int score) {
-
-
 		// отправить игровые очки в конкретную таблицу рекордов с ID
-		// “HgkIr62KmoQJEAIQAQ”
-		Games.Leaderboards.submitScore(gameHelper.getApiClient(), "HgkIr62KmoQJEAIQAQ", score);
+		Games.Leaderboards.submitScore(gameHelper.getApiClient(), "CgkIjJSdz7sQEAIQAQ", score);
 
 	}
 
@@ -114,6 +110,12 @@ public class AndroidLauncher extends AndroidApplication implements GameHelper.Ga
 
 	@Override
 	public void getLeaderboardGPGS() {
+
+		// вызвать Activity для всех зарегистрированных таблиц рекордов. Так же
+		// можно вызывать Activity под конкретную таблицу
+		startActivityForResult(
+				Games.Leaderboards.getAllLeaderboardsIntent(gameHelper
+						.getApiClient()), 100);
 
 	}
 
