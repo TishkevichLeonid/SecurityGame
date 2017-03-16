@@ -34,6 +34,7 @@ public class MainMenuScreen implements Screen {
     public MainMenuScreen(Security gam) {
         this.game = gam;
         stage = new Stage(new StretchViewport(Security.WIDTH, Security.HEIGHT));
+       // stage = new Stage(new StretchViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight()));
         touch = new Vector3(0, 0, 0);
         camera = new OrthographicCamera();
         camera.setToOrtho(false, Security.WIDTH, Security.HEIGHT);
