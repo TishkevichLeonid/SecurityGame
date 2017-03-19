@@ -88,7 +88,6 @@ public class Security extends Game {
 
 		pref = Gdx.app.getPreferences("Score");
 		pref.putInteger("record", record);
-		pref.flush();
 
 		FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("Orbitron-Regular.ttf"));
 		FreeTypeFontGenerator.FreeTypeFontParameter param = new FreeTypeFontGenerator.FreeTypeFontParameter();
