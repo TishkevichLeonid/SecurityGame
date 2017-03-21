@@ -266,14 +266,14 @@ public class GameScreen implements Screen {
         }
         if ((TimeUtils.millis() - currrentTime) >= 65000 && (TimeUtils.millis() - currrentTime < 70000)) {
             velosity2.y = -300;
-            if (TimeUtils.millis() - lastTime > MathUtils.random(9, 17) * 100) {
+            if (TimeUtils.millis() - lastTime > MathUtils.random(14, 17) * 100) {
                 spawnTablets();
             }
         }
 
         if ((TimeUtils.millis() - currrentTime) >= 65000 && (TimeUtils.millis() - currrentTime < 70000)) {
             velosity3.y = -300;
-            if (TimeUtils.millis() - lastTimeBad > MathUtils.random(8, 14) * 100) {
+            if (TimeUtils.millis() - lastTimeBad > MathUtils.random(13, 16) * 100) {
                 spawnBadTablets();
             }
         }
