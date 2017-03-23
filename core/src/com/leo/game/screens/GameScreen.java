@@ -11,6 +11,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.TimeUtils;
+import com.leo.game.AdsController;
 import com.leo.game.Security;
 import com.leo.game.objects.BadTablet;
 import com.leo.game.objects.Animation.BottomLight;
@@ -25,6 +26,7 @@ import com.leo.game.objects.Animation.OrangeWaveRight;
 import com.leo.game.objects.Animation.RightShadow;
 import com.leo.game.objects.Lives;
 
+
 import java.util.Iterator;
 
 
@@ -34,6 +36,8 @@ import java.util.Iterator;
 
 public class GameScreen implements Screen {
     final Security game;
+
+    public static int showAd;
 
     private SpriteBatch mSpriteBatch;
     private OrthographicCamera camera;
@@ -53,6 +57,7 @@ public class GameScreen implements Screen {
     private LeftShadow mLeftShadow;
     private RightShadow mRightShadow;
 
+
     private long currrentTime;
     private long timeGameOver;
     private long lastTime;
@@ -61,8 +66,9 @@ public class GameScreen implements Screen {
     private long lastWaveOrange;
     private long lastWaveOrangeRight;
 
-    private int score1;
+    public static int score1;
     private int lives;
+   // private AdsController adsController;
 
     private Lives mLives;
 
@@ -387,9 +393,16 @@ public class GameScreen implements Screen {
                 mSpriteBatch.begin();
                 game.font1.draw(mSpriteBatch, "GAME OVER", Security.WIDTH / 2 - 150, Security.HEIGHT / 2 + 220);
                 mSpriteBatch.end();
+                showAd = 1;
                 if ((TimeUtils.millis() - timeGameOver) > 1500) {
                     score1 = 0;
-                    game.setScreen(new GameOverScreen(game));
+                    game.adsController.showInterstitialAd(new Runnable() {
+                        @Override
+                        public void run() {
+                            game.setScreen(new GameOverScreen(game));
+                        }
+                    });
+                   // game.setScreen(new GameOverScreen(game));
                     dispose();
                 }
             }

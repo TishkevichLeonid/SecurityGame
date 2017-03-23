@@ -10,6 +10,6 @@ public class DesktopLauncher {
 		config.width = Security.WIDTH;
 		config.height = Security.HEIGHT;
 		config.title = Security.TITLE;
-		new LwjglApplication(new Security(), config);
+		new LwjglApplication(new Security(null), config);
 	}
 }

@@ -20,6 +20,7 @@ import com.leo.game.Actors.menuActors.LockActor;
 import com.leo.game.Actors.menuActors.MusicOn;
 import com.leo.game.Actors.menuActors.RightDustActor;
 import com.leo.game.Actors.menuActors.RightWaveMenuActor;
+import com.leo.game.Screens.GameScreen;
 import com.leo.game.Textures.AssetLoader;
 import com.leo.game.Actors.menuActors.BackgroundActor;
 import com.leo.game.Actors.menuActors.BottomMenuActor;
@@ -35,6 +36,7 @@ public class Security extends Game {
 	public static int record = 0;
 
 	public static Music mMusic;
+	public AdsController adsController;
 
 	public static Preferences pref;
 
@@ -55,6 +57,14 @@ public class Security extends Game {
 	public BackTouch mBackTouch;
 	public MusicOn mMusicOn;
 	public MusicOn.MusicOff mMusicOff;
+
+	public Security(AdsController adsController){
+		if (adsController != null) {
+			this.adsController = adsController;
+		} else {
+			this.adsController = new DummyAdsController();
+		}
+	}
 
 	@Override
 	public void create () {
@@ -115,7 +125,6 @@ public class Security extends Game {
 	@Override
 	public void render () {
 		super.render();
-
 	}
 	
 	@Override
