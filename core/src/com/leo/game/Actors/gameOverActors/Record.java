@@ -2,6 +2,7 @@ package com.leo.game.Actors.gameOverActors;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.leo.game.ActionResolver;
 import com.leo.game.Security;
 
 /**
@@ -14,6 +15,7 @@ public class Record extends Actor {
     public Record(Security gam){
 
         this.game = gam;
+        
 
     }
 
@@ -23,4 +25,6 @@ public class Record extends Actor {
 
         game.font1.draw(batch,  "BEST  " + game.pref.getInteger("record"), Security.WIDTH / 2 - 100, Security.HEIGHT / 2 + 140);
     }
+
+
 }
