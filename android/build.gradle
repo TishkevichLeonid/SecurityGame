@@ -18,7 +18,7 @@ android {
         exclude 'META-INF/robovm/ios/robovm.xml'
     }
     defaultConfig {
-        applicationId "com.leo.game"
+        applicationId "com.leo.game1"
         minSdkVersion 15
         targetSdkVersion 24
     }
@@ -71,7 +71,7 @@ task run(type: Exec) {
     }
 
     def adb = path + "/platform-tools/adb"
-    commandLine "$adb", 'shell', 'am', 'start', '-n', 'com.leo.game/com.leo.game.AndroidLauncher'
+    commandLine "$adb", 'shell', 'am', 'start', '-n', 'com.leo.game1/AndroidLauncher'
 }
 
 // sets up the Android Eclipse project, using the old Ant based build.
